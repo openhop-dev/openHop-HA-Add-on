@@ -14,8 +14,6 @@ on:
   repository_dispatch:
     types:
       - sync-upstream-channel
-  schedule:
-    - cron: "23 * * * *"
 
 permissions:
   contents: write
