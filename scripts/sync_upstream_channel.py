@@ -24,31 +24,44 @@ def load_compare_data(compare_path: str | None) -> dict:
         return json.load(file)
 
 
-def build_changelog_entry(new_version: str, image_ref: str, old_rev: str, new_rev: str, compare_data: dict) -> str:
+def build_changelog_entry(
+    new_version: str,
+    channel: str,
+    image_ref: str,
+    old_rev: str,
+    new_rev: str,
+    compare_data: dict,
+) -> str:
     compare_url = compare_data.get("html_url") or (
         f"https://github.com/pyMC-dev/pyMC_Repeater/compare/{old_rev}...{new_rev}"
     )
     commits = compare_data.get("commits", [])
+    channel_label = channel.upper()
+    short_old = old_rev[:7]
     short_new = new_rev[:7]
 
     lines = [
         f"## {new_version}",
         "",
-        f"- Sync upstream `{image_ref}` to `{short_new}`",
+        f"- Track upstream `{channel_label}` commit `{short_new}` from `{image_ref}`",
+        f"- Previous tracked commit: `{short_old}`",
         f"- Upstream diff: {compare_url}",
     ]
 
-    commit_subjects = []
+    commit_entries = []
     for commit in commits[:8]:
+        sha = (commit.get("sha") or "")[:7]
         message = commit.get("commit", {}).get("message", "").strip()
         subject = message.splitlines()[0] if message else ""
-        if subject:
-            commit_subjects.append(subject)
+        if sha and subject:
+            commit_entries.append(f"`{sha}` {subject}")
+        elif subject:
+            commit_entries.append(subject)
 
-    if commit_subjects:
+    if commit_entries:
         lines.append("- Included upstream commits:")
-        for subject in commit_subjects:
-            lines.append(f"  - {subject}")
+        for entry in commit_entries:
+            lines.append(f"  - {entry}")
 
     lines.append("")
     lines.append("")
@@ -95,7 +108,14 @@ def main() -> None:
     if not changelog.startswith(header):
         raise ValueError(f"Unexpected changelog format in {changelog_path}")
 
-    new_entry = build_changelog_entry(new_version, image_ref, old_revision, new_revision, compare_data)
+    new_entry = build_changelog_entry(
+        new_version,
+        state["channel"],
+        image_ref,
+        old_revision,
+        new_revision,
+        compare_data,
+    )
     changelog_path.write_text(header + new_entry + changelog[len(header):], encoding="utf-8")
 
     state["revision"] = new_revision

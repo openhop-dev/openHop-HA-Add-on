@@ -2,6 +2,18 @@ name: Sync Upstream Channels
 
 on:
   workflow_dispatch:
+    inputs:
+      channel:
+        description: "Channel to sync"
+        required: false
+        default: "all"
+      revision:
+        description: "Optional upstream revision override for the selected channel"
+        required: false
+        default: ""
+  repository_dispatch:
+    types:
+      - sync-upstream-channel
   schedule:
     - cron: "23 * * * *"
 
@@ -44,28 +56,69 @@ jobs:
               out.write(f"addon_dir={state['addon_dir']}\n")
           PY
 
+      - name: Resolve requested channel and revision
+        id: request
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          DISPATCH_CHANNEL: ${{ github.event.client_payload.channel }}
+          DISPATCH_REVISION: ${{ github.event.client_payload.revision }}
+          INPUT_CHANNEL: ${{ inputs.channel }}
+          INPUT_REVISION: ${{ inputs.revision }}
+          TRACKED_CHANNEL: ${{ steps.tracked.outputs.channel }}
+        run: |
+          requested_channel=""
+          requested_revision=""
+
+          if [ "${EVENT_NAME}" = "repository_dispatch" ]; then
+            requested_channel="${DISPATCH_CHANNEL}"
+            requested_revision="${DISPATCH_REVISION}"
+          elif [ "${EVENT_NAME}" = "workflow_dispatch" ]; then
+            requested_channel="${INPUT_CHANNEL}"
+            requested_revision="${INPUT_REVISION}"
+          fi
+
+          should_run="true"
+          if [ -n "${requested_channel}" ] && [ "${requested_channel}" != "all" ] && [ "${requested_channel}" != "${TRACKED_CHANNEL}" ]; then
+            should_run="false"
+          fi
+
+          {
+            echo "should_run=${should_run}"
+            echo "requested_revision=${requested_revision}"
+          } >> "$GITHUB_OUTPUT"
+
+      - name: Stop if this matrix entry was not requested
+        if: steps.request.outputs.should_run != 'true'
+        run: echo "Skipping ${{ steps.tracked.outputs.channel }}; event targeted a different channel."
+
+      - name: Use event-provided upstream revision
+        if: steps.request.outputs.should_run == 'true' && steps.request.outputs.requested_revision != ''
+        id: upstream
+        run: echo "revision=${{ steps.request.outputs.requested_revision }}" >> "$GITHUB_OUTPUT"
+
       - name: Pull upstream image
+        if: steps.request.outputs.should_run == 'true' && steps.request.outputs.requested_revision == ''
         id: imagepull
         continue-on-error: true
         run: docker pull "${{ steps.tracked.outputs.image }}"
 
       - name: Stop if image tag does not exist yet
-        if: steps.imagepull.outcome != 'success'
+        if: steps.request.outputs.should_run == 'true' && steps.request.outputs.requested_revision == '' && steps.imagepull.outcome != 'success'
         run: echo "Image ${{ steps.tracked.outputs.image }} is not available yet; skipping."
 
       - name: Read upstream image revision label
-        if: steps.imagepull.outcome == 'success'
+        if: steps.request.outputs.should_run == 'true' && steps.request.outputs.requested_revision == '' && steps.imagepull.outcome == 'success'
         id: upstream
         run: |
           revision="$(docker inspect '${{ steps.tracked.outputs.image }}' --format '{{ index .Config.Labels "org.opencontainers.image.revision" }}')"
           echo "revision=${revision}" >> "$GITHUB_OUTPUT"
 
       - name: Stop if upstream revision is unchanged
-        if: steps.imagepull.outcome == 'success' && steps.tracked.outputs.revision == steps.upstream.outputs.revision
+        if: steps.request.outputs.should_run == 'true' && steps.tracked.outputs.revision == steps.upstream.outputs.revision
         run: echo "Upstream revision unchanged; nothing to do."
 
       - name: Fetch upstream compare data
-        if: steps.imagepull.outcome == 'success' && steps.tracked.outputs.revision != steps.upstream.outputs.revision
+        if: steps.request.outputs.should_run == 'true' && steps.tracked.outputs.revision != steps.upstream.outputs.revision
         env:
           OLD_REVISION: ${{ steps.tracked.outputs.revision }}
           NEW_REVISION: ${{ steps.upstream.outputs.revision }}
@@ -78,7 +131,7 @@ jobs:
             -o /tmp/pymc-repeater-compare-${{ steps.tracked.outputs.channel }}.json
 
       - name: Update tracked upstream revision and changelog
-        if: steps.imagepull.outcome == 'success' && steps.tracked.outputs.revision != steps.upstream.outputs.revision
+        if: steps.request.outputs.should_run == 'true' && steps.tracked.outputs.revision != steps.upstream.outputs.revision
         env:
           STATE_FILE: ${{ matrix.state_file }}
           NEW_REVISION: ${{ steps.upstream.outputs.revision }}
@@ -86,7 +139,7 @@ jobs:
         run: python scripts/sync_upstream_channel.py
 
       - name: Commit and push changes
-        if: steps.imagepull.outcome == 'success' && steps.tracked.outputs.revision != steps.upstream.outputs.revision
+        if: steps.request.outputs.should_run == 'true' && steps.tracked.outputs.revision != steps.upstream.outputs.revision
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
