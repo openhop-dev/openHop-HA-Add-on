@@ -93,7 +93,7 @@ jobs:
 
       - name: Use event-provided upstream revision
         if: steps.request.outputs.should_run == 'true' && steps.request.outputs.requested_revision != ''
-        id: upstream
+        id: upstream_from_request
         run: echo "revision=${{ steps.request.outputs.requested_revision }}" >> "$GITHUB_OUTPUT"
 
       - name: Pull upstream image
@@ -108,20 +108,33 @@ jobs:
 
       - name: Read upstream image revision label
         if: steps.request.outputs.should_run == 'true' && steps.request.outputs.requested_revision == '' && steps.imagepull.outcome == 'success'
-        id: upstream
+        id: upstream_from_image
         run: |
           revision="$(docker inspect '${{ steps.tracked.outputs.image }}' --format '{{ index .Config.Labels "org.opencontainers.image.revision" }}')"
           echo "revision=${revision}" >> "$GITHUB_OUTPUT"
 
+      - name: Resolve effective upstream revision
+        if: steps.request.outputs.should_run == 'true'
+        id: upstream_revision
+        env:
+          REQUESTED_REVISION: ${{ steps.upstream_from_request.outputs.revision }}
+          IMAGE_REVISION: ${{ steps.upstream_from_image.outputs.revision }}
+        run: |
+          revision="${REQUESTED_REVISION}"
+          if [ -z "${revision}" ]; then
+            revision="${IMAGE_REVISION}"
+          fi
+          echo "revision=${revision}" >> "$GITHUB_OUTPUT"
+
       - name: Stop if upstream revision is unchanged
-        if: steps.request.outputs.should_run == 'true' && steps.tracked.outputs.revision == steps.upstream.outputs.revision
+        if: steps.request.outputs.should_run == 'true' && steps.tracked.outputs.revision == steps.upstream_revision.outputs.revision
         run: echo "Upstream revision unchanged; nothing to do."
 
       - name: Fetch upstream compare data
-        if: steps.request.outputs.should_run == 'true' && steps.tracked.outputs.revision != steps.upstream.outputs.revision
+        if: steps.request.outputs.should_run == 'true' && steps.tracked.outputs.revision != steps.upstream_revision.outputs.revision
         env:
           OLD_REVISION: ${{ steps.tracked.outputs.revision }}
-          NEW_REVISION: ${{ steps.upstream.outputs.revision }}
+          NEW_REVISION: ${{ steps.upstream_revision.outputs.revision }}
           GH_TOKEN: ${{ github.token }}
         run: |
           curl -fsSL \
@@ -131,15 +144,15 @@ jobs:
             -o /tmp/pymc-repeater-compare-${{ steps.tracked.outputs.channel }}.json
 
       - name: Update tracked upstream revision and changelog
-        if: steps.request.outputs.should_run == 'true' && steps.tracked.outputs.revision != steps.upstream.outputs.revision
+        if: steps.request.outputs.should_run == 'true' && steps.tracked.outputs.revision != steps.upstream_revision.outputs.revision
         env:
           STATE_FILE: ${{ matrix.state_file }}
-          NEW_REVISION: ${{ steps.upstream.outputs.revision }}
+          NEW_REVISION: ${{ steps.upstream_revision.outputs.revision }}
           COMPARE_JSON_PATH: /tmp/pymc-repeater-compare-${{ steps.tracked.outputs.channel }}.json
         run: python scripts/sync_upstream_channel.py
 
       - name: Commit and push changes
-        if: steps.request.outputs.should_run == 'true' && steps.tracked.outputs.revision != steps.upstream.outputs.revision
+        if: steps.request.outputs.should_run == 'true' && steps.tracked.outputs.revision != steps.upstream_revision.outputs.revision
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
