@@ -1,5 +1,20 @@
 # Changelog
 
+## 1.0.3
+
+- Track upstream `DEV` commit `193b428` from `pymcdev/pymc-repeater:dev`
+- Previous tracked commit: `baec25b`
+- Upstream diff: https://github.com/pyMC-dev/pyMC_Repeater/compare/baec25b7bb57064e7cb9e3b545aa911dfd789f6f...193b428cc2949695f3c3434ef3349d32ee3a207d
+- Included upstream commits:
+  - `5f43085` ci: restrict docker publish workflow
+  - `f4d8948` Merge pull request #251 from yellowcooln/chore/manual-docker-workflow
+  - `13b8004` wip: null-radio defaults and needs_setup updates
+  - `d7f2d2c` setup wizard: pymc_tcp / pymc_usb hardware tiles
+  - `052474c` feat: add connection type for KISS and pymc modems in radio settings
+  - `56113c2` feat: update radio status handling to show radio errors
+  - `0e10312` update ui for setup
+  - `a08c4d0` Update repository conditions in docker-publish.yml
+
 ## 1.0.2
 
 - Track upstream `DEV` commit `baec25b` from `pymcdev/pymc-repeater:dev`
