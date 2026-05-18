@@ -11,8 +11,6 @@ USER root
 COPY --chmod=755 run.sh /run.sh
 COPY pymc-repeater.example.yaml /usr/share/pymc-repeater/config.yaml.example
 
-USER repeater
-
 LABEL \
   io.hass.version="${BUILD_VERSION}" \
   io.hass.type="app" \
