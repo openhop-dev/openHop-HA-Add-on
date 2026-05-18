@@ -1,5 +1,5 @@
 name: "pyMC Repeater Main"
-version: "1.0.2"
+version: "1.0.4"
 slug: "pymc_repeater_main"
 description: "Mainline-tracking pyMC Repeater add-on for Home Assistant"
 url: "https://github.com/pyMC-dev/pyMC-HA-Add-on"

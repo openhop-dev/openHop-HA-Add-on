@@ -44,14 +44,13 @@ python3 - "${PERSISTENT_CONFIG_FILE}" "${CONFIG_SOURCE}" <<'PY'
 import pathlib
 import sys
 
-import yaml
-
 config_path = pathlib.Path(sys.argv[1])
 config_source = sys.argv[2]
 
 radio_type = "unknown"
 node_name = "unknown"
 try:
+    import yaml
     config = yaml.safe_load(config_path.read_text(encoding="utf-8")) or {}
     radio_type = str(config.get("radio_type", "missing"))
     node_name = str(config.get("repeater", {}).get("node_name", "missing"))
