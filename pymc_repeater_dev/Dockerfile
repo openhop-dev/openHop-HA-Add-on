@@ -6,10 +6,12 @@ FROM pymcdev/pymc-repeater:dev
 ARG BUILD_VERSION
 ARG BUILD_ARCH
 
-COPY run.sh /run.sh
+USER root
+
+COPY --chmod=755 run.sh /run.sh
 COPY pymc-repeater.example.yaml /usr/share/pymc-repeater/config.yaml.example
 
-RUN chmod a+x /run.sh
+USER repeater
 
 LABEL \
   io.hass.version="${BUILD_VERSION}" \
