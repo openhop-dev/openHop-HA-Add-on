@@ -2,5 +2,5 @@
   "addon_dir": "pymc_repeater_dev",
   "channel": "dev",
   "image": "pymcdev/pymc-repeater:dev",
-  "revision": "13ea67259711913c498081071fe5b86eb6b283f0"
+  "revision": "cbfcb69c07adc893a5f4eaac8f3aa1cb47afb970"
 }

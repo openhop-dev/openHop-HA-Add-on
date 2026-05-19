@@ -1,5 +1,16 @@
 # Changelog
 
+## 1.0.7
+
+- Track upstream `DEV` commit `cbfcb69` from `pymcdev/pymc-repeater:dev`
+- Previous tracked commit: `13ea672`
+- Upstream diff: https://github.com/pyMC-dev/pyMC_Repeater/compare/13ea67259711913c498081071fe5b86eb6b283f0...cbfcb69c07adc893a5f4eaac8f3aa1cb47afb970
+- Included upstream commits:
+  - `9c1661f` Add SHTC3 and Waveshare UPS HAT (D) sensor plug-ins
+  - `8b0607a` Add NMEA GPS sensor plug-in
+  - `f88d3c5` Revert "Add NMEA GPS sensor plug-in"
+  - `cbfcb69` Merge pull request #255 from CarlsonCustoms/add-shtc3-waveshare-sensors
+
 ## 1.0.6
 
 - Track upstream `DEV` commit `13ea672` from `pymcdev/pymc-repeater:dev`
