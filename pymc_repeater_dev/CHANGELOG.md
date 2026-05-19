@@ -1,5 +1,14 @@
 # Changelog
 
+## 1.0.8
+
+- Track upstream `DEV` commit `6aab7ec` from `pymcdev/pymc-repeater:dev`
+- Previous tracked commit: `cbfcb69`
+- Upstream diff: https://github.com/pyMC-dev/pyMC_Repeater/compare/cbfcb69c07adc893a5f4eaac8f3aa1cb47afb970...6aab7ec67632cb00ff29cb4e8dab2404cf788339
+- Included upstream commits:
+  - `7d54859` Add example configurations for SHTC3 and Waveshare UPS Hat sensors
+  - `6aab7ec` fix:update-restart-functions
+
 ## 1.0.7
 
 - Track upstream `DEV` commit `cbfcb69` from `pymcdev/pymc-repeater:dev`
