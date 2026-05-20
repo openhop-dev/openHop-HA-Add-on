@@ -1,5 +1,14 @@
 # Changelog
 
+## 1.0.10
+
+- Track upstream `DEV` commit `8f3477d` from `pymcdev/pymc-repeater:dev`
+- Previous tracked commit: `22adbd1`
+- Upstream diff: https://github.com/pyMC-dev/pyMC_Repeater/compare/22adbd1a84b48bf2143065dca03504b0c3dbcaaa...8f3477ddd6fa879368dad99e18b258770bdeb380
+- Included upstream commits:
+  - `6e89272` Add Waveshare UPS HAT (E) sensor plug-in
+  - `8f3477d` Merge pull request #256 from CarlsonCustoms/add-waveshare-ups-hat-e
+
 ## 1.0.9
 
 - Track upstream `DEV` commit `22adbd1` from `pymcdev/pymc-repeater:dev`
