@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.0.13
+
+- Track upstream `DEV` commit `85f2823` from `pymcdev/pymc-repeater:dev`
+- Previous tracked commit: `a48b298`
+- Upstream diff: https://github.com/pyMC-dev/pyMC_Repeater/compare/a48b29837acab532f576c5486b6aeae6ee458ed3...85f282357ca6cd6516d961eb8650ecc2a6286f74
+- Included upstream commits:
+  - `85f2823` feat: expand allowed sections for configuration imports to include additional radio types
+
 ## 1.0.12
 
 - Track upstream `DEV` commit `a48b298` from `pymcdev/pymc-repeater:dev`
