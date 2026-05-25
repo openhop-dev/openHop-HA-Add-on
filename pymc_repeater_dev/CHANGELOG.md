@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.0.14
+
+- Track upstream `DEV` commit `ab55748` from `pymcdev/pymc-repeater:dev`
+- Previous tracked commit: `85f2823`
+- Upstream diff: https://github.com/pyMC-dev/pyMC_Repeater/compare/85f282357ca6cd6516d961eb8650ecc2a6286f74...ab55748f3f7856db207e093a00dbbc5e8bdd69aa
+- Included upstream commits:
+  - `ab55748` fix: prevent advert echos in the packet table
+
 ## 1.0.13
 
 - Track upstream `DEV` commit `85f2823` from `pymcdev/pymc-repeater:dev`
