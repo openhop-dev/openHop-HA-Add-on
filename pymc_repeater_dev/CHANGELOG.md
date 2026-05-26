@@ -1,5 +1,15 @@
 # Changelog
 
+## 1.0.15
+
+- Track upstream `DEV` commit `dc317b6` from `pymcdev/pymc-repeater:dev`
+- Previous tracked commit: `ab55748`
+- Upstream diff: https://github.com/pyMC-dev/pyMC_Repeater/compare/ab55748f3f7856db207e093a00dbbc5e8bdd69aa...dc317b6568f14d1a9b97d0c942eccb693e0ad796
+- Included upstream commits:
+  - `e17d113` Merge pull request #259 from pyMC-dev/dev
+  - `e20eaa7` feat: add LAFVIN UPS Module 3S sensor plugin (lafvin_ups_3s)
+  - `dc317b6` Merge pull request #261 from CarlsonCustoms/feat/lafvin-ups-3s-sensor
+
 ## 1.0.14
 
 - Track upstream `DEV` commit `ab55748` from `pymcdev/pymc-repeater:dev`
