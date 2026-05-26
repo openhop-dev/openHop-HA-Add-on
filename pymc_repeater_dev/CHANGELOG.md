@@ -1,5 +1,14 @@
 # Changelog
 
+## 1.0.17
+
+- Track upstream `DEV` commit `36aa8ec` from `pymcdev/pymc-repeater:dev`
+- Previous tracked commit: `31edaa9`
+- Upstream diff: https://github.com/pyMC-dev/pyMC_Repeater/compare/31edaa9c7651a059d3b27b28cc43a915c8b27af8...36aa8ecf0d5a33256c2651a71b999aa1aec7fee2
+- Included upstream commits:
+  - `9da8317` docker: install rrdtool for runtime python
+  - `36aa8ec` Merge pull request #265 from yellowcooln/dev
+
 ## 1.0.16
 
 - Track upstream `DEV` commit `31edaa9` from `pymcdev/pymc-repeater:dev`
