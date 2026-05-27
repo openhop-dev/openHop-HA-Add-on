@@ -1,5 +1,20 @@
 # Changelog
 
+## 1.0.19
+
+- Track upstream `DEV` commit `723e912` from `pymcdev/pymc-repeater:dev`
+- Previous tracked commit: `8eaf24a`
+- Upstream diff: https://github.com/pyMC-dev/pyMC_Repeater/compare/8eaf24ab35dd51d394199ccf24c5daae2cd07cfa...723e912d486dd1b1c240f4a9c8be75d88a21c64e
+- Included upstream commits:
+  - `62f35c4` fix: update transport key generation to use 16-byte length and add corresponding test
+  - `456e97a` refactor: update pre-commit configuration and dependencies for improved Python 3.9 support
+  - `faa3296` refactor: remove unused imports from test files for cleaner code
+  - `45a44eb` Refactor test cases and base code for consistency and readability
+  - `0c33483` refactor: clean up import statements and whitespace in local_cli, base, and update_endpoints modules
+  - `5f25d3b` refactor: update bandit arguments and change pytest entry to use a script
+  - `a5355f1` feat: add PR checks workflow for pre-commit validation
+  - `60ca184` refactor: enhance security comments and error handling across multiple modules
+
 ## 1.0.18
 
 - Track upstream `DEV` commit `8eaf24a` from `pymcdev/pymc-repeater:dev`
