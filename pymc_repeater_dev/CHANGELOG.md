@@ -1,5 +1,16 @@
 # Changelog
 
+## 1.0.20
+
+- Track upstream `DEV` commit `5df8b16` from `pymcdev/pymc-repeater:dev`
+- Previous tracked commit: `723e912`
+- Upstream diff: https://github.com/pyMC-dev/pyMC_Repeater/compare/723e912d486dd1b1c240f4a9c8be75d88a21c64e...5df8b160e5f554f2eee6e3a3e1db1f75bdc0a69e
+- Included upstream commits:
+  - `f44d225` Add support for Nebra Duo Hat, E22P radio only.
+  - `b921160` Merge pull request #270 from bplein/nebra-duo-hat
+  - `7b224e2` Updated settings for Nebra Hat Duo E22P 1W
+  - `5df8b16` Merge pull request #271 from bplein/nebra-duo-hat
+
 ## 1.0.19
 
 - Track upstream `DEV` commit `723e912` from `pymcdev/pymc-repeater:dev`
