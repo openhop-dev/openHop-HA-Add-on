@@ -1,5 +1,17 @@
 # Changelog
 
+## 1.0.22
+
+- Track upstream `DEV` commit `2cacb7c` from `pymcdev/pymc-repeater:dev`
+- Previous tracked commit: `730eaa9`
+- Upstream diff: https://github.com/pyMC-dev/pyMC_Repeater/compare/730eaa97f79d3e10d5dda129b0bb63194169711b...2cacb7cfc02024cc65dc30df7533c4c6e2668735
+- Included upstream commits:
+  - `0f6a7dc` feat: support 64-byte identity keys in identity validation and tests
+  - `d1dc57c` feat: add OpenAPI contract check script and integrate into pre-commit hooks
+  - `caf048f` refactor: clean up code formatting in check_openapi_contract.py
+  - `9e1dabd` feat: add PUT endpoint for updating transport keys in OpenAPI specification
+  - `2cacb7c` Merge pull request #276 from pyMC-dev/feat-open-api
+
 ## 1.0.21
 
 - Track upstream `DEV` commit `730eaa9` from `pymcdev/pymc-repeater:dev`
