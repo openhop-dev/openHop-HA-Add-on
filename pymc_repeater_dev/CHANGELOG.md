@@ -1,5 +1,19 @@
 # Changelog
 
+## 1.0.23
+
+- Track upstream `DEV` commit `d7e74e0` from `pymcdev/pymc-repeater:dev`
+- Previous tracked commit: `2cacb7c`
+- Upstream diff: https://github.com/pyMC-dev/pyMC_Repeater/compare/2cacb7cfc02024cc65dc30df7533c4c6e2668735...d7e74e0a898650fb77ce52cd869a651a4ca2d4a5
+- Included upstream commits:
+  - `2d5353a` fix(companion): improve transmission handling in RepeaterHandler
+  - `5fcb625` feat: enhance login handler with anonymous request support and region name formatting
+  - `778adb6` feat: implement randomized response jitter in DiscoveryHelper to prevent packet collisions
+  - `5a9e1c8` Merge branch 'fix/companion-message-send' into feat/pre-1160-compatibility-sendfix
+  - `ee92f5b` test: expect True from deferred local TX mock after companion send fix
+  - `e24cdca` feat(companion): echo injected TX to companion clients as raw RX (0x88)
+  - `d7e74e0` Merge pull request #278 from agessaman/feat/pre-1160-compatibility-sendfix
+
 ## 1.0.22
 
 - Track upstream `DEV` commit `2cacb7c` from `pymcdev/pymc-repeater:dev`
