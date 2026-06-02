@@ -1,5 +1,14 @@
 # Changelog
 
+## 1.0.24
+
+- Track upstream `DEV` commit `416310b` from `pymcdev/pymc-repeater:dev`
+- Previous tracked commit: `d7e74e0`
+- Upstream diff: https://github.com/pyMC-dev/pyMC_Repeater/compare/d7e74e0a898650fb77ce52cd869a651a4ca2d4a5...416310befd838118a1f64fd24cecdc66c35a972a
+- Included upstream commits:
+  - `9e26068` feat: enhance installation process to align web/OTA updates with manage.sh defaults
+  - `416310b` refactor: improve code readability
+
 ## 1.0.23
 
 - Track upstream `DEV` commit `d7e74e0` from `pymcdev/pymc-repeater:dev`
