@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.0.25
+
+- Track upstream `DEV` commit `cd7058b` from `pymcdev/pymc-repeater:dev`
+- Previous tracked commit: `416310b`
+- Upstream diff: https://github.com/pyMC-dev/pyMC_Repeater/compare/416310befd838118a1f64fd24cecdc66c35a972a...cd7058be990f7c635cd2e094058ea5afb0a6eb86
+- Included upstream commits:
+  - `cd7058b` fix: update packet router debugs for less noise and policy prep for advanced filters works
+
 ## 1.0.24
 
 - Track upstream `DEV` commit `416310b` from `pymcdev/pymc-repeater:dev`
