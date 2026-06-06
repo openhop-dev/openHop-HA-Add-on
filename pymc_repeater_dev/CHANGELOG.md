@@ -1,5 +1,19 @@
 # Changelog
 
+## 1.0.28
+
+- Track upstream `DEV` commit `00682e8` from `pymcdev/pymc-repeater:dev`
+- Previous tracked commit: `af603d7`
+- Upstream diff: https://github.com/pyMC-dev/pyMC_Repeater/compare/af603d78d0f3e37a6855a67e2fb113a887885446...00682e80864b0bfe82a9cf38dd041e4e01369b03
+- Included upstream commits:
+  - `7d57b34` feat(companion): enhance contact capacity management and bridge settings
+  - `499f871` Merge upstream/dev into companion/advanced-settings
+  - `7fe1b19` fix: update packet injector to include origin hash for companion bridge
+  - `dac6044` feat(companion): implement contact trimming and retention policies
+  - `ea6e660` refactor(api_endpoints): improve sqlite_handler retrieval logic
+  - `f3146eb` fix(companion): clean up ruff errors
+  - `00682e8` Merge pull request #282 from agessaman/companion/advanced-settings
+
 ## 1.0.27
 
 - Track upstream `DEV` commit `af603d7` from `pymcdev/pymc-repeater:dev`
