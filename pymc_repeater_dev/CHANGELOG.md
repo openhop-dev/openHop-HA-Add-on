@@ -1,5 +1,17 @@
 # Changelog
 
+## 1.0.30
+
+- Track upstream `DEV` commit `1f9be5a` from `pymcdev/pymc-repeater:dev`
+- Previous tracked commit: `2b7b2b5`
+- Upstream diff: https://github.com/pyMC-dev/pyMC_Repeater/compare/2b7b2b5b4e7250c94d9c335a2bd32ea0de1d7243...1f9be5a02430b41ef65f539a35105c0ad8afdceb
+- Included upstream commits:
+  - `524359d` Made requested changed to docker setup
+  - `8882003` Delete .env.example
+  - `7b85cfc` Delete docker-compose.yml
+  - `10b64bc` added current docker compose and env
+  - `1f9be5a` Merge pull request #284 from MSmithDev/main
+
 ## 1.0.29
 
 - Track upstream `DEV` commit `2b7b2b5` from `pymcdev/pymc-repeater:dev`
