@@ -1,5 +1,20 @@
 # Changelog
 
+## 1.0.29
+
+- Track upstream `DEV` commit `2b7b2b5` from `pymcdev/pymc-repeater:dev`
+- Previous tracked commit: `00682e8`
+- Upstream diff: https://github.com/pyMC-dev/pyMC_Repeater/compare/00682e80864b0bfe82a9cf38dd041e4e01369b03...2b7b2b5b4e7250c94d9c335a2bd32ea0de1d7243
+- Included upstream commits:
+  - `5dfa98c` Rewrite README with expanded docs and images
+  - `a308ddc` docker: add gpio and spi groups
+  - `9e8c152` docker: tolerate read-only config during merge
+  - `b5df705` docs: clarify docker setup config steps
+  - `7015e0e` docs: document docker gpio gids
+  - `d333deb` docker: clarify compose env setup
+  - `ca50656` docs: remove fork image from env example
+  - `77480c6` docker: use named volumes by default
+
 ## 1.0.28
 
 - Track upstream `DEV` commit `00682e8` from `pymcdev/pymc-repeater:dev`
