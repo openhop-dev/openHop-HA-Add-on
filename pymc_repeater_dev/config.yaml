@@ -1,5 +1,5 @@
 name: "pyMC Repeater Dev"
-version: "1.0.30"
+version: "1.0.31"
 slug: "pymc_repeater_dev"
 description: "Development-tracking pyMC Repeater add-on for Home Assistant"
 url: "https://github.com/pyMC-dev/pyMC-HA-Add-on"

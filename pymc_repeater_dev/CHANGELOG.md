@@ -1,5 +1,15 @@
 # Changelog
 
+## 1.0.31
+
+- Track upstream `DEV` commit `99a0429` from `pymcdev/pymc-repeater:dev`
+- Previous tracked commit: `1f9be5a`
+- Upstream diff: https://github.com/pyMC-dev/pyMC_Repeater/compare/1f9be5a02430b41ef65f539a35105c0ad8afdceb...99a04295da33790d0bdd876a7acbe5367017cd8f
+- Included upstream commits:
+  - `1836502` feat(config): add optional KISS CSMA tuning parameters
+  - `0b4571c` Stop tracking policy.yaml and add it to .gitignore
+  - `99a0429` Merge pull request #287 from agessaman/kiss/tuning-options
+
 ## 1.0.30
 
 - Track upstream `DEV` commit `1f9be5a` from `pymcdev/pymc-repeater:dev`
