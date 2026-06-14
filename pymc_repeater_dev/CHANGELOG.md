@@ -1,5 +1,14 @@
 # Changelog
 
+## 1.0.33
+
+- Track upstream `DEV` commit `9459dd5` from `pymcdev/pymc-repeater:dev`
+- Previous tracked commit: `291c1a6`
+- Upstream diff: https://github.com/pyMC-dev/pyMC_Repeater/compare/291c1a6ed9a6aab575eb89b13917a0eede89cb60...9459dd5bba4cb32edb84b9c0a28a03d16d4eb342
+- Included upstream commits:
+  - `7968473` initial support for station g3
+  - `9459dd5` Merge pull request #292 from recrof/dev
+
 ## 1.0.32
 
 - Track upstream `DEV` commit `291c1a6` from `pymcdev/pymc-repeater:dev`
