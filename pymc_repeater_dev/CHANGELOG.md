@@ -1,5 +1,16 @@
 # Changelog
 
+## 1.0.37
+
+- Track upstream `DEV` commit `19ae451` from `pymcdev/pymc-repeater:dev`
+- Previous tracked commit: `6e9b798`
+- Upstream diff: https://github.com/pyMC-dev/pyMC_Repeater/compare/6e9b798ef389ac93d5ed6998be2153932ac771a3...19ae4516da2d68683d1473f0d8af9d9efaa0d1aa
+- Included upstream commits:
+  - `8fd28b7` added zebra hat duo
+  - `a152e0e` Update radio-settings.json
+  - `bca3f37` Update radio-settings.json
+  - `19ae451` Merge pull request #297 from Littleaton/dev
+
 ## 1.0.36
 
 - Track upstream `DEV` commit `6e9b798` from `pymcdev/pymc-repeater:dev`
