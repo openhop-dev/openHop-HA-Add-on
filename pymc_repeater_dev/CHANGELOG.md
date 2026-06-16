@@ -1,5 +1,17 @@
 # Changelog
 
+## 1.0.35
+
+- Track upstream `DEV` commit `9f18a1d` from `pymcdev/pymc-repeater:dev`
+- Previous tracked commit: `de129c1`
+- Upstream diff: https://github.com/pyMC-dev/pyMC_Repeater/compare/de129c1c1503e1f251a9ceb8eff38dbd50f9154a...9f18a1db79fe48518b1e9d37c7e8a1d138ee4fa1
+- Included upstream commits:
+  - `b659aa0` Update Femtofox radio settings, remove gpiod requirement and set 1w as 22db (boosts to 30db anyway on hardware)
+  - `40c7933` Merge branch 'dev' of https://github.com/theshaun/pyMC_Repeater into dev
+  - `b9c82b5` Resolve gpio_chip + use_gpiod_backend not being set during setup
+  - `8b948e1` dont be silly shaun
+  - `9f18a1d` Merge pull request #295 from theshaun/dev
+
 ## 1.0.34
 
 - Track upstream `DEV` commit `de129c1` from `pymcdev/pymc-repeater:dev`
