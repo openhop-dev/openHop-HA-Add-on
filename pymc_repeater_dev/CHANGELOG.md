@@ -1,5 +1,14 @@
 # Changelog
 
+## 1.0.36
+
+- Track upstream `DEV` commit `6e9b798` from `pymcdev/pymc-repeater:dev`
+- Previous tracked commit: `9f18a1d`
+- Upstream diff: https://github.com/pyMC-dev/pyMC_Repeater/compare/9f18a1db79fe48518b1e9d37c7e8a1d138ee4fa1...6e9b798ef389ac93d5ed6998be2153932ac771a3
+- Included upstream commits:
+  - `3d97413` fix: add dialout group to Docker image
+  - `6e9b798` Merge pull request #296 from yellowcooln/fix/docker-dialout-group
+
 ## 1.0.35
 
 - Track upstream `DEV` commit `9f18a1d` from `pymcdev/pymc-repeater:dev`
