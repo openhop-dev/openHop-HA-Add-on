@@ -1,5 +1,15 @@
 # Changelog
 
+## 1.0.34
+
+- Track upstream `DEV` commit `de129c1` from `pymcdev/pymc-repeater:dev`
+- Previous tracked commit: `9459dd5`
+- Upstream diff: https://github.com/pyMC-dev/pyMC_Repeater/compare/9459dd5bba4cb32edb84b9c0a28a03d16d4eb342...de129c1c1503e1f251a9ceb8eff38dbd50f9154a
+- Included upstream commits:
+  - `23078de` Enhance contact import logic to respect max_contacts limit and trim excess entries. Update tests to validate trimming behavior and ensure correct handling of favourites during import.
+  - `dcaa4ac` Refactor contact trimming logic for improved readability by consolidating function calls into single lines. Update related test cases for consistency.
+  - `de129c1` Merge pull request #293 from agessaman/fix/companion-contact-import
+
 ## 1.0.33
 
 - Track upstream `DEV` commit `9459dd5` from `pymcdev/pymc-repeater:dev`
