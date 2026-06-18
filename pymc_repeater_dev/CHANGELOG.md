@@ -1,5 +1,14 @@
 # Changelog
 
+## 1.0.38
+
+- Track upstream `DEV` commit `0f980e4` from `pymcdev/pymc-repeater:dev`
+- Previous tracked commit: `19ae451`
+- Upstream diff: https://github.com/pyMC-dev/pyMC_Repeater/compare/19ae4516da2d68683d1473f0d8af9d9efaa0d1aa...0f980e4e03e90625da3bb3310ce42e0c3ce2d9cc
+- Included upstream commits:
+  - `0ccc353` feat: improve Proxmox LXC installer prompts
+  - `0f980e4` Merge pull request #302 from yellowcooln/feat/lxc-installer-curl-container-id
+
 ## 1.0.37
 
 - Track upstream `DEV` commit `19ae451` from `pymcdev/pymc-repeater:dev`
