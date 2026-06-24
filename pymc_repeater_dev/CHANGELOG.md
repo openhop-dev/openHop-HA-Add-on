@@ -1,5 +1,14 @@
 # Changelog
 
+## 1.0.41
+
+- Track upstream `DEV` commit `2b07e79` from `pymcdev/pymc-repeater:dev`
+- Previous tracked commit: `c0d919c`
+- Upstream diff: https://github.com/pyMC-dev/pyMC_Repeater/compare/c0d919c0e2ae9a0232e2f7249c814fa82ea11b34...2b07e79ccd3f5077f08b5ad12aa987c19f771638
+- Included upstream commits:
+  - `f1e860d` feat(presets): add Meshat.se broker preset
+  - `2b07e79` Merge pull request #309 from Bjorkan/dev
+
 ## 1.0.40
 
 - Track upstream `DEV` commit `c0d919c` from `pymcdev/pymc-repeater:dev`
