@@ -1,5 +1,20 @@
 # Changelog
 
+## 2.0.1
+
+- Track upstream `MAIN` commit `60357f5` from `openhop/openhop-repeater:main`
+- Previous tracked commit: `e17d113`
+- Upstream diff: https://github.com/openhop-dev/openhop_repeater/compare/e17d1137ab2d2d5b86d03c99523272289b7688aa...60357f580876ceab5b3808a7ed00f81ae235c003
+- Included upstream commits:
+  - `2d5353a` fix(companion): improve transmission handling in RepeaterHandler
+  - `e20eaa7` feat: add LAFVIN UPS Module 3S sensor plugin (lafvin_ups_3s)
+  - `ab55748` fix: prevent advert echos in the packet table
+  - `dc317b6` Merge pull request #261 from CarlsonCustoms/feat/lafvin-ups-3s-sensor
+  - `37ee0e8` Add more unit tests for handler helpers, identity manager, CLI, key generation, and main functionality
+  - `7b86716` Add unit tests for HTTP server, main daemon, service utilities, SQLite handler, and update endpoints
+  - `31edaa9` fix: update installation scripts to use the correct branch name
+  - `9da8317` docker: install rrdtool for runtime python
+
 ## 2.0.0
 
 - Breaking rebrand to openHop Repeater add-on identifiers.
