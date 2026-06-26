@@ -1,15 +1,15 @@
-# pyMC Repeater Home Assistant Add-on Repository
+# openHop Repeater Home Assistant Add-on Repository
 
 This repository contains Home Assistant add-ons for running
-[`pyMC_Repeater`](https://github.com/pyMC-dev/pyMC_Repeater).
+[`openHop Repeater`](https://github.com/openhop-dev/openhop_repeater).
 
 ## Add-ons
 
-### [`pymc_repeater_dev`](./pymc_repeater_dev)
+### [`openhop_repeater_dev`](./openhop_repeater_dev)
 
-Tracks the upstream `pymcdev/pymc-repeater:dev` image.
+Tracks the upstream openHop Repeater `:dev` channel image.
 
-### [`pymc_repeater_main`](./pymc_repeater_main)
+### [`openhop_repeater_main`](./openhop_repeater_main)
 
-Tracks the upstream `pymcdev/pymc-repeater:main` image when that channel is
+Tracks the upstream openHop Repeater `:main` channel image when that channel is
 published upstream.

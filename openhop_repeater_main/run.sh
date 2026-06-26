@@ -4,12 +4,9 @@ set -eu
 ADDON_CONFIG_ROOT="/config"
 PERSISTENT_CONFIG_DIR="${ADDON_CONFIG_ROOT}"
 PERSISTENT_CONFIG_FILE="${PERSISTENT_CONFIG_DIR}/config.yaml"
-TEMPLATE_CONFIG_FILE="/usr/share/pymc-repeater/config.yaml.example"
-RUNTIME_CONFIG_DIR="/etc/pymc_repeater"
-DATA_DIR="/var/lib/pymc_repeater"
-NESTED_CONFIG_DIR="${ADDON_CONFIG_ROOT}/pymc-repeater"
-NESTED_CONFIG_FILE="${NESTED_CONFIG_DIR}/config.yaml"
-NESTED_IDENTITY_FILE="${NESTED_CONFIG_DIR}/identity.key"
+TEMPLATE_CONFIG_FILE="/usr/share/openhop-repeater/config.yaml.example"
+RUNTIME_CONFIG_DIR="/etc/openhop_repeater"
+DATA_DIR="/var/lib/openhop_repeater"
 CONFIG_SOURCE="unknown"
 
 mkdir -p "${ADDON_CONFIG_ROOT}"
@@ -17,7 +14,7 @@ mkdir -p "${DATA_DIR}"
 
 # Some upstream images install Python packages into a non-root user's local
 # site-packages directory. The add-on wrapper starts as root so it can manage
-# /etc/pymc_repeater, so make those user-local site-packages visible too.
+# /etc/openhop_repeater, so make those user-local site-packages visible too.
 for site_dir in /home/*/.local/lib/python*/site-packages; do
     if [ -d "${site_dir}" ]; then
         PYTHONPATH="${site_dir}${PYTHONPATH:+:${PYTHONPATH}}"
@@ -25,21 +22,9 @@ for site_dir in /home/*/.local/lib/python*/site-packages; do
 done
 export PYTHONPATH
 
-if [ ! -f "${PERSISTENT_CONFIG_FILE}" ] && [ -f "${NESTED_CONFIG_FILE}" ]; then
-    cp "${NESTED_CONFIG_FILE}" "${PERSISTENT_CONFIG_FILE}"
-    echo "[pymc-repeater-ha] migrated nested config from ${NESTED_CONFIG_FILE} to ${PERSISTENT_CONFIG_FILE}"
-    CONFIG_SOURCE="migrated nested config"
-fi
-
-if [ ! -f "${PERSISTENT_CONFIG_DIR}/identity.key" ] && [ -f "${NESTED_IDENTITY_FILE}" ]; then
-    cp "${NESTED_IDENTITY_FILE}" "${PERSISTENT_CONFIG_DIR}/identity.key"
-    chmod 600 "${PERSISTENT_CONFIG_DIR}/identity.key" || true
-    echo "[pymc-repeater-ha] migrated nested identity key into ${PERSISTENT_CONFIG_DIR}"
-fi
-
 if [ ! -f "${PERSISTENT_CONFIG_FILE}" ]; then
     cp "${TEMPLATE_CONFIG_FILE}" "${PERSISTENT_CONFIG_FILE}"
-    echo "[pymc-repeater-ha] created ${PERSISTENT_CONFIG_FILE} from bundled template"
+    echo "[openhop-repeater-ha] created ${PERSISTENT_CONFIG_FILE} from bundled template"
     CONFIG_SOURCE="bundled template"
 elif [ "${CONFIG_SOURCE}" = "unknown" ]; then
     CONFIG_SOURCE="existing persistent config"
@@ -65,10 +50,10 @@ try:
     radio_type = str(config.get("radio_type", "missing"))
     node_name = str(config.get("repeater", {}).get("node_name", "missing"))
 except Exception as exc:
-    print(f"[pymc-repeater-ha] failed to inspect effective config: {exc}")
+    print(f"[openhop-repeater-ha] failed to inspect effective config: {exc}")
 else:
     print(
-        f"[pymc-repeater-ha] effective config source: {config_source}; "
+        f"[openhop-repeater-ha] effective config source: {config_source}; "
         f"radio_type={radio_type}; node_name={node_name}; path={config_path}"
     )
 PY
