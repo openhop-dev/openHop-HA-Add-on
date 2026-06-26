@@ -1,5 +1,20 @@
 # Changelog
 
+## 2.0.1
+
+- Track upstream `DEV` commit `6de2b23` from `openhop/openhop-repeater:dev`
+- Previous tracked commit: `2b07e79`
+- Upstream diff: https://github.com/openhop-dev/openhop_repeater/compare/2b07e79ccd3f5077f08b5ad12aa987c19f771638...6de2b23266c771cc4e0a8062eb6ac032213cc13f
+- Included upstream commits:
+  - `b4b4483` feat: integrate openHop Glass inform policy sync
+  - `44a2d2f` feat: add system info to hardware stats sensor
+  - `71f4e47` Bundle policy objects UI
+  - `cf896b2` Revert "Bundle policy objects UI"
+  - `2b67dea` refactor:rename-project-to-openhop
+  - `ffb0836` refactor: update legacy paths and cleanup in management scripts
+  - `6f6e984` refactor: simplify hardware dependency in optional dependencies
+  - `16e8857` refactor: migrate legacy pymc paths to openhop and clean up system packages
+
 ## 2.0.0
 
 - Breaking rebrand to openHop Repeater add-on identifiers.
