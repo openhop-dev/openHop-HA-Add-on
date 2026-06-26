@@ -5,11 +5,11 @@ This repository contains Home Assistant add-ons for running
 
 ## Add-ons
 
-### [`pymc_repeater_dev`](./pymc_repeater_dev)
+### [`openhop_repeater_dev`](./openhop_repeater_dev)
 
 Tracks the upstream openHop Repeater `:dev` channel image.
 
-### [`pymc_repeater_main`](./pymc_repeater_main)
+### [`openhop_repeater_main`](./openhop_repeater_main)
 
 Tracks the upstream openHop Repeater `:main` channel image when that channel is
 published upstream.

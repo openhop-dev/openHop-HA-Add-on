@@ -4,12 +4,9 @@ set -eu
 ADDON_CONFIG_ROOT="/config"
 PERSISTENT_CONFIG_DIR="${ADDON_CONFIG_ROOT}"
 PERSISTENT_CONFIG_FILE="${PERSISTENT_CONFIG_DIR}/config.yaml"
-TEMPLATE_CONFIG_FILE="/usr/share/pymc-repeater/config.yaml.example"
-RUNTIME_CONFIG_DIR="/etc/pymc_repeater"
-DATA_DIR="/var/lib/pymc_repeater"
-NESTED_CONFIG_DIR="${ADDON_CONFIG_ROOT}/pymc-repeater"
-NESTED_CONFIG_FILE="${NESTED_CONFIG_DIR}/config.yaml"
-NESTED_IDENTITY_FILE="${NESTED_CONFIG_DIR}/identity.key"
+TEMPLATE_CONFIG_FILE="/usr/share/openhop-repeater/config.yaml.example"
+RUNTIME_CONFIG_DIR="/etc/openhop_repeater"
+DATA_DIR="/var/lib/openhop_repeater"
 CONFIG_SOURCE="unknown"
 
 mkdir -p "${ADDON_CONFIG_ROOT}"
@@ -17,25 +14,13 @@ mkdir -p "${DATA_DIR}"
 
 # Some upstream images install Python packages into a non-root user's local
 # site-packages directory. The add-on wrapper starts as root so it can manage
-# /etc/pymc_repeater, so make those user-local site-packages visible too.
+# /etc/openhop_repeater, so make those user-local site-packages visible too.
 for site_dir in /home/*/.local/lib/python*/site-packages; do
     if [ -d "${site_dir}" ]; then
         PYTHONPATH="${site_dir}${PYTHONPATH:+:${PYTHONPATH}}"
     fi
 done
 export PYTHONPATH
-
-if [ ! -f "${PERSISTENT_CONFIG_FILE}" ] && [ -f "${NESTED_CONFIG_FILE}" ]; then
-    cp "${NESTED_CONFIG_FILE}" "${PERSISTENT_CONFIG_FILE}"
-    echo "[openhop-repeater-ha] migrated nested config from ${NESTED_CONFIG_FILE} to ${PERSISTENT_CONFIG_FILE}"
-    CONFIG_SOURCE="migrated nested config"
-fi
-
-if [ ! -f "${PERSISTENT_CONFIG_DIR}/identity.key" ] && [ -f "${NESTED_IDENTITY_FILE}" ]; then
-    cp "${NESTED_IDENTITY_FILE}" "${PERSISTENT_CONFIG_DIR}/identity.key"
-    chmod 600 "${PERSISTENT_CONFIG_DIR}/identity.key" || true
-    echo "[openhop-repeater-ha] migrated nested identity key into ${PERSISTENT_CONFIG_DIR}"
-fi
 
 if [ ! -f "${PERSISTENT_CONFIG_FILE}" ]; then
     cp "${TEMPLATE_CONFIG_FILE}" "${PERSISTENT_CONFIG_FILE}"

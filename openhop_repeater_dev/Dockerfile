@@ -1,7 +1,7 @@
 ARG BUILD_VERSION=0.1.0
 ARG BUILD_ARCH=amd64
 
-FROM pymcdev/pymc-repeater:dev
+FROM openhopdev/openhop-repeater:dev
 
 ARG BUILD_VERSION
 ARG BUILD_ARCH
@@ -9,7 +9,7 @@ ARG BUILD_ARCH
 USER root
 
 COPY --chmod=755 run.sh /run.sh
-COPY pymc-repeater.example.yaml /usr/share/pymc-repeater/config.yaml.example
+COPY openhop-repeater.example.yaml /usr/share/openhop-repeater/config.yaml.example
 
 LABEL \
   io.hass.version="${BUILD_VERSION}" \

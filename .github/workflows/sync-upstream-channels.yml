@@ -139,14 +139,14 @@ jobs:
             -H "Authorization: Bearer ${GH_TOKEN}" \
             -H "Accept: application/vnd.github+json" \
             "https://api.github.com/repos/openhop-dev/openhop_repeater/compare/${OLD_REVISION}...${NEW_REVISION}" \
-            -o /tmp/pymc-repeater-compare-${{ steps.tracked.outputs.channel }}.json
+            -o /tmp/openhop-repeater-compare-${{ steps.tracked.outputs.channel }}.json
 
       - name: Update tracked upstream revision and changelog
         if: steps.request.outputs.should_run == 'true' && steps.tracked.outputs.revision != steps.upstream_revision.outputs.revision
         env:
           STATE_FILE: ${{ matrix.state_file }}
           NEW_REVISION: ${{ steps.upstream_revision.outputs.revision }}
-          COMPARE_JSON_PATH: /tmp/pymc-repeater-compare-${{ steps.tracked.outputs.channel }}.json
+          COMPARE_JSON_PATH: /tmp/openhop-repeater-compare-${{ steps.tracked.outputs.channel }}.json
         run: python scripts/sync_upstream_channel.py
 
       - name: Commit and push changes

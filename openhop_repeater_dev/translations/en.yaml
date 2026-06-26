@@ -3,4 +3,4 @@ configuration:
     name: Config file location
     description: >-
       Informational only. Edit the real repeater config file in
-      addon_config/*_pymc_repeater_main/config.yaml.
+      addon_config/*_openhop_repeater_dev/config.yaml.
