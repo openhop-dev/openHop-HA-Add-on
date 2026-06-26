@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.0.42
+
+- Rebrand the add-on to openHop Repeater in Home Assistant metadata, docs, and bundled assets.
+- Update upstream repository links and sync automation to `openhop-dev/openhop_repeater`.
+
 ## 1.0.41
 
 - Track upstream `DEV` commit `2b07e79` from `pymcdev/pymc-repeater:dev`

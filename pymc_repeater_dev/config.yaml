@@ -1,8 +1,8 @@
-name: "pyMC Repeater Dev"
-version: "1.0.41"
+name: "openHop Repeater Dev"
+version: "1.0.42"
 slug: "pymc_repeater_dev"
-description: "Development-tracking pyMC Repeater add-on for Home Assistant"
-url: "https://github.com/pyMC-dev/pyMC-HA-Add-on"
+description: "Development-tracking openHop Repeater add-on for Home Assistant"
+url: "https://github.com/openhop-dev/openhop_repeater"
 arch:
   - aarch64
   - amd64
@@ -14,7 +14,7 @@ webui: "http://[HOST]:[PORT:8000]/"
 ports:
   8000/tcp: 8000
 ports_description:
-  8000/tcp: "pyMC Repeater web UI"
+  8000/tcp: "openHop Repeater web UI"
 map:
   - type: addon_config
     path: /config

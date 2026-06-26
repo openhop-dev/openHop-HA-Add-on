@@ -15,8 +15,8 @@ LABEL \
   io.hass.version="${BUILD_VERSION}" \
   io.hass.type="app" \
   io.hass.arch="${BUILD_ARCH}" \
-  org.opencontainers.image.title="Home Assistant Add-on: pyMC Repeater Dev" \
-  org.opencontainers.image.description="Home Assistant wrapper for pyMC Repeater dev channel" \
-  org.opencontainers.image.source="https://github.com/pyMC-dev/pyMC_Repeater"
+  org.opencontainers.image.title="Home Assistant Add-on: openHop Repeater Dev" \
+  org.opencontainers.image.description="Home Assistant wrapper for openHop Repeater dev channel" \
+  org.opencontainers.image.source="https://github.com/openhop-dev/openhop_repeater"
 
 ENTRYPOINT ["/run.sh"]

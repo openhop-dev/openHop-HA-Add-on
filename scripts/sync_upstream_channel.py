@@ -33,7 +33,7 @@ def build_changelog_entry(
     compare_data: dict,
 ) -> str:
     compare_url = compare_data.get("html_url") or (
-        f"https://github.com/pyMC-dev/pyMC_Repeater/compare/{old_rev}...{new_rev}"
+        f"https://github.com/openhop-dev/openhop_repeater/compare/{old_rev}...{new_rev}"
     )
     commits = compare_data.get("commits", [])
     channel_label = channel.upper()

@@ -27,19 +27,19 @@ export PYTHONPATH
 
 if [ ! -f "${PERSISTENT_CONFIG_FILE}" ] && [ -f "${NESTED_CONFIG_FILE}" ]; then
     cp "${NESTED_CONFIG_FILE}" "${PERSISTENT_CONFIG_FILE}"
-    echo "[pymc-repeater-ha] migrated nested config from ${NESTED_CONFIG_FILE} to ${PERSISTENT_CONFIG_FILE}"
+    echo "[openhop-repeater-ha] migrated nested config from ${NESTED_CONFIG_FILE} to ${PERSISTENT_CONFIG_FILE}"
     CONFIG_SOURCE="migrated nested config"
 fi
 
 if [ ! -f "${PERSISTENT_CONFIG_DIR}/identity.key" ] && [ -f "${NESTED_IDENTITY_FILE}" ]; then
     cp "${NESTED_IDENTITY_FILE}" "${PERSISTENT_CONFIG_DIR}/identity.key"
     chmod 600 "${PERSISTENT_CONFIG_DIR}/identity.key" || true
-    echo "[pymc-repeater-ha] migrated nested identity key into ${PERSISTENT_CONFIG_DIR}"
+    echo "[openhop-repeater-ha] migrated nested identity key into ${PERSISTENT_CONFIG_DIR}"
 fi
 
 if [ ! -f "${PERSISTENT_CONFIG_FILE}" ]; then
     cp "${TEMPLATE_CONFIG_FILE}" "${PERSISTENT_CONFIG_FILE}"
-    echo "[pymc-repeater-ha] created ${PERSISTENT_CONFIG_FILE} from bundled template"
+    echo "[openhop-repeater-ha] created ${PERSISTENT_CONFIG_FILE} from bundled template"
     CONFIG_SOURCE="bundled template"
 elif [ "${CONFIG_SOURCE}" = "unknown" ]; then
     CONFIG_SOURCE="existing persistent config"
@@ -65,10 +65,10 @@ try:
     radio_type = str(config.get("radio_type", "missing"))
     node_name = str(config.get("repeater", {}).get("node_name", "missing"))
 except Exception as exc:
-    print(f"[pymc-repeater-ha] failed to inspect effective config: {exc}")
+    print(f"[openhop-repeater-ha] failed to inspect effective config: {exc}")
 else:
     print(
-        f"[pymc-repeater-ha] effective config source: {config_source}; "
+        f"[openhop-repeater-ha] effective config source: {config_source}; "
         f"radio_type={radio_type}; node_name={node_name}; path={config_path}"
     )
 PY

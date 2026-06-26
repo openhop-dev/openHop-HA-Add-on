@@ -226,7 +226,7 @@ radio:
   # Use implicit header mode
   implicit_header: false
 
-# KISS modem (when radio_type: kiss). Requires pyMC_core with KISS support.
+# KISS modem (when radio_type: kiss). Requires openHop Core with KISS support.
 # kiss:
 #   port: "/dev/ttyUSB0"
 #   baud_rate: 9600
@@ -347,9 +347,9 @@ mqtt:
   #     use_jwt_auth: true
   #     enabled: true 
 
-# pyMC_Glass control-plane integration (optional)
+# openHop Glass control-plane integration (optional)
 glass:
-  # Enable repeater -> pyMC_Glass /inform loop
+  # Enable repeater -> openHop Glass /inform loop
   enabled: false
 
   # Base URL of Glass backend
