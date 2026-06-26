@@ -1,7 +1,7 @@
 ARG BUILD_VERSION=0.1.0
 ARG BUILD_ARCH=amd64
 
-FROM openhopdev/openhop-repeater:dev
+FROM openhop/openhop-repeater:dev
 
 ARG BUILD_VERSION
 ARG BUILD_ARCH

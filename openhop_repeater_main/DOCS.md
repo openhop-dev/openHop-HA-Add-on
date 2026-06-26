@@ -90,5 +90,4 @@ The upstream container exposes its web interface on port `8000`.
 ## Upstream Project
 
 - Upstream repo: <https://github.com/openhop-dev/openhop_repeater>
-- Container image used by this add-on: `openhopdev/openhop-repeater:main` (legacy
-  image namespace for the openHop Repeater main channel)
+- Container image used by this add-on: `openhop/openhop-repeater:main`
