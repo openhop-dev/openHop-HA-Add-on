@@ -1,5 +1,18 @@
 # Changelog
 
+## 2.0.2
+
+- Track upstream `DEV` commit `0561803` from `openhop/openhop-repeater:dev`
+- Previous tracked commit: `6de2b23`
+- Upstream diff: https://github.com/openhop-dev/openhop_repeater/compare/6de2b23266c771cc4e0a8062eb6ac032213cc13f...0561803eeb5766382fc2e4128b32cd305added3f
+- Included upstream commits:
+  - `60357f5` Merge pull request #320 from openhop-dev/dev
+  - `add7011` feat: bundle PyMC Console in Docker image
+  - `4a7720e` fix: route fork Docker image publishes
+  - `f3d3129` fix: route fork Docker image publishes
+  - `a88ac21` Merge pull request #330 from yellowcooln/dev
+  - `0561803` merge: sync dev with main
+
 ## 2.0.1
 
 - Track upstream `DEV` commit `6de2b23` from `openhop/openhop-repeater:dev`
