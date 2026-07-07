@@ -1,5 +1,20 @@
 # Changelog
 
+## 2.0.3
+
+- Track upstream `DEV` commit `7d30dd4` from `openhop/openhop-repeater:dev`
+- Previous tracked commit: `0561803`
+- Upstream diff: https://github.com/openhop-dev/openhop_repeater/compare/0561803eeb5766382fc2e4128b32cd305added3f...7d30dd42476051bd96461368b14f1b9cb0cb6917
+- Included upstream commits:
+  - `172c8cc` Initialise MQTT handler only when at least one broker is configured to save some lil cpu and logging
+  - `a53df3d` feat: implement MeshCore-compatible key generation for all identity keys with guards for 0x00 and 0xff prefixs
+  - `38efb05` fix: expose effective drop reason to PacketRouter
+  - `9be74ef` Merge remote-tracking branch 'origin/feat-std-key-formats' into dev
+  - `a964062` Merge branch 'pr-323' into dev
+  - `823308a` fix: update drop reason handling in PacketRouter and RepeaterHandler
+  - `baa89e8` updated working zebra duo config radio 0 / 1
+  - `b84479d` fixed rak6421 config.
+
 ## 2.0.2
 
 - Track upstream `DEV` commit `0561803` from `openhop/openhop-repeater:dev`
