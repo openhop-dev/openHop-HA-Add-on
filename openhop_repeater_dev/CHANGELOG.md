@@ -1,5 +1,14 @@
 # Changelog
 
+## 2.0.4
+
+- Track upstream `DEV` commit `143c763` from `openhop/openhop-repeater:dev`
+- Previous tracked commit: `7d30dd4`
+- Upstream diff: https://github.com/openhop-dev/openhop_repeater/compare/7d30dd42476051bd96461368b14f1b9cb0cb6917...143c7633bf61e80c3242ac2d54b3d72463d4907d
+- Included upstream commits:
+  - `c14d8b2` fix: refresh bundled console in docker builds
+  - `143c763` Merge pull request #344 from yellowcooln/fix/docker-console-cache-bust
+
 ## 2.0.3
 
 - Track upstream `DEV` commit `7d30dd4` from `openhop/openhop-repeater:dev`
