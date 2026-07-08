@@ -1,5 +1,20 @@
 # Changelog
 
+## 2.0.6
+
+- Track upstream `DEV` commit `ff53b25` from `openhop/openhop-repeater:dev`
+- Previous tracked commit: `05d1e39`
+- Upstream diff: https://github.com/openhop-dev/openhop_repeater/compare/05d1e391d65e951ba5628d987293372162db3da2...ff53b2520b1f56815025001fcf27727dcc9b27ba
+- Included upstream commits:
+  - `17f8bcc` feat: Allow setting max. flood interval to 50
+  - `667169c` feat: Bump to 168 hours to match docs.meshcore.io
+  - `d1a9230` feat: allow API key authentication in WebSocket handler
+  - `4a12478` Replace favicon with openhop favicon
+  - `d8bc448` fix: update dependencies for platform-specific installation of openhop_core
+  - `676e2ce` perf: add covering index for airtime chart queries
+  - `e225148` perf: force timestamp range scan for windowed packet-stats GROUP BYs
+  - `9231023` fix: correct model name in MeshCoreToMqttPusher class
+
 ## 2.0.5
 
 - Track upstream `DEV` commit `05d1e39` from `openhop/openhop-repeater:dev`
