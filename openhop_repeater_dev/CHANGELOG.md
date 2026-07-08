@@ -1,5 +1,20 @@
 # Changelog
 
+## 2.0.5
+
+- Track upstream `DEV` commit `05d1e39` from `openhop/openhop-repeater:dev`
+- Previous tracked commit: `143c763`
+- Upstream diff: https://github.com/openhop-dev/openhop_repeater/compare/143c7633bf61e80c3242ac2d54b3d72463d4907d...05d1e391d65e951ba5628d987293372162db3da2
+- Included upstream commits:
+  - `141126a` Clean up radio-settings.json by removing unused fields
+  - `f158845` Merge branch 'dev' into patch-1
+  - `90d63d6` Merge branch 'pr-340' into dev
+  - `1a0823b` fix: rename radio settings entry for rak6421-13300x-slot2 to rak6421-13300x-slot2-hw-mod
+  - `9177d1a` feat: add repeat on/off to status for mqtt
+  - `4a055be` fix(router): try both companion and server on colliding dest hash
+  - `630f2cf` Merge branch 'pr-343' into dev
+  - `05d1e39` Merge branch 'dev' of https://github.com/rightup/pyMC_Repeater into dev
+
 ## 2.0.4
 
 - Track upstream `DEV` commit `143c763` from `openhop/openhop-repeater:dev`
