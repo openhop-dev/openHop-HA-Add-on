@@ -1,5 +1,14 @@
 # Changelog
 
+## 2.0.7
+
+- Track upstream `DEV` commit `95500ec` from `openhop/openhop-repeater:dev`
+- Previous tracked commit: `ff53b25`
+- Upstream diff: https://github.com/openhop-dev/openhop_repeater/compare/ff53b2520b1f56815025001fcf27727dcc9b27ba...95500ece09e8a5badc1973b5e62623769dff6f0b
+- Included upstream commits:
+  - `fa046a1` feat: allow unauthenticated config import during first-run setup
+  - `95500ec` feat:add restore config to first time setup
+
 ## 2.0.6
 
 - Track upstream `DEV` commit `ff53b25` from `openhop/openhop-repeater:dev`
