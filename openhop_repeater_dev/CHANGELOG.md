@@ -1,5 +1,13 @@
 # Changelog
 
+## 2.0.9
+
+- Track upstream `DEV` commit `86a2ac3` from `openhop/openhop-repeater:dev`
+- Previous tracked commit: `25db2d1`
+- Upstream diff: https://github.com/openhop-dev/openhop_repeater/compare/25db2d19fcb9120e6523f1a65473abbf41e88456...86a2ac308329387c1323a79f583b14c5bcff89e3
+- Included upstream commits:
+  - `86a2ac3` feat: enhance CAD calibration thresholds and sensitivity scoring
+
 ## 2.0.8
 
 - Track upstream `DEV` commit `25db2d1` from `openhop/openhop-repeater:dev`
