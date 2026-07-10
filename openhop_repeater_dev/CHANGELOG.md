@@ -1,5 +1,14 @@
 # Changelog
 
+## 2.0.8
+
+- Track upstream `DEV` commit `25db2d1` from `openhop/openhop-repeater:dev`
+- Previous tracked commit: `95500ec`
+- Upstream diff: https://github.com/openhop-dev/openhop_repeater/compare/95500ece09e8a5badc1973b5e62623769dff6f0b...25db2d19fcb9120e6523f1a65473abbf41e88456
+- Included upstream commits:
+  - `b2eb45b` feat: Add LBT diagnostics endpoint with correlation analysis
+  - `25db2d1` feat:add LBT reporting chart/heat map UI
+
 ## 2.0.7
 
 - Track upstream `DEV` commit `95500ec` from `openhop/openhop-repeater:dev`
