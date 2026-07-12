@@ -1,5 +1,17 @@
 # Changelog
 
+## 2.0.10
+
+- Track upstream `DEV` commit `5d75cb9` from `openhop/openhop-repeater:dev`
+- Previous tracked commit: `86a2ac3`
+- Upstream diff: https://github.com/openhop-dev/openhop_repeater/compare/86a2ac308329387c1323a79f583b14c5bcff89e3...5d75cb9ad409bd73520e0f7530f3ee7bdf7c783e
+- Included upstream commits:
+  - `fac5b1b` feat: add CAD calibration session configuration and manual check endpoint
+  - `0485023` feat: add CAD symbol number configuration with validation and logging
+  - `4990322` feat: implement dynamic serving of frontend static assets and enhance error handling for unraisable exceptions
+  - `ad87ca3` feat: enhance CAD configuration with dynamic symbol number handling and update OpenAPI documentation
+  - `5d75cb9` feat: add manual cad tests to cad UI
+
 ## 2.0.9
 
 - Track upstream `DEV` commit `86a2ac3` from `openhop/openhop-repeater:dev`
