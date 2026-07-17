@@ -5,6 +5,15 @@ ARG BUILD_ARCH
 
 USER root
 
+# The upstream updater performs best-effort cleanup through /usr/bin/python3.
+# The Python base image also contains Debian's system interpreter, which does
+# not include pip unless it is installed explicitly.
+RUN apt-get update \
+    && apt-get install --yes --no-install-recommends python3-pip \
+    && rm -rf /var/lib/apt/lists/*
+
+ENV PIP_BREAK_SYSTEM_PACKAGES=1
+
 COPY --chmod=755 run.sh /run.sh
 COPY config.yaml.example /usr/share/openhop-repeater/config.yaml.example
 COPY rootfs /

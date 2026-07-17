@@ -49,6 +49,13 @@ class BootstrapIntegrationTests(unittest.TestCase):
 
                     def emulate_update() -> None:
                         root = pathlib.Path(os.environ["OPENHOP_TEST_ROOT"])
+                        (root / "specific-version-env").write_text(
+                            os.environ.get(
+                                "SETUPTOOLS_SCM_PRETEND_VERSION_FOR_OPENHOP_REPEATER",
+                                "<unset>",
+                            ),
+                            encoding="utf-8",
+                        )
                         site = pathlib.Path(sysconfig.get_paths()["purelib"])
                         package = site / "repeater"
                         package.mkdir(parents=True, exist_ok=True)
@@ -121,6 +128,9 @@ class BootstrapIntegrationTests(unittest.TestCase):
                     "OPENHOP_ADDON_BRANCH_HELPER": str(BRANCH_HELPER),
                     "OPENHOP_ADDON_BASE_SITE_PACKAGES_GLOB": str(base_site),
                     "OPENHOP_ADDON_DEFAULT_BRANCH": "main",
+                    "SETUPTOOLS_SCM_PRETEND_VERSION_FOR_OPENHOP_REPEATER": (
+                        "1.1.2.dev1"
+                    ),
                 }
             )
 
@@ -165,6 +175,10 @@ class BootstrapIntegrationTests(unittest.TestCase):
             )
             self.assertIn("selected branch: dev; active branch: dev", output)
             self.assertIn(str(root / "data" / "venv"), output)
+            self.assertEqual(
+                (root / "specific-version-env").read_text(encoding="utf-8"),
+                "<unset>",
+            )
 
 
 if __name__ == "__main__":

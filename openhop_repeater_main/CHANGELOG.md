@@ -16,3 +16,5 @@
 - Use a valid Home Assistant Web UI URL placeholder.
 - Point repository metadata at the published GitHub repository.
 - Add repository validation, ShellCheck, and branch-state tests.
+- Prevent the base image's build-time version override from replacing branch update versions.
+- Provide pip for the system Python used by the upstream updater's cleanup commands.

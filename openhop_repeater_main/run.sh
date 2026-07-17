@@ -26,6 +26,12 @@ BASE_SITE_PACKAGES_GLOB="${OPENHOP_ADDON_BASE_SITE_PACKAGES_GLOB:-/home/*/.local
 UPSTREAM_GIT_URL="${OPENHOP_ADDON_UPSTREAM_GIT_URL:-https://github.com/openhop-dev/openhop_repeater.git}"
 DEFAULT_BRANCH="${OPENHOP_ADDON_DEFAULT_BRANCH:-main}"
 
+# The upstream container image exports a build-time package-specific
+# setuptools-scm version. Package-specific overrides take precedence over the
+# runtime version selected by the in-app updater, so do not pass the image
+# build version into branch builds.
+unset SETUPTOOLS_SCM_PRETEND_VERSION_FOR_OPENHOP_REPEATER
+
 CONFIG_FILE="${ADDON_CONFIG_DIR}/config.yaml"
 CHANNEL_FILE="${DATA_DIR}/.update_channel"
 VENV_DIR="${DATA_DIR}/venv"

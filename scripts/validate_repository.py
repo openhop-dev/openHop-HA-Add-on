@@ -125,6 +125,7 @@ def validate_addon(addon: Path) -> str:
         ".update_channel",
         "\"${VENV_PYTHON}\" -m repeater.main",
         "repeater requested a restart; rerunning branch bootstrap",
+        "unset SETUPTOOLS_SCM_PRETEND_VERSION_FOR_OPENHOP_REPEATER",
     ):
         if required_fragment not in run_text:
             fail(f"{addon.name}/run.sh is missing branch runtime logic: {required_fragment}")
@@ -142,6 +143,8 @@ def validate_addon(addon: Path) -> str:
         "COPY rootfs /",
         'io.hass.type="app"',
         "openhop-container-systemctl",
+        "python3-pip",
+        "PIP_BREAK_SYSTEM_PACKAGES=1",
     ):
         if required_fragment not in dockerfile:
             fail(f"{addon.name}/Dockerfile is missing: {required_fragment}")
