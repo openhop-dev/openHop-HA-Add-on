@@ -13,6 +13,7 @@ import yaml
 
 ROOT = Path(__file__).resolve().parents[1]
 SEMVER = re.compile(r"^\d+\.\d+\.\d+(?:[-+][0-9A-Za-z.-]+)?$")
+WEBUI = re.compile(r"^(?:https?|\[PROTO:\w+\]):\/\/\[HOST\]:\[PORT:\d+\].*$")
 REQUIRED_ADDON_FILES = {
     "CHANGELOG.md",
     "DOCS.md",
@@ -88,9 +89,16 @@ def validate_addon(addon: Path) -> str:
     if "venv/**" not in metadata.get("backup_exclude", []):
         fail(f"{addon.name}: generated update venv should be excluded from backups")
     if metadata.get("map") != [
-        {"type": "addon_config", "path": "/config", "read_only": False}
+        {"type": "app_config", "path": "/config", "read_only": False}
     ]:
-        fail(f"{addon.name}: only the writable addon_config mount is expected")
+        fail(f"{addon.name}: only the writable app_config mount is expected")
+
+    webui = metadata.get("webui")
+    if not isinstance(webui, str) or not WEBUI.fullmatch(webui):
+        fail(
+            f"{addon.name}: webui must use a Supervisor port placeholder, "
+            "for example http://[HOST]:[PORT:8000]/"
+        )
 
     arch = metadata.get("arch")
     if not isinstance(arch, list) or not {"aarch64", "amd64"}.issubset(set(arch)):
@@ -122,6 +130,12 @@ def validate_addon(addon: Path) -> str:
             fail(f"{addon.name}/run.sh is missing branch runtime logic: {required_fragment}")
 
     dockerfile = (addon / "Dockerfile").read_text(encoding="utf-8")
+    expected_build_version = f"ARG BUILD_VERSION={metadata['version']}"
+    if expected_build_version not in dockerfile:
+        fail(
+            f"{addon.name}/Dockerfile BUILD_VERSION does not match config.yaml: "
+            f"expected {expected_build_version}"
+        )
     for required_fragment in (
         "FROM openhop/openhop-repeater:main",
         "COPY config.yaml.example",
@@ -131,6 +145,23 @@ def validate_addon(addon: Path) -> str:
     ):
         if required_fragment not in dockerfile:
             fail(f"{addon.name}/Dockerfile is missing: {required_fragment}")
+
+    deprecated_terms = ("addon_config", "addon_configs")
+    text_files = [
+        ROOT / "README.md",
+        ROOT / "repository.yaml",
+        addon / "README.md",
+        addon / "DOCS.md",
+        addon / "config.yaml",
+    ]
+    for text_file in text_files:
+        content = text_file.read_text(encoding="utf-8")
+        for deprecated in deprecated_terms:
+            if deprecated in content:
+                fail(
+                    f"{text_file.relative_to(ROOT)} uses deprecated Home Assistant term "
+                    f"{deprecated!r}"
+                )
 
     return slug
 

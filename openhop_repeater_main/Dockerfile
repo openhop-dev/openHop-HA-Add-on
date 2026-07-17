@@ -18,8 +18,8 @@ LABEL \
   io.hass.type="app" \
   io.hass.arch="${BUILD_ARCH}" \
   org.opencontainers.image.title="Home Assistant Add-on: openHop Repeater" \
-  org.opencontainers.image.description="Home Assistant wrapper with persistent in-app branch switching for openHop Repeater" \
-  org.opencontainers.image.source="https://github.com/openhop-dev/openHop-HA-Add-on" \
+  org.opencontainers.image.description="Home Assistant add-on for openHop Repeater with persistent branch selection" \
+  org.opencontainers.image.source="https://github.com/Bjorkan/openHop-HA-Add-on" \
   org.opencontainers.image.licenses="MIT"
 
 STOPSIGNAL SIGTERM

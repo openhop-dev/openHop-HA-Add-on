@@ -2,204 +2,216 @@
 
 ## About
 
-This add-on runs the upstream openHop Repeater container and keeps the full
-repeater configuration in one editable file:
+This add-on runs openHop Repeater as a managed Home Assistant service.
+
+All repeater settings are stored in one editable YAML file:
 
 ```text
 /config/config.yaml
 ```
 
-On the Home Assistant host, the file is located in an add-on config directory
-matching:
+On the Home Assistant host, the file is available under:
 
 ```text
-addon_configs/*_openhop_repeater_main/config.yaml
+app_configs/*_openhop_repeater_main/config.yaml
 ```
 
-The first start copies the complete upstream example configuration and replaces
-the insecure example login passwords with unique generated values. Existing
-configuration files are never overwritten.
+The add-on creates the file on first start from the bundled openHop Repeater
+configuration template. Unique admin and guest passwords are generated for a
+new configuration. An existing configuration file is never overwritten.
 
 ## Installation
 
-1. Add the openHop Repeater add-on repository to Home Assistant.
+1. Add the openHop Repeater repository to the Home Assistant add-on store.
 2. Install **openHop Repeater**.
-3. For local SPI or GPIO radio hardware, disable **Protection mode** in the
-   add-on settings.
-4. Start the add-on once, then stop it.
-5. Edit the generated `config.yaml` with Studio Code Server, File editor, SSH,
-   or another tool that can access the add-on config directory.
+3. Disable **Protection mode** when using local SPI or GPIO radio hardware.
+4. Start the add-on once to create `config.yaml`.
+5. Stop the add-on and edit the generated file.
 6. Start the add-on and select **Open Web UI**.
 
-The starter configuration uses `radio_type: null`, so the service can start
-without radio hardware while it is being configured.
+The initial configuration uses `radio_type: null`. This allows the service to
+start before radio hardware has been configured.
 
 ## Configuration
 
-`/config/config.yaml` is the only runtime configuration source. Home Assistant
-add-on options are intentionally not used for repeater settings because that
-would duplicate the upstream schema and split configuration across two places.
+`/config/config.yaml` is the only source of repeater settings. Home Assistant
+add-on options are not used for the openHop Repeater configuration.
 
-At minimum, review:
+Review at least the following values before normal operation:
 
 - `repeater.node_name`
 - `repeater.security.admin_password`
 - `repeater.security.guest_password`
 - `radio_type`
-- the selected radio backend
-- `radio.frequency`, bandwidth, spreading factor, coding rate, and TX power
-- identity, MQTT, companion, and policy settings relevant to the installation
+- the configuration section for the selected radio backend
+- radio frequency, bandwidth, spreading factor, coding rate, and transmit power
+- identity, MQTT, companion, and policy settings used by the installation
 
-The bundled template follows the upstream firmware supplied with this add-on
-release and includes all available sections and comments.
+The bundled template contains the configuration sections and comments supplied
+with the openHop Repeater version included in the add-on image.
 
-## Switching branch from the web interface
+## Selecting an openHop Repeater branch
 
-The former separate `main` and `dev` add-ons have been replaced by one add-on.
-To switch:
+Branches are managed from the repeater web interface:
 
-1. Open the repeater web interface.
+1. Open the web interface.
 2. Open the update dialog.
-3. Select the desired **Release Channel**.
-4. Apply the channel and choose **Install Update**.
+3. Select the required **Release Channel**.
+4. Apply the selection.
+5. Choose **Install Update**.
 
-The firmware writes the selected branch to:
+The release channel may contain a branch name such as `main` or `dev`. Branch
+names are validated before installation.
+
+The selected branch is stored in:
 
 ```text
-/var/lib/openhop_repeater/.update_channel
+/data/.update_channel
 ```
 
-Inside this add-on, `/var/lib/openhop_repeater` points to Home Assistant's
-persistent `/data` directory. The firmware updater installs branches into
-`/opt/openhop_repeater/venv`; that path points to `/data/venv`. Consequently,
-both the selected branch and installed code survive a process restart, container
-recreation, and add-on upgrade.
+The installed branch is stored in a persistent Python environment:
 
-The upstream updater performs legacy systemd cleanup before installing. Home
-Assistant containers do not run systemd, so the image supplies a no-op
-`/bin/systemctl` compatibility command only when the base image has no real
-`systemctl`. This prevents the update thread from failing before it reaches pip.
+```text
+/data/venv
+```
 
-After an update, the firmware intentionally exits its process. The add-on
-wrapper catches that clean exit and reruns its bootstrap inside the same
-container. This activates the selected branch even when the Supervisor or
-container runtime would otherwise leave a cleanly exited container stopped.
+Both paths are part of the add-on's private Home Assistant data directory and
+survive service restarts, container recreation, and add-on upgrades.
 
-The add-on always starts the repeater with the persistent virtual environment.
-If only the packaged `main` build is present, the virtual environment falls back
-to that image-provided package. Once a branch is installed, its package takes
-precedence.
+After an in-app update, openHop Repeater exits so the selected code can be
+loaded. The add-on starts the service again inside the same container and uses
+the persistent environment on the next launch.
 
-When the selected branch and installed branch differ at startup, the add-on
-attempts to install the selected branch automatically. If GitHub is temporarily
-unreachable, the last runnable build is retained and the installation is retried
-on the next restart.
+At startup, the add-on checks whether the selected branch matches the installed
+branch. When they differ, it attempts to install the selected branch. If the
+installation cannot be completed, the last runnable version is used when
+available and installation is attempted again after the next restart.
 
-### Returning to `main`
+To return to the default branch, select `main` in **Release Channel** and run
+**Install Update**.
 
-Select `main` in **Release Channel** and install the update. The `main` branch is
-then installed into the persistent environment. A later add-on image update can
-still replace the packaged fallback build.
+## Persistent storage
 
-## Persistent paths
-
-| Path | Purpose |
+| Path | Contents |
 |---|---|
-| `/config/config.yaml` | Complete user-editable runtime configuration |
-| `/data` | Persistent add-on data provided by Home Assistant |
-| `/data/.update_channel` | Selected upstream branch |
-| `/data/venv` | Branch installed by the in-app updater |
-| `/var/lib/openhop_repeater` | Compatibility symlink to `/data` |
-| `/opt/openhop_repeater/venv` | Updater compatibility symlink to `/data/venv` |
+| `/config/config.yaml` | User-editable openHop Repeater configuration |
+| `/data/.update_channel` | Selected openHop Repeater branch |
+| `/data/venv` | Python environment containing the installed branch |
+| `/data/venv/.openhop-ha-python` | Python compatibility marker for the environment |
+| `/var/lib/openhop_repeater` | Internal link to `/data` used by openHop Repeater |
+| `/opt/openhop_repeater/venv` | Internal link to `/data/venv` used by the updater |
 
-Home Assistant takes cold backups of the add-on data. The generated `venv`
-directory is excluded because it is architecture- and Python-version-specific
-and can be reconstructed from the persisted release channel after restore.
+The `/data` directory is private to the add-on. Home Assistant removes it when
+the add-on is uninstalled.
 
-## Migration from the previous repository layout
+The generated virtual environment is excluded from add-on backups because it is
+specific to the system architecture and Python version. It is rebuilt from the
+stored release channel when required.
 
-### Existing `openHop Repeater Main` installation
-
-The slug remains `openhop_repeater_main`, so the existing config and persistent
-add-on data are retained. After updating the repository, rebuild or reinstall
-the add-on image if Home Assistant does not do so automatically.
-
-### Existing `openHop Repeater Dev` installation
-
-The separate `openhop_repeater_dev` add-on no longer exists. Before uninstalling
-it:
-
-1. Back up its `config.yaml`, identity, and any required data.
-2. Install the unified **openHop Repeater** add-on.
-3. Start it once to create its config directory.
-4. Replace the generated config with the backed-up dev configuration.
-5. Start the add-on, open the update dialog, and select `dev`.
-
-Home Assistant uses a different data directory for each add-on slug, so dev data
-cannot be migrated automatically by the unified main-slug add-on.
+The user-editable configuration under `app_configs` is managed separately by
+Home Assistant. Whether it is removed during uninstallation depends on the
+configuration-removal choice made in Home Assistant.
 
 ## Networking
 
-The add-on uses host networking. This is required because companion identities
-can expose arbitrary TCP ports configured inside `config.yaml`; those dynamic
-ports cannot be declared individually in static add-on metadata.
+The add-on uses host networking. openHop Repeater companion identities can
+listen on ports defined in `config.yaml`, so the complete port set cannot be
+declared statically in the add-on metadata.
 
-The web interface listens on port `8000` by default. If `http.port` is changed,
-the Home Assistant **Open Web UI** link still points to port `8000`; open the
-configured port manually instead.
+The web interface listens on port `8000` by default. The Home Assistant
+**Open Web UI** action uses this port. When `http.port` is changed, open the
+configured port directly in a browser.
 
 ## Hardware access
 
-The add-on supports several radio transports, including local SPI/GPIO devices,
-USB adapters, serial KISS modems, and TCP modems. It requests full hardware
-access rather than combining that setting with redundant per-device flags. The
-host udev database is also mounted read-only for device discovery.
+Supported transports include:
 
-`full_access: true` and disabled AppArmor are retained as an explicit exception
-for local SPI/GPIO hardware whose device paths vary by host and cannot be safely
-expressed as one static device list. Home Assistant's **Protection mode** must be
-disabled for those local hardware configurations. Network and USB-based setups
-should still be preferred where broad host hardware access is not required.
+- local SPI/GPIO radios;
+- USB radio adapters;
+- serial KISS modems;
+- TCP modems;
+- companion services using local network ports.
 
-For Raspberry Pi SPI hardware, enable SPI in the host boot configuration and use
-BCM GPIO numbering in `config.yaml`.
+The add-on requests full hardware access and mounts the host udev database for
+device discovery. Disable **Protection mode** when local SPI or GPIO devices are
+required.
 
-## Updating the add-on wrapper
+Network or USB-based radio connections generally require less host-specific
+configuration than direct SPI/GPIO access.
 
-The repeater's in-app updater changes the selected upstream firmware branch. It
-does not update this Home Assistant wrapper, its base container image, or the
-bundled fallback build. Install add-on updates from Home Assistant as usual in
-addition to using the repeater update dialog.
+For Raspberry Pi SPI hardware, enable SPI in the host boot configuration and
+use BCM GPIO numbering in `config.yaml`.
+
+## Updates
+
+There are two independent update paths:
+
+- **openHop Repeater updates** are installed from the repeater web interface and
+  control the selected upstream branch.
+- **Home Assistant add-on updates** are installed from Home Assistant and update
+  the container image, startup scripts, and bundled default version.
+
+Installing an openHop Repeater branch does not update the Home Assistant add-on
+itself.
+
+## Backups
+
+The add-on uses cold backups so the service is stopped while its persistent data
+is captured. The generated `/data/venv` directory is excluded and is rebuilt
+after restore when necessary.
+
+The configuration file under `app_configs` should be included in the Home
+Assistant backup configuration used for the system.
 
 ## Troubleshooting
 
-### The requested branch is not active
+### The selected branch is not active
 
-Check the add-on log for these lines:
+Check the add-on log for entries similar to:
 
 ```text
 selected branch: ...; active branch: ...
 runtime package: ...
 ```
 
-A branch-installed package should resolve from `/data/venv`. The packaged
-fallback resolves from the upstream image's site-packages directory.
+A branch installed by the updater should load from `/data/venv`. The default
+package included in the image is used when no separate branch installation is
+active.
 
-### Branch installation fails
+### A branch cannot be installed
 
-Branch installation requires DNS, HTTPS access to GitHub, Git, and Python build
-tools. These are supplied by the upstream image, but a network outage or broken
-upstream branch can still cause installation to fail. The add-on keeps the last
-runnable build when possible.
+Branch installation requires:
 
-### Configuration validation fails
+- working DNS;
+- HTTPS access to GitHub;
+- a valid branch name;
+- a branch that can be installed by `pip` for the current architecture.
 
-The add-on validates YAML before starting the repeater. Correct the reported
-syntax error in `config.yaml` and restart it. The file is not replaced or reset.
+The add-on continues with the last runnable installation when possible. Review
+the complete installation error in the add-on log before retrying.
 
+### The add-on does not start after editing `config.yaml`
+
+The add-on validates the YAML syntax before starting openHop Repeater. Correct
+the reported error and restart the add-on. The configuration file is not reset
+automatically.
+
+### The Web UI link opens the wrong port
+
+The Home Assistant link targets port `8000`. When `http.port` uses another
+value, open `http://<home-assistant-host>:<configured-port>/` directly.
+
+### Local SPI or GPIO hardware is unavailable
+
+Confirm that:
+
+- **Protection mode** is disabled;
+- the required host interface is enabled;
+- the device and GPIO values in `config.yaml` match the host;
+- no other service is using the same hardware.
 
 ## License
 
-This add-on wrapper is licensed under the MIT License. See the repository root
-`LICENSE` file. The bundled openHop Repeater software remains subject to its
-upstream license.
+The Home Assistant add-on files are licensed under the MIT License. See the
+repository root `LICENSE` file. openHop Repeater remains subject to its upstream
+license.

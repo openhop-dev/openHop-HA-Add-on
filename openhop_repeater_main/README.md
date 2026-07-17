@@ -1,14 +1,19 @@
 # Home Assistant Add-on: openHop Repeater
 
-Runs openHop Repeater with its complete configuration in one YAML file and
-supports switching Git branches from the repeater web interface.
+Run openHop Repeater as a Home Assistant add-on with:
 
-## Main features
+- a complete YAML configuration file;
+- branch selection from the repeater web interface;
+- persistent branch and runtime data;
+- automatic recovery to the last runnable installation when an update fails;
+- support for SPI/GPIO radios, USB devices, serial KISS modems, TCP modems, and
+  companion services.
 
-- One add-on for `main`, `dev`, and other upstream branches.
-- Persistent branch installation and release-channel selection.
-- A full, commented `config.yaml` created on first start.
-- Persistent repeater data, identity, update state, and update environment.
-- Local SPI/GPIO, USB, serial, TCP modem, and companion-service support.
+The configuration file is created on first start and is available on the Home
+Assistant host at:
+
+```text
+app_configs/*_openhop_repeater_main/config.yaml
+```
 
 See [DOCS.md](DOCS.md) for installation and configuration instructions.

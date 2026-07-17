@@ -2,7 +2,7 @@ name: openHop Repeater
 version: "3.0.0"
 slug: openhop_repeater_main
 description: Run and update openHop Repeater from Home Assistant
-url: "https://github.com/openhop-dev/openHop-HA-Add-on"
+url: "https://github.com/Bjorkan/openHop-HA-Add-on"
 arch:
   - aarch64
   - amd64
@@ -13,10 +13,10 @@ breaking_versions:
   - "3.0.0"
 init: true
 host_network: true
-webui: "http://[HOST]:8000/"
+webui: "http://[HOST]:[PORT:8000]/"
 panel_icon: mdi:radio-tower
 map:
-  - type: addon_config
+  - type: app_config
     path: /config
     read_only: false
 udev: true

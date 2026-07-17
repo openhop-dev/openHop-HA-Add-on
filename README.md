@@ -1,44 +1,65 @@
 # openHop Repeater Home Assistant Add-on
 
-Run [openHop Repeater](https://github.com/openhop-dev/openhop_repeater) as a
-Home Assistant add-on, while keeping the complete repeater configuration in one
-editable YAML file.
+This repository provides a Home Assistant add-on for
+[openHop Repeater](https://github.com/openhop-dev/openhop_repeater).
 
-## Add-on
+The add-on runs the repeater as a managed Home Assistant service while keeping
+all repeater settings in a single YAML file. Branches can be selected and
+installed from the openHop Repeater web interface.
 
-### [openHop Repeater](./openhop_repeater_main)
-
-The repository now contains one add-on instead of separate `main` and `dev`
-variants. The release branch is selected from the repeater web interface and is
-persisted across restarts and add-on upgrades.
-
-The existing slug, `openhop_repeater_main`, is intentionally retained so users
-of the former main add-on keep their add-on config and data directory.
-
-## Install
+## Installation
 
 1. Add this repository to the Home Assistant add-on store.
 2. Install **openHop Repeater**.
-3. Start it once to create the full `config.yaml` template.
-4. Edit `addon_configs/*_openhop_repeater_main/config.yaml`.
+3. Start the add-on once to create the configuration file.
+4. Edit `app_configs/*_openhop_repeater_main/config.yaml`.
 5. Start the add-on and open its web interface.
 
-See the [add-on documentation](./openhop_repeater_main/DOCS.md) for hardware,
-configuration, branch switching, and migration details.
+Local SPI or GPIO hardware requires **Protection mode** to be disabled in the
+add-on settings.
 
-## Repository layout
+## Configuration
+
+The complete openHop Repeater configuration is stored in:
+
+```text
+app_configs/*_openhop_repeater_main/config.yaml
+```
+
+Inside the add-on, the same file is available as:
+
+```text
+/config/config.yaml
+```
+
+Home Assistant add-on options are not used for repeater settings. The YAML file
+is the only configuration source.
+
+## Branch selection
+
+Open the update dialog in the repeater web interface to select and install an
+openHop Repeater branch. The selected branch and its Python environment are
+stored in the add-on's persistent `/data` directory, so they survive restarts
+and add-on upgrades.
+
+See [DOCS.md](./openhop_repeater_main/DOCS.md) for complete installation,
+configuration, hardware, update, storage, and troubleshooting instructions.
+
+## Repository structure
 
 ```text
 openhop_repeater_main/
 ├── config.yaml          # Home Assistant add-on metadata
-├── config.yaml.example  # complete openHop runtime configuration
+├── config.yaml.example  # openHop Repeater configuration template
 ├── Dockerfile
 ├── DOCS.md
 ├── README.md
 ├── CHANGELOG.md
 ├── run.sh
-└── rootfs/              # small add-on-specific runtime helpers
+└── rootfs/              # add-on runtime helpers
 ```
 
-The runtime configuration is deliberately not duplicated into Home Assistant
-add-on options. `/config/config.yaml` remains the single source of truth.
+## License
+
+The Home Assistant add-on files in this repository are licensed under the MIT
+License. openHop Repeater is distributed under its own upstream license.
