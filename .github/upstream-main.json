@@ -1,6 +1,0 @@
-{
-  "addon_dir": "openhop_repeater_main",
-  "channel": "main",
-  "image": "openhop/openhop-repeater:main",
-  "revision": "60357f580876ceab5b3808a7ed00f81ae235c003"
-}

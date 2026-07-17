@@ -1,6 +1,0 @@
-configuration:
-  config_location_note:
-    name: Config file location
-    description: >-
-      Informational only. Edit the real repeater config file in
-      addon_config/*_openhop_repeater_main/config.yaml.

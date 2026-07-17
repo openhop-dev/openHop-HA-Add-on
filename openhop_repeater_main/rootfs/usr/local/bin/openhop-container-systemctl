@@ -1,0 +1,5 @@
+#!/bin/sh
+# openHop's updater performs best-effort systemd cleanup before a root install.
+# Home Assistant runs the repeater in a container with no systemd instance, so
+# those stop/disable/daemon-reload operations are intentionally successful no-ops.
+exit 0
