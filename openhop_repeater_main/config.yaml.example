@@ -35,24 +35,11 @@ repeater:
   # Enable quality-based packet filtering and adaptive delays
   use_score_for_tx: false
 
-  # Multi-ack redundancy (0 = off, 1 = on; matches MeshCore's multi.acks pref).
-  # When on, a relayed routed ACK is preceded by a MULTIPART-wrapped copy so
-  # ACKs survive lossy links. Also settable via the mesh CLI: set multi.acks
-  multi_acks: 0
-
   # Score threshold for quality monitoring (future use)
   # Currently reserved for potential future features like dashboard alerts,
   # proactive statistics collection, or advanced filtering strategies.
   # Changing this value has no effect on current packet processing.
   score_threshold: 0.3
-
-  # Observation-only upstream neighbour link metrics.
-  # These metrics are currently not used for forwarding, dedupe, TX delay,
-  # route selection, or packet acceptance decisions yet ;-0.
-  neighbour_link_metrics_enabled: true
-  neighbour_link_ewma_alpha: 0.20
-  neighbour_link_ttl_seconds: 86400
-  neighbour_link_max_entries: 512
 
   # Automatic advertisement interval in hours
   # The repeater will send an advertisement packet at this interval
@@ -118,10 +105,14 @@ repeater:
     # Maximum number of authenticated clients (across all identities)
     max_clients: 1
 
-    # Admin password for full access
+    # Admin password for full access.
+    # NOTE: The Home Assistant app replaces the default value below with a
+    # unique cryptographically random password on first start.  On subsequent
+    # restarts the user‑supplied value is never silently overridden.
     admin_password: "admin123"
 
-    # Guest password for limited access
+    # Guest password for limited access.
+    # NOTE: The same auto‑generation behaviour described above applies here.
     guest_password: "guest123"
 
     # Allow read-only access for clients without password/not in ACL
@@ -272,7 +263,7 @@ sensors:
     #     bus_number: 1         # I2C bus number (1 for Raspberry Pi default)
     #     read_timeout_seconds: 1.0  # Max seconds to wait for valid data (polls every 50 ms)
 
-    # Example SHTC3 Ambient 
+    # Example SHTC3 Ambient
     # - type: shtc3
     #   name: ambient
     #   enabled: true
@@ -281,7 +272,7 @@ sensors:
     #     i2c_address: 0x70
     #     bus_number: 1
 
-    # Example Waveshare UPS D Hat 
+    # Example Waveshare UPS D Hat
     # - type: waveshare_ups_d
     #   name: battery
     #   enabled: true
@@ -290,7 +281,7 @@ sensors:
     #     i2c_address: 0x43
     #     bus_number: 1
 
-    # Example Waveshare UPS E Hat 
+    # Example Waveshare UPS E Hat
     # - type: waveshare_ups_e
     #   name: "battery"
     #   enabled: true
@@ -496,12 +487,10 @@ sx1262:
   is_waveshare: false
 
 delays:
-  # Flood TX delay: airtime multiplier, NOT seconds. The actual pre-transmit
-  # delay is a random value in [0, 5 * packet_airtime * factor] seconds.
+  # TX delay factor for flood mode (multiplier)
   tx_delay_factor: 1.0
 
-  # Direct TX delay: same random 0-5*airtime*factor window, usually lower so
-  # directed traffic clears faster.
+  # TX delay factor for direct mode (faster)
   direct_tx_delay_factor: 0.5
 
 duty_cycle:
@@ -552,7 +541,7 @@ mqtt_brokers:
   #   mqtt           - legacy openhop-repeater local-broker convention (custom topic, singular 'packet')
   # retain_status: true|false # Sets MQTT "retain" on status messages so they remain on the broker when disconnected. Also enforces a QOS of 1 (guaranteed delivery)
   # tls:
-  #   enabled: true|false # Enable TLS. If the endpoint's certificate is self-signed, the Root CA should be added to the OS's certificate store. 
+  #   enabled: true|false # Enable TLS. If the endpoint's certificate is self-signed, the Root CA should be added to the OS's certificate store.
   #   insecure: true|false # Validate TLS certificates
 
   # Block specific packet types from being published to the MQTT endpoint
@@ -628,7 +617,7 @@ glass:
   cert_store_dir: "/etc/openhop_repeater/glass"
 
 logging:
-  # Log level: TRACE, DEBUG, INFO, WARNING, ERROR
+  # Log level: DEBUG, INFO, WARNING, ERROR
   level: INFO
 
   # Log format

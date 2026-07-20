@@ -1,4 +1,4 @@
-name: Validate add-on repository
+name: Validate app repository
 
 on:
   pull_request:
@@ -17,24 +17,31 @@ concurrency:
 jobs:
   validate:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
 
     steps:
       - name: Check out repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Set up Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v6
         with:
           python-version: "3.12"
 
       - name: Install validation dependencies
         run: |
-          python -m pip install --disable-pip-version-check PyYAML
+          python -m pip install --disable-pip-version-check PyYAML ruff
           sudo apt-get update
           sudo apt-get install --yes shellcheck
 
+      - name: Lint Python files (ruff)
+        run: ruff check --select E,F,I,N,UP,W --ignore E501
+
       - name: Validate repository metadata and templates
         run: python scripts/validate_repository.py
+
+      - name: Check whitespace
+        run: git diff --check
 
       - name: Run unit tests
         run: python -m unittest discover -s tests -v
@@ -43,3 +50,13 @@ jobs:
         run: |
           shellcheck openhop_repeater_main/run.sh
           shellcheck openhop_repeater_main/rootfs/usr/local/bin/openhop-container-systemctl
+          shellcheck openhop_repeater_main/rootfs/usr/local/bin/openhop-venv-pip
+
+      - name: Build amd64 app image
+        run: |
+          BUILD_VERSION="$(python -c 'import yaml; print(yaml.safe_load(open("openhop_repeater_main/config.yaml"))["version"])')"
+          docker build \
+            --build-arg BUILD_ARCH=amd64 \
+            --build-arg BUILD_VERSION="${BUILD_VERSION}" \
+            --tag openhop-ha-app:test \
+            ./openhop_repeater_main
