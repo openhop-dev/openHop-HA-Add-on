@@ -1,5 +1,20 @@
 # Changelog
 
+## 2.0.11
+
+- Track upstream `DEV` commit `c2d6396` from `openhop/openhop-repeater:dev`
+- Previous tracked commit: `5d75cb9`
+- Upstream diff: https://github.com/openhop-dev/openhop_repeater/compare/5d75cb9ad409bd73520e0f7530f3ee7bdf7c783e...c2d63968bb79af37a8407f0632194ac361d2a92d
+- Included upstream commits:
+  - `6f61365` feat: enhance flood loop detection with hash size validation and update tests
+  - `e5d72ea` feat: update advert packet sending with error handling and add corresponding tests
+  - `e2172c2` refactor: separate import statements for clarity
+  - `a0eb0fc` feat: TX delay update calculation with route-aware random window and update tests
+  - `8875177` fix(router): consume packets only on authenticated local handling (#353)
+  - `8d766c8` Merge pull request #357 from agessaman/fix/consume-on-decrypt
+  - `62ad742` fix(router): consume PATH and RESPONSE only after MAC authentication
+  - `059065c` fix(router): never forward control packets to the engine
+
 ## 2.0.10
 
 - Track upstream `DEV` commit `5d75cb9` from `openhop/openhop-repeater:dev`
