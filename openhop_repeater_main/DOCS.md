@@ -28,17 +28,25 @@ from Home Assistant's main `/config` folder.
 2. Install the `openHop Repeater Main` add-on.
 3. If you are using local Pi GPIO or SPI hardware, disable `Protection mode`
    in the add-on settings before starting the add-on.
-4. Open your Home Assistant file editor, such as Studio Code Server.
-5. Edit the add-on config file `config.yaml` in the add-on's own config folder.
+4. Start the add-on once so it creates a complete configuration with unique
+   credentials, then stop it before editing hardware settings.
+5. Open your Home Assistant file editor, such as Studio Code Server, and edit
+   the add-on config file `config.yaml` in the add-on's own config folder.
    You are looking for a folder matching `addon_config/*_openhop_repeater_main`.
-6. Start the add-on and open the web UI on port `8000`.
+6. Start the add-on again and open the web UI on port `8000`.
 
 ## Configuration
 
 This add-on uses a real YAML file at `/config/config.yaml`.
-The add-on seeds that file on first start and then treats it as the single
-source of truth. If openHop Repeater updates the file itself, those changes are
-preserved across restarts.
+On first start, the add-on creates that file atomically from the full template
+included in the current upstream `:main` image. It replaces the template's shared
+defaults with unique admin and guest passwords and a unique JWT signing secret.
+Read those generated values from `config.yaml` before signing in.
+
+The file then remains the single source of truth. On later image updates, new
+template settings are merged into the existing file while configured values,
+custom settings, passwords, and secrets are preserved. Invalid YAML is never
+silently replaced; startup stops with an error so the file can be corrected.
 
 The bundled starter config is aimed at an SX1262 SPI radio. At minimum, review:
 
@@ -55,6 +63,13 @@ The bundled starter config is aimed at an SX1262 SPI radio. At minimum, review:
 
 Other radio backends supported by the upstream `:main` image should be
 configured directly in `config.yaml` using the upstream schema.
+
+## Backups and shutdown
+
+Home Assistant uses cold backups for this add-on so configuration, identity,
+and persistent repeater data are captured while the process is stopped. The
+startup wrapper forwards stop signals to openHop Repeater, waits for it to exit,
+and bounds repeated clean restart requests to avoid a rapid restart loop.
 
 ## Raspberry Pi Host Setup
 

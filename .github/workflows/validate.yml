@@ -1,0 +1,106 @@
+name: Validate add-on repository
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: validate-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+
+      - name: Install validation dependencies
+        run: |
+          python -m pip install --disable-pip-version-check PyYAML ruff
+          sudo apt-get update
+          sudo apt-get install --yes shellcheck
+
+      - name: Lint Python
+        run: ruff check --select E,F,I,N,UP,W --ignore E501 scripts/validate_repository.py tests openhop_repeater_dev/rootfs openhop_repeater_main/rootfs
+
+      - name: Validate repository metadata and channel parity
+        run: python scripts/validate_repository.py
+
+      - name: Run unit and lifecycle tests
+        run: python -m unittest discover -s tests -v
+
+      - name: Check shell scripts
+        run: |
+          sh -n openhop_repeater_dev/run.sh
+          sh -n openhop_repeater_main/run.sh
+          shellcheck openhop_repeater_dev/run.sh
+          shellcheck openhop_repeater_main/run.sh
+
+      - name: Check whitespace
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          BEFORE_SHA: ${{ github.event.before }}
+          CURRENT_SHA: ${{ github.sha }}
+          EVENT_NAME: ${{ github.event_name }}
+        run: |
+          if [ "${EVENT_NAME}" = "pull_request" ]; then
+            git diff --check "${BASE_SHA}...HEAD"
+          elif [ -n "${BEFORE_SHA}" ] &&
+               [ "${BEFORE_SHA}" != "0000000000000000000000000000000000000000" ]; then
+            git diff --check "${BEFORE_SHA}..${CURRENT_SHA}"
+          else
+            git show --check --format= "${CURRENT_SHA}"
+          fi
+
+  build:
+    needs: validate
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      matrix:
+        addon:
+          - openhop_repeater_dev
+          - openhop_repeater_main
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v6
+
+      - name: Build amd64 add-on image
+        env:
+          ADDON_DIR: ${{ matrix.addon }}
+        run: |
+          BUILD_VERSION="$(python3 - <<'PY'
+          import os
+          import pathlib
+          import re
+
+          text = pathlib.Path(os.environ["ADDON_DIR"], "config.yaml").read_text(encoding="utf-8")
+          match = re.search(r'^version: "([^"]+)"$', text, re.MULTILINE)
+          if match is None:
+              raise SystemExit("version not found")
+          print(match.group(1))
+          PY
+          )"
+          docker build \
+            --build-arg BUILD_ARCH=amd64 \
+            --build-arg BUILD_VERSION="${BUILD_VERSION}" \
+            --tag "openhop-ha-${ADDON_DIR}:test" \
+            "./${ADDON_DIR}"

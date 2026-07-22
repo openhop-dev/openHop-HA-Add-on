@@ -9,7 +9,13 @@ ARG BUILD_ARCH
 USER root
 
 COPY --chmod=755 run.sh /run.sh
-COPY openhop-repeater.example.yaml /usr/share/openhop-repeater/config.yaml.example
+COPY rootfs /
+
+# Bootstrap new installations from the template shipped by the exact upstream
+# channel image instead of a potentially stale wrapper-repository copy.
+RUN mkdir -p /usr/share/openhop-repeater \
+  && cp /opt/openhop_repeater/config.yaml.example \
+    /usr/share/openhop-repeater/config.yaml.example
 
 LABEL \
   io.hass.version="${BUILD_VERSION}" \
@@ -19,4 +25,5 @@ LABEL \
   org.opencontainers.image.description="Home Assistant wrapper for openHop Repeater main channel" \
   org.opencontainers.image.source="https://github.com/openhop-dev/openhop_repeater"
 
+STOPSIGNAL SIGTERM
 ENTRYPOINT ["/run.sh"]

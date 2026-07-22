@@ -1,5 +1,13 @@
 # Changelog
 
+## 2.1.0
+
+- Create `/config/config.yaml` atomically from the template in the selected upstream `:dev` image.
+- Generate unique admin and guest passwords plus a unique JWT signing secret for new installations.
+- Merge newly added template defaults during upgrades without replacing existing user values or credentials.
+- Add cold-backup metadata, clean signal forwarding, child reaping, and rapid-restart protection.
+- Add repository validation, lifecycle/configuration tests, shell checks, Python linting, and Docker build CI for both channels.
+
 ## 2.0.11
 
 - Track upstream `DEV` commit `c2d6396` from `openhop/openhop-repeater:dev`
