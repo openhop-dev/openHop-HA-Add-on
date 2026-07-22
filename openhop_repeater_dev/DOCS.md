@@ -1,16 +1,16 @@
-# Home Assistant Add-on: openHop Repeater Main
+# Home Assistant Add-on: openHop Repeater Dev
 
 ## About
 
-This add-on wraps the upstream openHop Repeater `:main` container and keeps
+This add-on wraps the upstream openHop Repeater `:dev` container and keeps
 the openHop Repeater runtime configuration in the add-on config directory.
 
-This is the mainline-tracking add-on. It is pinned to the upstream `:main`
-image.
+This is the development-tracking add-on. It is intentionally pinned to the
+upstream `:dev` image, not a stable release image.
 
 Current upstream support in this add-on image follows the openHop Repeater
 project itself, including newer radio backends when they are present in the
-published `:main` image.
+published `:dev` image.
 
 The first time the add-on starts it will create:
 
@@ -25,12 +25,12 @@ from Home Assistant's main `/config` folder.
 ## Install
 
 1. Add this repository to Home Assistant.
-2. Install the `openHop Repeater Main` add-on.
+2. Install the `openHop Repeater Dev` add-on.
 3. If you are using local Pi GPIO or SPI hardware, disable `Protection mode`
    in the add-on settings before starting the add-on.
 4. Open your Home Assistant file editor, such as Studio Code Server.
 5. Edit the add-on config file `config.yaml` in the add-on's own config folder.
-   You are looking for a folder matching `addon_config/*_openhop_repeater_main`.
+   You are looking for a folder matching `addon_config/*_openhop_repeater_dev`.
 6. Start the add-on and open the web UI on port `8000`.
 
 ## Configuration
@@ -53,7 +53,7 @@ The bundled starter config is aimed at an SX1262 SPI radio. At minimum, review:
 - `sx1262.busy_pin`
 - `sx1262.irq_pin`
 
-Other radio backends supported by the upstream `:main` image should be
+Other radio backends supported by the upstream `:dev` image should be
 configured directly in `config.yaml` using the upstream schema.
 
 ## Raspberry Pi Host Setup
@@ -90,4 +90,4 @@ The upstream container exposes its web interface on port `8000`.
 ## Upstream Project
 
 - Upstream repo: <https://github.com/openhop-dev/openhop_repeater>
-- Container image used by this add-on: `openhop/openhop-repeater:main`
+- Container image used by this add-on: `openhop/openhop-repeater:dev`

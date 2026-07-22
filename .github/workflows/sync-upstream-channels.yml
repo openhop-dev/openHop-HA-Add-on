@@ -1,0 +1,159 @@
+name: Sync Upstream Channels
+
+on:
+  workflow_dispatch:
+    inputs:
+      channel:
+        description: "Channel to sync"
+        required: false
+        default: "all"
+      revision:
+        description: "Optional upstream revision override for the selected channel"
+        required: false
+        default: ""
+  repository_dispatch:
+    types:
+      - sync-upstream-channel
+
+permissions:
+  contents: write
+
+jobs:
+  sync-channel:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        state_file:
+          - .github/upstream-dev.json
+          - .github/upstream-main.json
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Read tracked channel state
+        id: tracked
+        env:
+          STATE_FILE: ${{ matrix.state_file }}
+        run: |
+          python - <<'PY'
+          import json
+          import os
+          from pathlib import Path
+
+          state = json.loads(Path(os.environ["STATE_FILE"]).read_text())
+          with open(os.environ["GITHUB_OUTPUT"], "a", encoding="utf-8") as out:
+              out.write(f"image={state['image']}\n")
+              out.write(f"revision={state['revision']}\n")
+              out.write(f"channel={state['channel']}\n")
+              out.write(f"addon_dir={state['addon_dir']}\n")
+          PY
+
+      - name: Resolve requested channel and revision
+        id: request
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          DISPATCH_CHANNEL: ${{ github.event.client_payload.channel }}
+          DISPATCH_REVISION: ${{ github.event.client_payload.revision }}
+          INPUT_CHANNEL: ${{ inputs.channel }}
+          INPUT_REVISION: ${{ inputs.revision }}
+          TRACKED_CHANNEL: ${{ steps.tracked.outputs.channel }}
+        run: |
+          requested_channel=""
+          requested_revision=""
+
+          if [ "${EVENT_NAME}" = "repository_dispatch" ]; then
+            requested_channel="${DISPATCH_CHANNEL}"
+            requested_revision="${DISPATCH_REVISION}"
+          elif [ "${EVENT_NAME}" = "workflow_dispatch" ]; then
+            requested_channel="${INPUT_CHANNEL}"
+            requested_revision="${INPUT_REVISION}"
+          fi
+
+          should_run="true"
+          if [ -n "${requested_channel}" ] && [ "${requested_channel}" != "all" ] && [ "${requested_channel}" != "${TRACKED_CHANNEL}" ]; then
+            should_run="false"
+          fi
+
+          {
+            echo "should_run=${should_run}"
+            echo "requested_revision=${requested_revision}"
+          } >> "$GITHUB_OUTPUT"
+
+      - name: Stop if this matrix entry was not requested
+        if: steps.request.outputs.should_run != 'true'
+        run: echo "Skipping ${{ steps.tracked.outputs.channel }}; event targeted a different channel."
+
+      - name: Use event-provided upstream revision
+        if: steps.request.outputs.should_run == 'true' && steps.request.outputs.requested_revision != ''
+        id: upstream_from_request
+        run: echo "revision=${{ steps.request.outputs.requested_revision }}" >> "$GITHUB_OUTPUT"
+
+      - name: Pull upstream image
+        if: steps.request.outputs.should_run == 'true' && steps.request.outputs.requested_revision == ''
+        id: imagepull
+        continue-on-error: true
+        run: docker pull "${{ steps.tracked.outputs.image }}"
+
+      - name: Stop if image tag does not exist yet
+        if: steps.request.outputs.should_run == 'true' && steps.request.outputs.requested_revision == '' && steps.imagepull.outcome != 'success'
+        run: echo "Image ${{ steps.tracked.outputs.image }} is not available yet; skipping."
+
+      - name: Read upstream image revision label
+        if: steps.request.outputs.should_run == 'true' && steps.request.outputs.requested_revision == '' && steps.imagepull.outcome == 'success'
+        id: upstream_from_image
+        run: |
+          revision="$(docker inspect '${{ steps.tracked.outputs.image }}' --format '{{ index .Config.Labels "org.opencontainers.image.revision" }}')"
+          echo "revision=${revision}" >> "$GITHUB_OUTPUT"
+
+      - name: Resolve effective upstream revision
+        if: steps.request.outputs.should_run == 'true'
+        id: upstream_revision
+        env:
+          REQUESTED_REVISION: ${{ steps.upstream_from_request.outputs.revision }}
+          IMAGE_REVISION: ${{ steps.upstream_from_image.outputs.revision }}
+        run: |
+          revision="${REQUESTED_REVISION}"
+          if [ -z "${revision}" ]; then
+            revision="${IMAGE_REVISION}"
+          fi
+          echo "revision=${revision}" >> "$GITHUB_OUTPUT"
+
+      - name: Stop if upstream revision is unchanged
+        if: steps.request.outputs.should_run == 'true' && steps.tracked.outputs.revision == steps.upstream_revision.outputs.revision
+        run: echo "Upstream revision unchanged; nothing to do."
+
+      - name: Fetch upstream compare data
+        if: steps.request.outputs.should_run == 'true' && steps.tracked.outputs.revision != steps.upstream_revision.outputs.revision
+        env:
+          OLD_REVISION: ${{ steps.tracked.outputs.revision }}
+          NEW_REVISION: ${{ steps.upstream_revision.outputs.revision }}
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          curl -fsSL \
+            -H "Authorization: Bearer ${GH_TOKEN}" \
+            -H "Accept: application/vnd.github+json" \
+            "https://api.github.com/repos/openhop-dev/openhop_repeater/compare/${OLD_REVISION}...${NEW_REVISION}" \
+            -o /tmp/openhop-repeater-compare-${{ steps.tracked.outputs.channel }}.json
+
+      - name: Update tracked upstream revision and changelog
+        if: steps.request.outputs.should_run == 'true' && steps.tracked.outputs.revision != steps.upstream_revision.outputs.revision
+        env:
+          STATE_FILE: ${{ matrix.state_file }}
+          NEW_REVISION: ${{ steps.upstream_revision.outputs.revision }}
+          COMPARE_JSON_PATH: /tmp/openhop-repeater-compare-${{ steps.tracked.outputs.channel }}.json
+        run: python scripts/sync_upstream_channel.py
+
+      - name: Commit and push changes
+        if: steps.request.outputs.should_run == 'true' && steps.tracked.outputs.revision != steps.upstream_revision.outputs.revision
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add ${{ matrix.state_file }} ${{ steps.tracked.outputs.addon_dir }}/config.yaml ${{ steps.tracked.outputs.addon_dir }}/CHANGELOG.md
+          git commit -m "Sync upstream openHop Repeater ${{ steps.tracked.outputs.channel }}"
+          git push

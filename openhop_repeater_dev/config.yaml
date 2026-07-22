@@ -1,7 +1,7 @@
-name: "openHop Repeater Main"
-version: "2.0.1"
-slug: "openhop_repeater_main"
-description: "Mainline-tracking openHop Repeater add-on for Home Assistant"
+name: "openHop Repeater Dev"
+version: "2.0.11"
+slug: "openhop_repeater_dev"
+description: "Development-tracking openHop Repeater add-on for Home Assistant"
 url: "https://github.com/openhop-dev/openhop_repeater"
 arch:
   - aarch64
@@ -26,6 +26,6 @@ apparmor: false
 full_access: true
 init: true
 options:
-  config_location_note: "addon_config/*_openhop_repeater_main/config.yaml"
+  config_location_note: "addon_config/*_openhop_repeater_dev/config.yaml"
 schema:
   config_location_note: str

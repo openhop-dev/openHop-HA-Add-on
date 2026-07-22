@@ -1,52 +1,70 @@
 # Changelog
 
-## 3.0.0
+## 2.0.1
 
-### Home Assistant integration
+- Track upstream `MAIN` commit `60357f5` from `openhop/openhop-repeater:main`
+- Previous tracked commit: `e17d113`
+- Upstream diff: https://github.com/openhop-dev/openhop_repeater/compare/e17d1137ab2d2d5b86d03c99523272289b7688aa...60357f580876ceab5b3808a7ed00f81ae235c003
+- Included upstream commits:
+  - `2d5353a` fix(companion): improve transmission handling in RepeaterHandler
+  - `e20eaa7` feat: add LAFVIN UPS Module 3S sensor plugin (lafvin_ups_3s)
+  - `ab55748` fix: prevent advert echos in the packet table
+  - `dc317b6` Merge pull request #261 from CarlsonCustoms/feat/lafvin-ups-3s-sensor
+  - `37ee0e8` Add more unit tests for handler helpers, identity manager, CLI, key generation, and main functionality
+  - `7b86716` Add unit tests for HTTP server, main daemon, service utilities, SQLite handler, and update endpoints
+  - `31edaa9` fix: update installation scripts to use the correct branch name
+  - `9da8317` docker: install rrdtool for runtime python
 
-- Store the editable repeater configuration in Home Assistant's writable
-  `addon_config` directory and include it in cold backups.
-- Exclude the generated Python environment from backups and rebuild it when the
-  app image, packaged runtime, dependencies, architecture, or Python ABI changes.
-- Add repository metadata validation, Python tests, ShellCheck, and app-version
-  consistency checks.
-- Keep full hardware and udev access for SPI/GPIO, USB, serial, and other local
-  radio transports.
+## 2.0.0
 
-### Configuration safety
+- Breaking rebrand to openHop Repeater add-on identifiers.
+- Rename the add-on folder, slug, Home Assistant config folder hint, runtime config path, persistent data path, and bundled example file to openHop names.
+- Remove automatic migration from legacy add-on config subfolders; copy any existing config and identity files into the new openHop add-on config folder before starting this version.
 
-- Ship the complete upstream configuration template from the packaged repeater
-  image instead of relying on a stale wrapper copy.
-- Create new configurations atomically with unique admin and guest passwords
-  and a JWT signing secret.
-- Merge newly packaged defaults into existing configurations without replacing
-  user values or existing passwords.
-- Validate merged YAML before publishing it, restrict configuration, backup,
-  and identity-key permissions, and use a private umask for new runtime files.
+## 1.0.7
 
-### Branch updates and recovery
+- Rebrand the add-on to openHop Repeater in Home Assistant metadata, docs, and bundled assets.
+- Update upstream repository links and sync automation to `openhop-dev/openhop_repeater`.
 
-- Support release-channel selection and branch installation from the openHop
-  Repeater web interface.
-- Persist the selected channel and verified branch metadata in `/data`.
-- Capture `direct_url.json` before upstream metadata cleanup runs, then verify
-  the actual imported package path before reporting a branch as active.
-- Guard the updater's venv `pip` entry point so it accepts only version checks
-  and branch installs targeting a validated Git ref in the official repository.
-- Preserve a protected copy of the packaged runtime and setup-wizard JSON files
-  outside the source tree removed by the upstream updater.
-- Detect broken or partially modified update environments, rebuild them cleanly,
-  and fall back to the protected packaged runtime after failed branch updates.
-- Restart the repeater inside the same container after a successful in-app
-  update while preventing rapid clean exits from becoming an infinite loop.
+## 1.0.6
 
-### Runtime lifecycle
+- Track upstream `MAIN` commit `e17d113` from `openhopdev/openhop-repeater:main`
+- Previous tracked commit: `a36cb6a`
+- Upstream diff: https://github.com/openhop-dev/openhop_repeater/compare/a36cb6af44ab63247dd6d0f414afc6e53de18012...e17d1137ab2d2d5b86d03c99523272289b7688aa
+- Included upstream commits:
+  - `18300cb` feat: add GPS diagnostics web UI
+  - `9cd2de9` chore: move GPS diagnostics UI to frontend repo
+  - `8ae1c0f` feat: sync system time from GPS
+  - `53f6e8a` fix: Remove old letsmesh_handler.py file
+  - `3a6da40` fix: Always parse additional brokers
+  - `b3fdfee` fix: Handle TLS for all MQTT connections
+  - `d4aecf7` fix: Stop warning spam if brokers are disabled
+  - `bdb98f3` fix(docs): Updated example config with TLS information
 
-- Install signal handling before startup work begins, preserve stop state
-  across internal `exec` restarts, and honor it throughout the lifecycle.
-- Forward termination to the repeater, wait for it to exit, and force-stop it
-  after a bounded grace period so no orphan process survives the app wrapper.
-- Keep `/var/lib/openhop_repeater` and the updater's hard-coded venv path linked
-  to persistent Home Assistant app data.
-- Remove the base image's package-specific setuptools-scm override from runtime
-  branch builds and provide system `pip` for upstream updater cleanup commands.
+## 1.0.5
+
+- Add user-local Python site-packages directories to `PYTHONPATH` before startup
+
+## 1.0.4
+
+- Make startup config inspection resilient when the inline Python YAML import fails
+
+## 1.0.3
+
+- Handle rootless upstream image builds in the add-on Dockerfiles
+- Run the add-on wrapper as root so startup can manage `/etc/openhop_repeater`
+
+## 1.0.2
+
+- Handle rootless upstream image builds in the add-on Dockerfiles
+- Run the add-on wrapper as root so startup can manage `/etc/openhop_repeater`
+
+## 1.0.1
+
+- Enable host networking so companion nodes can bind dynamic host ports
+
+## 1.0.0
+
+- Initial release of the Home Assistant add-on repository
+- Add separate `dev` and `main` channel add-ons with aligned behavior
+- Prepare `openhop_repeater_main` to track upstream `openhopdev/openhop-repeater:main`
