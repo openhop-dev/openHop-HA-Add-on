@@ -1,5 +1,5 @@
 name: "openHop Repeater Main"
-version: "2.0.1"
+version: "2.1.0"
 slug: "openhop_repeater_main"
 description: "Mainline-tracking openHop Repeater add-on for Home Assistant"
 url: "https://github.com/openhop-dev/openhop_repeater"
@@ -25,6 +25,7 @@ map:
 apparmor: false
 full_access: true
 init: true
+backup: cold
 options:
   config_location_note: "addon_config/*_openhop_repeater_main/config.yaml"
 schema:
