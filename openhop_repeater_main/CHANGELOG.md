@@ -8,6 +8,7 @@
 - Add cold-backup metadata, clean signal forwarding, child reaping, and rapid-restart protection.
 - Add repository validation, lifecycle/configuration tests, shell checks, Python linting, and Docker build CI for both channels.
 - Redesign the repository and channel READMEs with installation guidance, security notes, related projects, and verified `aarch64`/`amd64` architecture badges.
+- Remove the experimental-stage label from the Home Assistant App Store listing.
 
 ## 2.0.1
 
