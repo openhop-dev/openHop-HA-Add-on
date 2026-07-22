@@ -8,7 +8,6 @@ arch:
   - amd64
 startup: application
 boot: auto
-stage: experimental
 host_network: true
 webui: "http://[HOST]:[PORT:8000]/"
 ports:
