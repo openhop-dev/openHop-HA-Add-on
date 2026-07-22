@@ -7,6 +7,7 @@
 - Merge newly added template defaults during upgrades without replacing existing user values or credentials.
 - Add cold-backup metadata, clean signal forwarding, child reaping, and rapid-restart protection.
 - Add repository validation, lifecycle/configuration tests, shell checks, Python linting, and Docker build CI for both channels.
+- Redesign the repository and channel READMEs with installation guidance, security notes, related projects, and verified `aarch64`/`amd64` architecture badges.
 
 ## 2.0.1
 
