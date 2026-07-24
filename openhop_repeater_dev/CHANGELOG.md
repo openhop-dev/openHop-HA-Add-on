@@ -1,5 +1,14 @@
 # Changelog
 
+## 2.0.13
+
+- Track upstream `DEV` commit `3d03864` from `openhop/openhop-repeater:dev`
+- Previous tracked commit: `b1ea257`
+- Upstream diff: https://github.com/openhop-dev/openhop_repeater/compare/b1ea25727cbe086e422d8671cf77032597ce2621...3d03864f9847c27b7c61df5ba11dfa4948a1b9c1
+- Included upstream commits:
+  - `3d89174` fix(repeater): report all boot-time config errors without a stack trace
+  - `3d03864` Merge pull request #371 from agessaman/fix/more-things
+
 ## 2.0.12
 
 - Track upstream `DEV` commit `b1ea257` from `openhop/openhop-repeater:dev`
