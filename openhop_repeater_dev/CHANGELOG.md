@@ -1,5 +1,16 @@
 # Changelog
 
+## 2.0.12
+
+- Track upstream `DEV` commit `b1ea257` from `openhop/openhop-repeater:dev`
+- Previous tracked commit: `c2d6396`
+- Upstream diff: https://github.com/openhop-dev/openhop_repeater/compare/c2d63968bb79af37a8407f0632194ac361d2a92d...b1ea25727cbe086e422d8671cf77032597ce2621
+- Included upstream commits:
+  - `72e874f` fix(regions): scope flood replies to the request's region
+  - `95555e0` fix(repeater): relax identity prefix guard to same-namespace collisions
+  - `6e5d029` fix(repeater): report identity config errors without a stack trace
+  - `b1ea257` Merge pull request #370 from agessaman/fix/more-things
+
 ## 2.0.11
 
 - Track upstream `DEV` commit `c2d6396` from `openhop/openhop-repeater:dev`
