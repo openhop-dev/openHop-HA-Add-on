@@ -1,5 +1,14 @@
 # Changelog
 
+## 2.0.14
+
+- Track upstream `DEV` commit `ebf05db` from `openhop/openhop-repeater:dev`
+- Previous tracked commit: `3d03864`
+- Upstream diff: https://github.com/openhop-dev/openhop_repeater/compare/3d03864f9847c27b7c61df5ba11dfa4948a1b9c1...ebf05db44b9506eda3244b5b824b8dba8603c034
+- Included upstream commits:
+  - `a321fce` fix(web): normalize request handling
+  - `ebf05db` Merge pull request #372 from yellowcooln/fix/web-request-handling
+
 ## 2.0.13
 
 - Track upstream `DEV` commit `3d03864` from `openhop/openhop-repeater:dev`
