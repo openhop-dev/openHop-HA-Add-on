@@ -1,5 +1,14 @@
 # Changelog
 
+## 2.0.17
+
+- Track upstream `DEV` commit `e657e61` from `openhop/openhop-repeater:dev`
+- Previous tracked commit: `aae40fd`
+- Upstream diff: https://github.com/openhop-dev/openhop_repeater/compare/aae40fd1e13afb374da36088cf4a0ecccbdb91c0...e657e61d7c32454dcd40ea36c83680a2f7298cff
+- Included upstream commits:
+  - `d796833` fix: data encoding in protocol_request.py
+  - `e657e61` fix: NF calcs in ui
+
 ## 2.0.16
 
 - Track upstream `DEV` commit `aae40fd` from `openhop/openhop-repeater:dev`
