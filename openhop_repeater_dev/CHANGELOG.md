@@ -1,5 +1,15 @@
 # Changelog
 
+## 2.0.15
+
+- Track upstream `DEV` commit `0c9980b` from `openhop/openhop-repeater:dev`
+- Previous tracked commit: `ebf05db`
+- Upstream diff: https://github.com/openhop-dev/openhop_repeater/compare/ebf05db44b9506eda3244b5b824b8dba8603c034...0c9980badf31bf538b16b6b313ae87c5787be779
+- Included upstream commits:
+  - `05dae76` fix(repeater): feed each bridge every pre-dedup flood copy
+  - `8310ccd` fix(repeater): make SIGTERM actually shut the daemon down
+  - `0c9980b` Merge pull request #376 from agessaman/fix/more-things
+
 ## 2.0.14
 
 - Track upstream `DEV` commit `ebf05db` from `openhop/openhop-repeater:dev`
