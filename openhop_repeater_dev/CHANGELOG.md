@@ -1,5 +1,16 @@
 # Changelog
 
+## 2.0.16
+
+- Track upstream `DEV` commit `aae40fd` from `openhop/openhop-repeater:dev`
+- Previous tracked commit: `0c9980b`
+- Upstream diff: https://github.com/openhop-dev/openhop_repeater/compare/0c9980badf31bf538b16b6b313ae87c5787be779...aae40fd1e13afb374da36088cf4a0ecccbdb91c0
+- Included upstream commits:
+  - `6cb3166` enable battery percentage on repeater stats page
+  - `30fe28f` added current and power to telemetry page.
+  - `b955f1d` added current and power to telemetry page
+  - `aae40fd` Merge pull request #375 from lbibass/ina219-telemetry-fix
+
 ## 2.0.15
 
 - Track upstream `DEV` commit `0c9980b` from `openhop/openhop-repeater:dev`
