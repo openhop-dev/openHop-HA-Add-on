@@ -1,5 +1,14 @@
 # Changelog
 
+## 2.0.18
+
+- Track upstream `DEV` commit `88dd2a8` from `openhop/openhop-repeater:dev`
+- Previous tracked commit: `e657e61`
+- Upstream diff: https://github.com/openhop-dev/openhop_repeater/compare/e657e61d7c32454dcd40ea36c83680a2f7298cff...88dd2a85d8093eb5de32db66b645142d885dc828
+- Included upstream commits:
+  - `e8385da` fix(repeater): implement origin exclusion for injected packets
+  - `88dd2a8` Merge pull request #377 from agessaman/feat/origin-exclusion
+
 ## 2.0.17
 
 - Track upstream `DEV` commit `e657e61` from `openhop/openhop-repeater:dev`
