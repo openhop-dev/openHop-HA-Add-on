@@ -1,5 +1,14 @@
 # Changelog
 
+## 2.0.19
+
+- Track upstream `DEV` commit `13421d6` from `openhop/openhop-repeater:dev`
+- Previous tracked commit: `88dd2a8`
+- Upstream diff: https://github.com/openhop-dev/openhop_repeater/compare/88dd2a85d8093eb5de32db66b645142d885dc828...13421d605778cdf6cd92eeae09fae3ced7174b1d
+- Included upstream commits:
+  - `2467357` fix: update get_noise_floor_history to include offset parameter
+  - `13421d6` fix: add toggle to drop reasons in RF charts
+
 ## 2.0.18
 
 - Track upstream `DEV` commit `88dd2a8` from `openhop/openhop-repeater:dev`
