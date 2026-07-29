@@ -1,5 +1,13 @@
 # Changelog
 
+## 2.0.20
+
+- Track upstream `DEV` commit `34d020a` from `openhop/openhop-repeater:dev`
+- Previous tracked commit: `13421d6`
+- Upstream diff: https://github.com/openhop-dev/openhop_repeater/compare/13421d605778cdf6cd92eeae09fae3ced7174b1d...34d020a7b80ee9dc4a487e82f27df255f8c30507
+- Included upstream commits:
+  - `34d020a` feat: add more logging/checks to manage.sh
+
 ## 2.0.19
 
 - Track upstream `DEV` commit `13421d6` from `openhop/openhop-repeater:dev`
