@@ -1,5 +1,20 @@
 # Changelog
 
+## 2.0.21
+
+- Track upstream `DEV` commit `2f39e52` from `openhop/openhop-repeater:dev`
+- Previous tracked commit: `34d020a`
+- Upstream diff: https://github.com/openhop-dev/openhop_repeater/compare/34d020a7b80ee9dc4a487e82f27df255f8c30507...2f39e52f4372562ae3850821f130fb23b75f71f4
+- Included upstream commits:
+  - `eaf28e2` feat(mqtt): periodic neighbours publication with serialized scope discovery
+  - `48919c4` fix(mqtt): address adversarial review of the neighbours feature
+  - `2aafeda` fix(discovery): persist discover.neighbors results with the storage actually wired in
+  - `4fa2589` feat(mqtt): neighbours trigger endpoint, payload counters, persistent schedule
+  - `7f79b67` chore(web): rebuild bundled UI assets
+  - `9c41747` feat(neighbors): persist neighbour scopes and expose them over the API
+  - `4585094` chore(web): rebuild bundled UI assets
+  - `2b8be8c` feat(api): enhance neighbor scopes API with served scopes
+
 ## 2.0.20
 
 - Track upstream `DEV` commit `34d020a` from `openhop/openhop-repeater:dev`
