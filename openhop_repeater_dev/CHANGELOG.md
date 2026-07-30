@@ -1,5 +1,14 @@
 # Changelog
 
+## 2.0.22
+
+- Track upstream `DEV` commit `73d685e` from `openhop/openhop-repeater:dev`
+- Previous tracked commit: `2f39e52`
+- Upstream diff: https://github.com/openhop-dev/openhop_repeater/compare/2f39e52f4372562ae3850821f130fb23b75f71f4...73d685ea4bd2172f812c6e749cc55e0130c85d75
+- Included upstream commits:
+  - `e1b480d` feat(mqtt): enable neighbors configuration in meshat-se preset
+  - `73d685e` Merge pull request #380 from agessaman/feat/neighbors-defaults
+
 ## 2.0.21
 
 - Track upstream `DEV` commit `2f39e52` from `openhop/openhop-repeater:dev`
