@@ -1,5 +1,13 @@
 # Changelog
 
+## 2.0.24
+
+- Track upstream `DEV` commit `420f8e2` from `openhop/openhop-repeater:dev`
+- Previous tracked commit: `2c66e9c`
+- Upstream diff: https://github.com/openhop-dev/openhop_repeater/compare/2c66e9c51e6fd422b3844088e3e27f421d0f1c0c...420f8e2230f48b7e98953aa68192d39f72939431
+- Included upstream commits:
+  - `420f8e2` feat(manage): update package installation to use python3-pip and install setuptools_scm in venv
+
 ## 2.0.23
 
 - Track upstream `DEV` commit `2c66e9c` from `openhop/openhop-repeater:dev`
