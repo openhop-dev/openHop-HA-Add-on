@@ -1,5 +1,14 @@
 # Changelog
 
+## 2.0.23
+
+- Track upstream `DEV` commit `2c66e9c` from `openhop/openhop-repeater:dev`
+- Previous tracked commit: `73d685e`
+- Upstream diff: https://github.com/openhop-dev/openhop_repeater/compare/73d685ea4bd2172f812c6e749cc55e0130c85d75...2c66e9c51e6fd422b3844088e3e27f421d0f1c0c
+- Included upstream commits:
+  - `f6bba07` fix: enable DIO3 TCXO and DIO2 RF switch for MeshAdv Mini preset
+  - `2c66e9c` Merge pull request #369 from d3c3p710n/fix/meshadv-mini-dio-flags
+
 ## 2.0.22
 
 - Track upstream `DEV` commit `73d685e` from `openhop/openhop-repeater:dev`
