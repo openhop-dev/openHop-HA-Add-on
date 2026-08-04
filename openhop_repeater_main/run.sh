@@ -29,7 +29,9 @@ for integer_value in "${STABLE_SECONDS}" "${MAX_RAPID_RESTARTS}" "${STOP_TIMEOUT
     esac
 done
 
-[ -n "${PYTHON}" ] && [ -x "${PYTHON}" ] || fatal "python3 is unavailable"
+if [ -z "${PYTHON}" ] || [ ! -x "${PYTHON}" ]; then
+    fatal "python3 is unavailable"
+fi
 [ -r "${TEMPLATE_CONFIG_FILE}" ] || fatal "packaged configuration template is missing"
 [ -r "${CONFIG_HELPER}" ] || fatal "configuration bootstrap helper is missing"
 
