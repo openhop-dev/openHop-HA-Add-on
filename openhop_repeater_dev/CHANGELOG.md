@@ -2,12 +2,23 @@
 
 ## 2.1.0
 
-- Create `/config/config.yaml` atomically from the template in the selected upstream `:dev` image.
+### Upgrade notes
+
+- Existing installations keep the same add-on slug, `/config` location, and persistent data path. Take a Home Assistant backup before upgrading as a normal precaution.
+- Valid existing configuration values, custom keys, and non-empty credentials are preserved while newly introduced defaults from the upstream `:dev` template are added.
+- When new defaults must be merged, `config.yaml` is rewritten as normalized YAML. Values are preserved, but comments, blank lines, anchors, quoting, and custom formatting are not.
+- An empty `repeater.security.jwt_secret` is replaced with a unique signing secret. Existing browser or JWT sessions may require signing in again.
+- Existing admin and guest passwords are not changed. Installations still using `admin123` or `guest123` should replace them in `config.yaml`.
+- Invalid YAML is never overwritten. The add-on stops with a clear error so the existing file can be corrected.
+- `config.yaml` is secured as `0600`; Home Assistant Studio Code Server can continue editing it through `/addon_configs`.
+
+### Changes
+
+- Create new configurations atomically from the template included in the selected upstream `:dev` image.
 - Generate unique admin and guest passwords plus a unique JWT signing secret for new installations.
-- Merge newly added template defaults during upgrades without replacing existing user values or credentials.
 - Add cold-backup metadata, clean signal forwarding, child reaping, and rapid-restart protection.
-- Add repository validation, lifecycle/configuration tests, shell checks, Python linting, and Docker build CI for both channels.
-- Redesign the repository and channel READMEs with installation guidance, security notes, related projects, and verified `aarch64`/`amd64` architecture badges.
+- Add repository validation, lifecycle and configuration tests, shell checks, Python linting, and Docker build CI for both channels.
+- Redesign the repository and channel READMEs with installation guidance, security notes, related projects, and verified `aarch64` and `amd64` architecture badges.
 - Remove the experimental-stage label from the Home Assistant App Store listing.
 
 ## 2.0.24
