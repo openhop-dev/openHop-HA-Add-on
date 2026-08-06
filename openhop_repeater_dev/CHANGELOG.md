@@ -1,5 +1,13 @@
 # Changelog
 
+## 2.1.1
+
+- Track upstream `DEV` commit `d57baab` from `openhop/openhop-repeater:dev`
+- Previous tracked commit: `420f8e2`
+- Upstream diff: https://github.com/openhop-dev/openhop_repeater/compare/420f8e2230f48b7e98953aa68192d39f72939431...d57baabf2e5069a2461b290a6586a3f57cafb20f
+- Included upstream commits:
+  - `d57baab` bug: fix ui Neigbours/map and filters.
+
 ## 2.1.0
 
 ### Upgrade notes
