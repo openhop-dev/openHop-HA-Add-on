@@ -1,5 +1,20 @@
 # Changelog
 
+## 2.1.2
+
+- Track upstream `DEV` commit `6028dcd` from `openhop/openhop-repeater:dev`
+- Previous tracked commit: `d57baab`
+- Upstream diff: https://github.com/openhop-dev/openhop_repeater/compare/d57baabf2e5069a2461b290a6586a3f57cafb20f...6028dcdc336da3ce48ce13f6ff16a3b871a4bf71
+- Included upstream commits:
+  - `43c1b34` fix: assign one telemetry channel per sensor reading
+  - `5b5f2a0` docs: point Repeater guidance to central site
+  - `4c2a3af` feat: add multi-radio stack support and related tests
+  - `22acdff` feat(sensors): add BME280 temperature/humidity/pressure plug-in
+  - `258c256` feat(telemetry): emit barometric pressure in environment telemetry
+  - `6d3218d` Merge branch 'pr-389' into intergration
+  - `51e16ef` Merge branch 'pr-387' into intergration
+  - `fd2c610` Merge branch 'pr-386' into intergration
+
 ## 2.1.1
 
 - Track upstream `DEV` commit `d57baab` from `openhop/openhop-repeater:dev`
