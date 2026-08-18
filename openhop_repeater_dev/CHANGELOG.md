@@ -1,5 +1,20 @@
 # Changelog
 
+## 2.1.3
+
+- Track upstream `DEV` commit `c7157d2` from `openhop/openhop-repeater:dev`
+- Previous tracked commit: `6028dcd`
+- Upstream diff: https://github.com/openhop-dev/openhop_repeater/compare/6028dcdc336da3ce48ce13f6ff16a3b871a4bf71...c7157d280b7f53338b3de8f0592125028866fe5b
+- Included upstream commits:
+  - `823f604` Flag serial ports whose path Docker cannot map in the port picker
+  - `fd4e364` Install the USB modem udev rule and document the Docker device path limitation
+  - `1de4aa2` feat(presets): add chimesh broker preset for ChicagolandMesh.org
+  - `0fc2c69` enable neighbors
+  - `2f6dcf3` feat(advert): add direct advert interval configuration and scheduling
+  - `6e5c2d3` feat(advert): enhance advert sending with mode selection and routing options
+  - `9c1b3b4` fix(update): never install a fabricated version
+  - `f75200d` Merge branch 'pr-393' into dev
+
 ## 2.1.2
 
 - Track upstream `DEV` commit `6028dcd` from `openhop/openhop-repeater:dev`
