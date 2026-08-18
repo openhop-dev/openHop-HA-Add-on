@@ -1,5 +1,15 @@
 # Changelog
 
+## 2.1.4
+
+- Track upstream `DEV` commit `653733a` from `openhop/openhop-repeater:dev`
+- Previous tracked commit: `c7157d2`
+- Upstream diff: https://github.com/openhop-dev/openhop_repeater/compare/c7157d280b7f53338b3de8f0592125028866fe5b...653733a8b5f5cd96635cd69ca98010ec0dbf2ea4
+- Included upstream commits:
+  - `1035666` feat(config): add direct_advert_interval_hours to repeater configuration stats
+  - `4633520` fix: add missing stats item for direct adverts + extra filters to archive packets screen.
+  - `653733a` feat(mqtt): add support for custom base topic in MQTT configuration UI
+
 ## 2.1.3
 
 - Track upstream `DEV` commit `c7157d2` from `openhop/openhop-repeater:dev`
