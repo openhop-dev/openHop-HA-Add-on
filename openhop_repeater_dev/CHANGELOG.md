@@ -1,5 +1,17 @@
 # Changelog
 
+## 2.1.5
+
+- Track upstream `DEV` commit `2a55dd6` from `openhop/openhop-repeater:dev`
+- Previous tracked commit: `653733a`
+- Upstream diff: https://github.com/openhop-dev/openhop_repeater/compare/653733a8b5f5cd96635cd69ca98010ec0dbf2ea4...2a55dd60347429a37ac7b1946839e2e365df5972
+- Included upstream commits:
+  - `9708cbe` ci: publish versioned Docker image tags
+  - `2d04085` ci: use upstream tags for fork image versions
+  - `05db509` refactor: rename bundled openHop Console build settings
+  - `bd6b452` ci: constrain automatic Docker channel builds
+  - `2a55dd6` Merge pull request #396 from yellowcooln/ci/versioned-docker-tags
+
 ## 2.1.4
 
 - Track upstream `DEV` commit `653733a` from `openhop/openhop-repeater:dev`
