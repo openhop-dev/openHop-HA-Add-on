@@ -1,5 +1,20 @@
 # Changelog
 
+## 2.1.8
+
+- Track upstream `DEV` commit `539f9d4` from `openhop/openhop-repeater:dev`
+- Previous tracked commit: `b4b2619`
+- Upstream diff: https://github.com/openhop-dev/openhop_repeater/compare/b4b261980af5b71bef942b35d0bbb22912e34111...539f9d4454aa0cec7dda389a5eec3f9a276c28cf
+- Included upstream commits:
+  - `9511a84` feat: migrate openHop modem transport names
+  - `76e9a9c` feat: migrate openHop modem sensor
+  - `301ba2c` fix: read canonical modem token status
+  - `4ec79ed` fix: centralize config redaction marker
+  - `8008f09` feat(ws): carry the sidebar vitals in the stats broadcast, decimate the 24h aggregate
+  - `8acba83` fix(rooms): advertise settings.node_name from the CLI path too
+  - `7bd0c77` Merge branch 'pr-403' into dev
+  - `047a687` Merge branch 'pr-408' into dev
+
 ## 2.1.7
 
 - Track upstream `DEV` commit `b4b2619` from `openhop/openhop-repeater:dev`
