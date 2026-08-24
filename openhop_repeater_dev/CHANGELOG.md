@@ -1,5 +1,17 @@
 # Changelog
 
+## 2.1.6
+
+- Track upstream `DEV` commit `5c318e0` from `openhop/openhop-repeater:dev`
+- Previous tracked commit: `2a55dd6`
+- Upstream diff: https://github.com/openhop-dev/openhop_repeater/compare/2a55dd60347429a37ac7b1946839e2e365df5972...5c318e0d7fac4cb1804bcb0cd7f4935d3ba89ea4
+- Included upstream commits:
+  - `3023eac` fix(acl): align ACL role numbering with upstream MeshCore
+  - `437a7ee` fix(api): declare read_write in the ACL client permissions enum
+  - `7a2fb9b` fix(acl): fail closed when openhop_core is too old for the role numbering
+  - `f91d2e9` test(acl): drive the wire tests from core's conformance vectors
+  - `5c318e0` Merge pull request #404 from agessaman/fix/login-perms
+
 ## 2.1.5
 
 - Track upstream `DEV` commit `2a55dd6` from `openhop/openhop-repeater:dev`
