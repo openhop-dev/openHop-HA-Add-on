@@ -1,5 +1,13 @@
 # Changelog
 
+## 2.1.7
+
+- Track upstream `DEV` commit `b4b2619` from `openhop/openhop-repeater:dev`
+- Previous tracked commit: `5c318e0`
+- Upstream diff: https://github.com/openhop-dev/openhop_repeater/compare/5c318e0d7fac4cb1804bcb0cd7f4935d3ba89ea4...b4b261980af5b71bef942b35d0bbb22912e34111
+- Included upstream commits:
+  - `b4b2619` feat(manage): add cleanup for broken distribution metadata and service diagnostics
+
 ## 2.1.6
 
 - Track upstream `DEV` commit `5c318e0` from `openhop/openhop-repeater:dev`
