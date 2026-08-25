@@ -1,5 +1,13 @@
 # Changelog
 
+## 2.1.9
+
+- Track upstream `DEV` commit `a6a75f8` from `openhop/openhop-repeater:dev`
+- Previous tracked commit: `539f9d4`
+- Upstream diff: https://github.com/openhop-dev/openhop_repeater/compare/539f9d4454aa0cec7dda389a5eec3f9a276c28cf...a6a75f84ef611ed6ac805f97561b7b61b1df0262
+- Included upstream commits:
+  - `a6a75f8` fix: bump default value for max_clients
+
 ## 2.1.8
 
 - Track upstream `DEV` commit `539f9d4` from `openhop/openhop-repeater:dev`
