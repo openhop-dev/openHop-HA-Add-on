@@ -1,5 +1,17 @@
 # Changelog
 
+## 2.1.10
+
+- Track upstream `DEV` commit `e28be27` from `openhop/openhop-repeater:dev`
+- Previous tracked commit: `a6a75f8`
+- Upstream diff: https://github.com/openhop-dev/openhop_repeater/compare/a6a75f84ef611ed6ac805f97561b7b61b1df0262...e28be27a7795b410cc92f1189c68eeef9111b9e8
+- Included upstream commits:
+  - `a725dfb` fix(api): persist the mode selected through set_mode
+  - `af3d128` docs: add CARTO basemap key example
+  - `3b974f3` Merge branch 'pr-415' into dev
+  - `8bc2cd6` fix: update map UI
+  - `e28be27` Merge branch 'pr-402' into dev
+
 ## 2.1.9
 
 - Track upstream `DEV` commit `a6a75f8` from `openhop/openhop-repeater:dev`
