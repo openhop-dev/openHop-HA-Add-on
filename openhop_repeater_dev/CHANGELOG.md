@@ -1,5 +1,20 @@
 # Changelog
 
+## 2.1.11
+
+- Track upstream `DEV` commit `a0d75b6` from `openhop/openhop-repeater:dev`
+- Previous tracked commit: `e28be27`
+- Upstream diff: https://github.com/openhop-dev/openhop_repeater/compare/e28be27a7795b410cc92f1189c68eeef9111b9e8...a0d75b67398a98f85fc243d0248f4a379aca2d23
+- Included upstream commits:
+  - `0431dfe` feat: modernize Proxmox LXC installer
+  - `4e8be75` fix: harden Proxmox installer inputs
+  - `4031512` test: allow installer runs from fork branches
+  - `4fadb3b` fix: match LXC template to host architecture
+  - `7fce3b0` feat: add VLAN option and valid default password
+  - `7664eb0` feat: confirm updates and manage Console checkout
+  - `41205b4` feat: skip USB passthrough unless CH341 selected
+  - `a92ec8c` feat: always enable USB passthrough, keep udev rule opt-in
+
 ## 2.1.10
 
 - Track upstream `DEV` commit `e28be27` from `openhop/openhop-repeater:dev`
