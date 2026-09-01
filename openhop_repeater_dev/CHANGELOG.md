@@ -1,5 +1,18 @@
 # Changelog
 
+## 2.1.12
+
+- Track upstream `DEV` commit `ca3d4ec` from `openhop/openhop-repeater:dev`
+- Previous tracked commit: `a0d75b6`
+- Upstream diff: https://github.com/openhop-dev/openhop_repeater/compare/a0d75b67398a98f85fc243d0248f4a379aca2d23...ca3d4ecb8f9fc29faea7f970e7c71fed039fa9a7
+- Included upstream commits:
+  - `035ba2f` bus current power sensor payload
+  - `40a4e4f` fix(sensors): normalize modem power telemetry
+  - `0d28072` merge: sync modem power telemetry PR with dev
+  - `50921e1` refactor(sensors): remove legacy Station G3 fallback
+  - `5c4615d` Merge branch 'pr-422' into dev
+  - `ca3d4ec` fix(docs): update references from pyMC to openHop in README
+
 ## 2.1.11
 
 - Track upstream `DEV` commit `a0d75b6` from `openhop/openhop-repeater:dev`
