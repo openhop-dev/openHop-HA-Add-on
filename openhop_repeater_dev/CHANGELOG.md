@@ -1,5 +1,17 @@
 # Changelog
 
+## 2.1.13
+
+- Track upstream `DEV` commit `efc5616` from `openhop/openhop-repeater:dev`
+- Previous tracked commit: `ca3d4ec`
+- Upstream diff: https://github.com/openhop-dev/openhop_repeater/compare/ca3d4ecb8f9fc29faea7f970e7c71fed039fa9a7...efc5616ec4f0bf15c951e9babcf7c6054dc48927
+- Included upstream commits:
+  - `0a2eeea` fix(companion): report real battery voltage in core stats
+  - `a3f8ec1` fix(companion): report battery and storage to companion clients
+  - `e2ea8b0` fix(companion): reject non-finite battery values
+  - `991cf8c` fix(companion): resolve storage paths consistently
+  - `efc5616` Merge pull request #421 from Wild-Nisse/fix/companion-battery-mv
+
 ## 2.1.12
 
 - Track upstream `DEV` commit `ca3d4ec` from `openhop/openhop-repeater:dev`
