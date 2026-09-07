@@ -1,5 +1,20 @@
 # Changelog
 
+## 2.1.17
+
+- Track upstream `DEV` commit `726cbf9` from `openhop/openhop-repeater:dev`
+- Previous tracked commit: `b65e541`
+- Upstream diff: https://github.com/openhop-dev/openhop_repeater/compare/b65e54196b8fa1a7f3fc54a02e4bfc1d939e0408...726cbf99b92d7601458fb3034aef685be8fcbca7
+- Included upstream commits:
+  - `3afec59` feat: implement plugin manager service bootstrap and add tests
+  - `b1c9b6f` fix: enhance plugin manager service bootstrap to support sudo execution
+  - `cc7a1c4` fix: add notes on how to fix the issue.
+  - `ab2e79d` add further ins to update process.
+  - `63ce5b4` fix: include public key in API response for configured room servers
+  - `0b98d2b` add qr code to FE
+  - `2eaf380` fix: add nosec comments for subprocess.run calls in service_utils.py
+  - `726cbf9` Merge pull request #448 from openhop-dev/fix-post-upgrade
+
 ## 2.1.16
 
 - Fix unavailable plugin management and catalogue access by starting the packaged Repeater/plugin-manager supervisor.
