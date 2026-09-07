@@ -1,5 +1,19 @@
 # Changelog
 
+## 2.1.20
+
+- Track upstream `DEV` commit `6ca305f` from `openhop/openhop-repeater:dev`
+- Previous tracked commit: `aeb7492`
+- Upstream diff: https://github.com/openhop-dev/openhop_repeater/compare/aeb749218f15a2b627ce53a07a1c5bb492bc7587...6ca305fa6acd26a83117d4e668c06f5d4f946e7d
+- Included upstream commits:
+  - `369c614` fix(text): gate the CLI on the text type, not the text
+  - `e6d1a43` fix(room): a guest may read the room, not post to it
+  - `0d50f5f` fix(text): dispatch on the text type and guard replays
+  - `1e61b39` fix(text): withhold the ACK for anything a server would refuse
+  - `2cf65ab` fix(room): end a pushed post's text at an embedded NUL
+  - `0cecb17` fix(engine): wait out a radio-link outage instead of spending the retry on it
+  - `6ca305f` fix(region-map): resolve mesh.default_region onto the dispatcher default scope
+
 ## 2.1.19
 
 - Track upstream `DEV` commit `aeb7492` from `openhop/openhop-repeater:dev`
