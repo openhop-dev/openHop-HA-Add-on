@@ -1,5 +1,14 @@
 # Changelog
 
+## 2.1.18
+
+- Track upstream `DEV` commit `a2f883f` from `openhop/openhop-repeater:dev`
+- Previous tracked commit: `726cbf9`
+- Upstream diff: https://github.com/openhop-dev/openhop_repeater/compare/726cbf99b92d7601458fb3034aef685be8fcbca7...a2f883fd7d3b16b8cf7533d18e759d029f7a173a
+- Included upstream commits:
+  - `3efcd37` ci: reformat two files ruff 0.15.14 would rewrite
+  - `a2f883f` Merge pull request #452 from agessaman/ci/ruff-format-dev
+
 ## 2.1.17
 
 - Track upstream `DEV` commit `726cbf9` from `openhop/openhop-repeater:dev`
