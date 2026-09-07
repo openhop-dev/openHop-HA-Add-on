@@ -1,5 +1,13 @@
 # Changelog
 
+## 2.1.21
+
+- Track upstream `DEV` commit `5409029` from `openhop/openhop-repeater:dev`
+- Previous tracked commit: `6ca305f`
+- Upstream diff: https://github.com/openhop-dev/openhop_repeater/compare/6ca305fa6acd26a83117d4e668c06f5d4f946e7d...5409029a30a40cbbcf71f9b43e55edc59afb3e25
+- Included upstream commits:
+  - `5409029` fix: fix plugin padding and add toast alert for new updates.
+
 ## 2.1.20
 
 - Track upstream `DEV` commit `6ca305f` from `openhop/openhop-repeater:dev`
