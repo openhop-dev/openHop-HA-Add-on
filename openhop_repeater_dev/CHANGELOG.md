@@ -1,5 +1,18 @@
 # Changelog
 
+## 2.1.19
+
+- Track upstream `DEV` commit `aeb7492` from `openhop/openhop-repeater:dev`
+- Previous tracked commit: `a2f883f`
+- Upstream diff: https://github.com/openhop-dev/openhop_repeater/compare/a2f883fd7d3b16b8cf7533d18e759d029f7a173a...aeb749218f15a2b627ce53a07a1c5bb492bc7587
+- Included upstream commits:
+  - `b9c73de` feat: enhance plugin web path resolution and normalization in API endpoints and HTTP server
+  - `89d8a98` perf(web): send the frontend compressed and cacheable
+  - `4d8f8d4` feat(plugins): stream an install or update's progress over server-sent events
+  - `0a4c31c` fix(manager): Add SSE to UI
+  - `b526343` feat(api): summarise neighbor link history in buckets
+  - `aeb7492` fix: dash packet order summary as aggregate details
+
 ## 2.1.18
 
 - Track upstream `DEV` commit `a2f883f` from `openhop/openhop-repeater:dev`
