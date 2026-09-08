@@ -1,5 +1,16 @@
 # Changelog
 
+## 2.1.5
+
+- Track upstream `MAIN` commit `13eb8b2` from `openhop/openhop-repeater:main`
+- Previous tracked commit: `3a291a1`
+- Upstream diff: https://github.com/openhop-dev/openhop_repeater/compare/3a291a1b941791ad696822dae0df696525630b8d...13eb8b2ea8b1cdb4a07ed6e282dc99e3aa8a5a8b
+- Included upstream commits:
+  - `b730e9e` Merge pull request #461 from openhop-dev/main
+  - `fb92b0c` feat: implement legacy restart fallback for non-root service restarts
+  - `7dddebd` test: add case for legacy restart interrupted being likely successful
+  - `13eb8b2` Merge pull request #462 from openhop-dev/fix-restart-fix
+
 ## 2.1.4
 
 - Track upstream `MAIN` commit `3a291a1` from `openhop/openhop-repeater:main`
