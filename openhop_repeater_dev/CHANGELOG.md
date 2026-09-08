@@ -1,5 +1,15 @@
 # Changelog
 
+## 2.1.24
+
+- Track upstream `DEV` commit `ffd239d` from `openhop/openhop-repeater:dev`
+- Previous tracked commit: `0e726f0`
+- Upstream diff: https://github.com/openhop-dev/openhop_repeater/compare/0e726f0700e00752e748154ffcb9a8b9541d03c5...ffd239dd826e2c0b3185ba8358f9a4f9cb530aba
+- Included upstream commits:
+  - `5fcb457` fix: synchronize radio presets with stock MeshCore
+  - `547c178` docs: clarify upstream source in preset info message
+  - `ffd239d` Merge pull request #458 from yellowcooln/fix/sync-stock-meshcore-presets
+
 ## 2.1.23
 
 - Track upstream `DEV` commit `0e726f0` from `openhop/openhop-repeater:dev`
