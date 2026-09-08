@@ -1,5 +1,13 @@
 # Changelog
 
+## 2.1.27
+
+- Track upstream `DEV` commit `fb92b0c` from `openhop/openhop-repeater:dev`
+- Previous tracked commit: `b730e9e`
+- Upstream diff: https://github.com/openhop-dev/openhop_repeater/compare/b730e9eda969d24058b4dff0f56d85baa561de1a...fb92b0c4ebd865942740d1f467dcf308f59abf2f
+- Included upstream commits:
+  - `fb92b0c` feat: implement legacy restart fallback for non-root service restarts
+
 ## 2.1.26
 
 - Track upstream `DEV` commit `b730e9e` from `openhop/openhop-repeater:dev`
