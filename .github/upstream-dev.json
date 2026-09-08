@@ -2,5 +2,5 @@
   "addon_dir": "openhop_repeater_dev",
   "channel": "dev",
   "image": "openhop/openhop-repeater:dev",
-  "revision": "55e841189adc9d38a9d8bf017b7e0f298c423b1c"
+  "revision": "b730e9eda969d24058b4dff0f56d85baa561de1a"
 }

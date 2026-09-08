@@ -1,5 +1,18 @@
 # Changelog
 
+## 2.1.26
+
+- Track upstream `DEV` commit `b730e9e` from `openhop/openhop-repeater:dev`
+- Previous tracked commit: `55e8411`
+- Upstream diff: https://github.com/openhop-dev/openhop_repeater/compare/55e841189adc9d38a9d8bf017b7e0f298c423b1c...b730e9eda969d24058b4dff0f56d85baa561de1a
+- Included upstream commits:
+  - `d0a34d1` Merge pull request #459 from openhop-dev/dev
+  - `fd2571b` fix: ensure exact tags resolve correctly in version fetching logic
+  - `582ef4d` ci: publish main Docker images only from stable release tags
+  - `883022c` style: format Docker release regression tests
+  - `3a291a1` Merge pull request #460 from yellowcooln/fix/main-tagged-docker-release
+  - `b730e9e` Merge pull request #461 from openhop-dev/main
+
 ## 2.1.25
 
 - Track upstream `DEV` commit `55e8411` from `openhop/openhop-repeater:dev`
