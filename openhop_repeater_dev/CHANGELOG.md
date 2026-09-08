@@ -1,5 +1,20 @@
 # Changelog
 
+## 2.1.23
+
+- Track upstream `DEV` commit `0e726f0` from `openhop/openhop-repeater:dev`
+- Previous tracked commit: `ab7479c`
+- Upstream diff: https://github.com/openhop-dev/openhop_repeater/compare/ab7479c55c01fb0163c0032f854e04917eedab90...0e726f0700e00752e748154ffcb9a8b9541d03c5
+- Included upstream commits:
+  - `0969335` fix(config): preserve persisted and runtime state on save failure
+  - `e47a68e` fix(auth): bound and expire login throttle state
+  - `004723d` Add Philadelphia preset
+  - `e4276b4` fix(service): schedule restarts outside the daemon process group
+  - `054ddd0` fix(manage): render container warning with real line breaks
+  - `ef1355f` Merge branch 'pr-454' into merge-pr-454-455
+  - `cc4be95` Merge branch 'pr-455' into merge-pr-454-455
+  - `0e726f0` Merge pull request #456 from openhop-dev/merge-pr-454-455
+
 ## 2.1.22
 
 - Track upstream `DEV` commit `ab7479c` from `openhop/openhop-repeater:dev`
