@@ -1,5 +1,15 @@
 # Changelog
 
+## 2.1.28
+
+- Track upstream `DEV` commit `47e49e6` from `openhop/openhop-repeater:dev`
+- Previous tracked commit: `fb92b0c`
+- Upstream diff: https://github.com/openhop-dev/openhop_repeater/compare/fb92b0c4ebd865942740d1f467dcf308f59abf2f...47e49e64aaf39ae17827def617dd1190e2149101
+- Included upstream commits:
+  - `7dddebd` test: add case for legacy restart interrupted being likely successful
+  - `13eb8b2` Merge pull request #462 from openhop-dev/fix-restart-fix
+  - `47e49e6` Merge pull request #463 from openhop-dev/main
+
 ## 2.1.27
 
 - Track upstream `DEV` commit `fb92b0c` from `openhop/openhop-repeater:dev`
