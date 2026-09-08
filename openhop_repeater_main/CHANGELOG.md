@@ -1,5 +1,15 @@
 # Changelog
 
+## 2.1.4
+
+- Track upstream `MAIN` commit `3a291a1` from `openhop/openhop-repeater:main`
+- Previous tracked commit: `fd2571b`
+- Upstream diff: https://github.com/openhop-dev/openhop_repeater/compare/fd2571b6e7c6817318f9f86aa84ecb6a4338891e...3a291a1b941791ad696822dae0df696525630b8d
+- Included upstream commits:
+  - `582ef4d` ci: publish main Docker images only from stable release tags
+  - `883022c` style: format Docker release regression tests
+  - `3a291a1` Merge pull request #460 from yellowcooln/fix/main-tagged-docker-release
+
 ## 2.1.3
 
 - Track upstream `MAIN` commit `fd2571b` from `openhop/openhop-repeater:main`
