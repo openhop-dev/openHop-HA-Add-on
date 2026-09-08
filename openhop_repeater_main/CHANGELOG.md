@@ -1,5 +1,13 @@
 # Changelog
 
+## 2.1.3
+
+- Track upstream `MAIN` commit `fd2571b` from `openhop/openhop-repeater:main`
+- Previous tracked commit: `d0a34d1`
+- Upstream diff: https://github.com/openhop-dev/openhop_repeater/compare/d0a34d16e25f8985405eecbbb22f6720815b4a53...fd2571b6e7c6817318f9f86aa84ecb6a4338891e
+- Included upstream commits:
+  - `fd2571b` fix: ensure exact tags resolve correctly in version fetching logic
+
 ## 2.1.2
 
 - Track upstream `MAIN` commit `d0a34d1` from `openhop/openhop-repeater:main`
