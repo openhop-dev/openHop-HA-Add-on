@@ -1,5 +1,20 @@
 # Changelog
 
+## 2.1.2
+
+- Track upstream `MAIN` commit `d0a34d1` from `openhop/openhop-repeater:main`
+- Previous tracked commit: `60357f5`
+- Upstream diff: https://github.com/openhop-dev/openhop_repeater/compare/60357f580876ceab5b3808a7ed00f81ae235c003...d0a34d16e25f8985405eecbbb22f6720815b4a53
+- Included upstream commits:
+  - `a208fc3` fix(repeater): relay multipart ACKs as regenerated direct ACKs
+  - `034cd6f` fix(companion): persist queued message signal and channel data
+  - `b9579b6` fix(airtime): delegate airtime math to the shared core estimator
+  - `3e2231f` fix(repeater): wire the flood reception delay base into the dispatcher
+  - `2d6b113` fix(storage): evict offline-queue rows set-based in insertion order
+  - `8a776a1` fix(cli): point txdelay settings at the delays config section
+  - `f91a30a` docs(engine): state TX delay factor semantics at startup
+  - `7c2e121` refactor(daemon): resolve companion max TX power via the core resolver
+
 ## 2.1.1
 
 - Prepare plugin-manager startup for the upcoming upstream Dev-to-Main promotion; this update does not switch Main to the Dev image.
