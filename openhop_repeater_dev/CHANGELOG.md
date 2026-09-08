@@ -1,5 +1,14 @@
 # Changelog
 
+## 2.1.25
+
+- Track upstream `DEV` commit `55e8411` from `openhop/openhop-repeater:dev`
+- Previous tracked commit: `ffd239d`
+- Upstream diff: https://github.com/openhop-dev/openhop_repeater/compare/ffd239dd826e2c0b3185ba8358f9a4f9cb530aba...55e841189adc9d38a9d8bf017b7e0f298c423b1c
+- Included upstream commits:
+  - `28dcfa1` feat: Added a QR action next to each neighbor pubkey
+  - `55e8411` fix: pin openhop_core dependencies to version 1.1.3 and update related documentation
+
 ## 2.1.24
 
 - Track upstream `DEV` commit `ffd239d` from `openhop/openhop-repeater:dev`
