@@ -1,5 +1,14 @@
 # Changelog
 
+## 2.1.30
+
+- Track upstream `DEV` commit `c02b3cb` from `openhop/openhop-repeater:dev`
+- Previous tracked commit: `4705c99`
+- Upstream diff: https://github.com/openhop-dev/openhop_repeater/compare/4705c99c38c8413c64c5a1902db42547d76b03c1...c02b3cb738987fe78f0b9a37eae55c46f87b7c44
+- Included upstream commits:
+  - `56e2fd6` feat(ws): accept API tokens on /ws/companion_frame
+  - `c02b3cb` Merge pull request #469 from Treehouse-00/feat/ws-companion-frame-api-key
+
 ## 2.1.29
 
 - Track upstream `DEV` commit `4705c99` from `openhop/openhop-repeater:dev`
