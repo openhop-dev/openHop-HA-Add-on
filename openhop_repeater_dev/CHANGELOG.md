@@ -1,5 +1,14 @@
 # Changelog
 
+## 2.1.29
+
+- Track upstream `DEV` commit `4705c99` from `openhop/openhop-repeater:dev`
+- Previous tracked commit: `47e49e6`
+- Upstream diff: https://github.com/openhop-dev/openhop_repeater/compare/47e49e64aaf39ae17827def617dd1190e2149101...4705c99c38c8413c64c5a1902db42547d76b03c1
+- Included upstream commits:
+  - `c91b331` fix(engine): preserve scope on relayed flood packets
+  - `4705c99` Merge pull request #466 from agessaman/fix/plain-flood-default-scope
+
 ## 2.1.28
 
 - Track upstream `DEV` commit `47e49e6` from `openhop/openhop-repeater:dev`
