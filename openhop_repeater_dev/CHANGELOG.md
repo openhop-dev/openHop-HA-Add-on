@@ -1,5 +1,14 @@
 # Changelog
 
+## 2.1.31
+
+- Track upstream `DEV` commit `9e375da` from `openhop/openhop-repeater:dev`
+- Previous tracked commit: `c02b3cb`
+- Upstream diff: https://github.com/openhop-dev/openhop_repeater/compare/c02b3cb738987fe78f0b9a37eae55c46f87b7c44...9e375da776826632a0b7b6a25a529b102e864018
+- Included upstream commits:
+  - `22d2721` fix: AitTime Chart
+  - `9e375da` fix(dependencies): update openhop_core to use core_dev git repository
+
 ## 2.1.30
 
 - Track upstream `DEV` commit `c02b3cb` from `openhop/openhop-repeater:dev`
