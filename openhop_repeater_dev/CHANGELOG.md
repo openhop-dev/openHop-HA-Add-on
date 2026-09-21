@@ -1,5 +1,20 @@
 # Changelog
 
+## 2.1.32
+
+- Track upstream `DEV` commit `7161ba4` from `openhop/openhop-repeater:dev`
+- Previous tracked commit: `9e375da`
+- Upstream diff: https://github.com/openhop-dev/openhop_repeater/compare/9e375da776826632a0b7b6a25a529b102e864018...7161ba4724cf5c6c7e5f136d3474f2430b88ebf4
+- Included upstream commits:
+  - `f510aed` feat(fabric): repeat on both sides of a two-radio bridge
+  - `76c1a69` feat(airtime): attribute airtime to the radio that carried it
+  - `5b1fea2` chore(web): rebuild bundled UI assets
+  - `b9fdeb5` Merge branch 'dev' into feat/fabric-bridge-repeat
+  - `071196c` refactor(fabric): rename local_tx_mode to origin_tx
+  - `2494e0c` fix(airtime): keep the airtime chart query index-only
+  - `e4f882d` feat(analytics): break packet stats, routes and neighbour links down per radio
+  - `da7c399` feat(neighbours): attribute link observations to their radio, ignore our own echo
+
 ## 2.1.31
 
 - Track upstream `DEV` commit `9e375da` from `openhop/openhop-repeater:dev`
