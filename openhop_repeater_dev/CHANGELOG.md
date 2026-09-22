@@ -1,5 +1,16 @@
 # Changelog
 
+## 2.1.33
+
+- Track upstream `DEV` commit `277f11c` from `openhop/openhop-repeater:dev`
+- Previous tracked commit: `7161ba4`
+- Upstream diff: https://github.com/openhop-dev/openhop_repeater/compare/7161ba4724cf5c6c7e5f136d3474f2430b88ebf4...277f11c3f9f5a6c740788dc3553515410618c959
+- Included upstream commits:
+  - `2f560e4` test(companion): guard inheritance of Core's per-message flood scope
+  - `58f7293` fix(companion): skip the scope guard when Core predates the feature
+  - `71837f2` test(companion): drive the scope override through the real repeater path
+  - `277f11c` Merge pull request #473 from agessaman/feat/channel-scope-override
+
 ## 2.1.32
 
 - Track upstream `DEV` commit `7161ba4` from `openhop/openhop-repeater:dev`
