@@ -1,5 +1,18 @@
 # Changelog
 
+## 2.1.34
+
+- Track upstream `DEV` commit `6f856b8` from `openhop/openhop-repeater:dev`
+- Previous tracked commit: `277f11c`
+- Upstream diff: https://github.com/openhop-dev/openhop_repeater/compare/277f11c3f9f5a6c740788dc3553515410618c959...6f856b8f832db6c05979d224cf00cbfa21f7811d
+- Included upstream commits:
+  - `11d6391` feat(mqtt): report RX airtime in the status message
+  - `a103465` fix(mqtt): report the default radio's noise floor, not the newest sample
+  - `ab35e01` fix(mqtt): report real receive errors in the status message
+  - `566498c` feat(mqtt): report each radio's own telemetry in the status radio map
+  - `a439c24` fix(stats): count CRC errors for the node, not the default radio
+  - `6f856b8` Merge pull request #488 from agessaman/feat/letsmesh-airtime-utilization-edd3fa
+
 ## 2.1.33
 
 - Track upstream `DEV` commit `277f11c` from `openhop/openhop-repeater:dev`
