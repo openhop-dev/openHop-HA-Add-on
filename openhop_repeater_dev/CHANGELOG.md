@@ -1,5 +1,20 @@
 # Changelog
 
+## 2.1.35
+
+- Track upstream `DEV` commit `b846c79` from `openhop/openhop-repeater:dev`
+- Previous tracked commit: `6f856b8`
+- Upstream diff: https://github.com/openhop-dev/openhop_repeater/compare/6f856b8f832db6c05979d224cf00cbfa21f7811d...b846c79123c21c08424f5d62cd9dbf2bedfa6e0d
+- Included upstream commits:
+  - `f001827` Refresh radio presets from MeshCore configuration feed
+  - `6a7a4ba` fix(config): overlay per-radio config sections on global defaults
+  - `2ee015c` test(airtime): meter a partial radios[] entry on the node's own air settings
+  - `bd1ff3d` fix(mqtt): capture the radio status baseline at boot, not on first publish
+  - `05500fc` feat(sensor-manager): add sensor configuration API and OpenAPI spec
+  - `bd561e8` fix(repeater): remove API route blocking in default handler
+  - `4958cbf` fix(repeater): delegate sensor endpoints from StatsApp to APIEndpoints
+  - `a18122e` fix(sensors): secure configuration and support multiple modems
+
 ## 2.1.34
 
 - Track upstream `DEV` commit `6f856b8` from `openhop/openhop-repeater:dev`
