@@ -1,5 +1,14 @@
 # Changelog
 
+## 2.1.36
+
+- Track upstream `DEV` commit `bc5d4da` from `openhop/openhop-repeater:dev`
+- Previous tracked commit: `b846c79`
+- Upstream diff: https://github.com/openhop-dev/openhop_repeater/compare/b846c79123c21c08424f5d62cd9dbf2bedfa6e0d...bc5d4dac37997bef196afe08a03ca04f18c8aef9
+- Included upstream commits:
+  - `bc5310d` fix(companion): delete an overwritten contact from storage
+  - `bc5d4da` Merge pull request #500 from Treehouse-00/fix/companion-evicted-contact
+
 ## 2.1.35
 
 - Track upstream `DEV` commit `b846c79` from `openhop/openhop-repeater:dev`
