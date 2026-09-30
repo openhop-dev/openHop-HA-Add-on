@@ -25,10 +25,11 @@ def load_helper(addon: str):
 
 
 class ConfigurationBootstrapTests(unittest.TestCase):
-    def test_helpers_exist_for_both_channels(self) -> None:
+    def test_helpers_are_identical_for_both_channels(self) -> None:
         paths = [ROOT / addon / HELPER_RELATIVE for addon in ADDONS]
         for path in paths:
             self.assertTrue(path.is_file(), f"missing helper: {path}")
+        self.assertEqual(paths[0].read_bytes(), paths[1].read_bytes())
 
     def test_first_start_is_atomic_private_and_generates_unique_credentials(self) -> None:
         template_text = (
@@ -117,7 +118,7 @@ class ConfigurationBootstrapTests(unittest.TestCase):
                 self.assertEqual(merged["custom"], {"preserved": True})
                 self.assertEqual(stat.S_IMODE(config_path.stat().st_mode), 0o600)
 
-    def test_dev_accepts_multi_radio_without_legacy_radio_type(self) -> None:
+    def test_both_channels_accept_multi_radio_without_legacy_radio_type(self) -> None:
         template = {
             "repeater": {"node_name": "template", "security": {
                 "admin_password": "default", "guest_password": "default", "jwt_secret": "default",
@@ -136,52 +137,43 @@ class ConfigurationBootstrapTests(unittest.TestCase):
             ],
             "fabric": {"default_radio": "north", "tx_mode": "bridge"},
         }
-        with tempfile.TemporaryDirectory() as temp_dir:
-            helper = load_helper("openhop_repeater_dev")
-            root = Path(temp_dir)
-            template_path, config_path = root / "template.yaml", root / "config.yaml"
-            template_path.write_text(yaml.safe_dump(template), encoding="utf-8")
-            config_path.write_text(yaml.safe_dump(existing), encoding="utf-8")
-
-            self.assertEqual(helper.bootstrap_config(template_path, config_path), "merged")
-            merged = yaml.safe_load(config_path.read_text(encoding="utf-8"))
-            self.assertNotIn("radio_type", merged)
-            self.assertEqual(merged["radios"], existing["radios"])
-            self.assertEqual(merged["fabric"], existing["fabric"])
-            self.assertEqual(merged["repeater"]["security"], existing["repeater"]["security"])
-            self.assertEqual(merged["gps"], template["gps"])
-            self.assertEqual(stat.S_IMODE(config_path.stat().st_mode), 0o600)
-            self.assertEqual(helper.bootstrap_config(template_path, config_path), "unchanged")
-
-    def test_dev_rejects_missing_or_incomplete_radio_configuration(self) -> None:
-        helper = load_helper("openhop_repeater_dev")
-        template = {"repeater": {"node_name": "template"}, "radio_type": None}
-        for radios in (None, [], [{"id": "one", "radio_type": "modem_tcp"}],
-                       [{"id": "one", "radio_type": "modem_tcp"}, {"id": "two"}]):
-            with self.subTest(radios=radios), tempfile.TemporaryDirectory() as temp_dir:
+        for addon in ADDONS:
+            with self.subTest(addon=addon), tempfile.TemporaryDirectory() as temp_dir:
+                helper = load_helper(addon)
                 root = Path(temp_dir)
                 template_path, config_path = root / "template.yaml", root / "config.yaml"
                 template_path.write_text(yaml.safe_dump(template), encoding="utf-8")
-                existing = {"repeater": {"node_name": "node"}}
-                if radios is not None:
-                    existing["radios"] = radios
-                original = yaml.safe_dump(existing)
-                config_path.write_text(original, encoding="utf-8")
-                with self.assertRaisesRegex(ValueError, "radio_type is required"):
-                    helper.bootstrap_config(template_path, config_path)
-                self.assertEqual(config_path.read_text(encoding="utf-8"), original)
+                config_path.write_text(yaml.safe_dump(existing), encoding="utf-8")
 
-    def test_main_still_requires_legacy_radio_type(self) -> None:
-        helper = load_helper("openhop_repeater_main")
-        with tempfile.TemporaryDirectory() as temp_dir:
-            config = Path(temp_dir) / "config.yaml"
-            config.write_text(yaml.safe_dump({
-                "repeater": {"node_name": "node"},
-                "radios": [{"id": "one", "radio_type": "modem_tcp"},
-                           {"id": "two", "radio_type": "modem_tcp"}],
-            }), encoding="utf-8")
-            with self.assertRaisesRegex(ValueError, "radio_type is required"):
-                helper._load_mapping(config, "existing configuration")
+                self.assertEqual(helper.bootstrap_config(template_path, config_path), "merged")
+                merged = yaml.safe_load(config_path.read_text(encoding="utf-8"))
+                self.assertNotIn("radio_type", merged)
+                self.assertEqual(merged["radios"], existing["radios"])
+                self.assertEqual(merged["fabric"], existing["fabric"])
+                self.assertEqual(merged["repeater"]["security"], existing["repeater"]["security"])
+                self.assertEqual(merged["gps"], template["gps"])
+                self.assertEqual(stat.S_IMODE(config_path.stat().st_mode), 0o600)
+                self.assertEqual(helper.bootstrap_config(template_path, config_path), "unchanged")
+
+    def test_both_channels_reject_missing_or_incomplete_radio_configuration(self) -> None:
+        template = {"repeater": {"node_name": "template"}, "radio_type": None}
+        for addon in ADDONS:
+            helper = load_helper(addon)
+            for radios in (None, [], [{"id": "one", "radio_type": "modem_tcp"}],
+                           [{"id": "one", "radio_type": "modem_tcp"}, {"id": "two"}]):
+                with self.subTest(addon=addon, radios=radios), tempfile.TemporaryDirectory() as temp_dir:
+                    root = Path(temp_dir)
+                    template_path, config_path = root / "template.yaml", root / "config.yaml"
+                    template_path.write_text(yaml.safe_dump(template), encoding="utf-8")
+                    existing = {"repeater": {"node_name": "node"}}
+                    if radios is not None:
+                        existing["radios"] = radios
+                    original = yaml.safe_dump(existing)
+                    config_path.write_text(original, encoding="utf-8")
+                    with self.assertRaisesRegex(ValueError, "radio_type is required"):
+                        helper.bootstrap_config(template_path, config_path)
+                    self.assertEqual(config_path.read_text(encoding="utf-8"), original)
+
 
     def test_upgrade_generates_only_missing_credentials(self) -> None:
         template_text = (

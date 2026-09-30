@@ -1,5 +1,10 @@
 # Changelog
 
+## 2.1.6
+
+- Accept existing multi-radio configurations without a legacy top-level `radio_type` on Main add-on startup.
+- Preserve the radio list, fabric settings, and credentials without adding a template single-radio type.
+
 ## 2.1.5
 
 - Track upstream `MAIN` commit `13eb8b2` from `openhop/openhop-repeater:main`
