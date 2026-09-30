@@ -29,7 +29,15 @@ def _load_mapping(path: pathlib.Path, label: str) -> dict[str, Any]:
         raise ValueError(f"invalid {label}: repeater must be a mapping")
     if not str(repeater.get("node_name", "")).strip():
         raise ValueError(f"invalid {label}: repeater.node_name must be non-empty")
-    if "radio_type" not in value:
+    if "radio_type" not in value and not (
+        label == "existing configuration"
+        and isinstance(value.get("radios"), list)
+        and len(value["radios"]) >= 2
+        and all(
+            isinstance(entry, dict) and entry.get("id") and entry.get("radio_type")
+            for entry in value["radios"]
+        )
+    ):
         raise ValueError(f"invalid {label}: radio_type is required")
     return value
 
@@ -127,6 +135,9 @@ def bootstrap_config(
 
     current = _load_mapping(config, "existing configuration")
     merged = _merge_defaults(defaults, current)
+    if "radio_type" not in current:
+        # Multi-radio configs do not use the template's legacy single-radio type.
+        merged.pop("radio_type", None)
     _apply_missing_credentials(merged, current)
     if merged == current:
         os.chmod(config, 0o600)

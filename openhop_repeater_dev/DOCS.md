@@ -64,6 +64,13 @@ The bundled starter config is aimed at an SX1262 SPI radio. At minimum, review:
 Other radio backends supported by the upstream `:dev` image should be
 configured directly in `config.yaml` using the upstream schema.
 
+For multi-radio configurations, an existing `config.yaml` may instead have a
+`radios:` list with at least two entries, each with an `id` and `radio_type`.
+In that case this Dev add-on no longer requires the legacy top-level
+`radio_type` and will not add one from the packaged template. The repeater's
+in-app configuration validator is separate from this add-on startup check;
+do not add a dummy legacy radio setting to work around a validation error.
+
 ## Backups and shutdown
 
 Home Assistant uses cold backups for this add-on so configuration, identity,
