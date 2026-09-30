@@ -2,8 +2,8 @@
 
 ## 2.1.6
 
-- Accept existing multi-radio configurations without a legacy top-level `radio_type` on Main add-on startup.
-- Preserve the radio list, fabric settings, and credentials without adding a template single-radio type.
+- Fix Main add-on startup for multi-radio configurations that have no legacy top-level `radio_type`; preserve their radio list, fabric settings, and credentials.
+- This is an add-on-only multi-radio fix. It does not update openHop Repeater or change the tracked Repeater revision.
 
 ## 2.1.5
 
