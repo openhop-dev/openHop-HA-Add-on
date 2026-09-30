@@ -1,5 +1,10 @@
 # Changelog
 
+## 2.1.6
+
+- Fix Main add-on startup for multi-radio configurations that have no legacy top-level `radio_type`; preserve their radio list, fabric settings, and credentials.
+- This is an add-on-only multi-radio fix. It does not update openHop Repeater or change the tracked Repeater revision.
+
 ## 2.1.5
 
 - Track upstream `MAIN` commit `13eb8b2` from `openhop/openhop-repeater:main`
