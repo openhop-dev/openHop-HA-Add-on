@@ -129,7 +129,9 @@ def validate_addon(name: str, expected: dict[str, str]) -> None:
 def validate_channel_parity() -> None:
     dev = ROOT / "openhop_repeater_dev"
     main = ROOT / "openhop_repeater_main"
-    for relative in (Path("run.sh"), HELPER):
+    # Dev-only multi-radio bootstrap support is intentionally staged ahead of Main.
+    # Each helper is checked for presence above and exercised independently in tests.
+    for relative in (Path("run.sh"),):
         if (dev / relative).read_bytes() != (main / relative).read_bytes():
             fail(f"shared channel file differs: {relative}")
 

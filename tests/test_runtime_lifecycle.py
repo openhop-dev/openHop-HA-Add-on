@@ -10,6 +10,8 @@ import time
 import unittest
 from pathlib import Path
 
+import yaml
+
 ROOT = Path(__file__).resolve().parents[1]
 ADDONS = ("openhop_repeater_dev", "openhop_repeater_main")
 
@@ -78,6 +80,37 @@ class RuntimeLifecycleTests(unittest.TestCase):
             text.index("export PYTHONPATH"),
             text.index('"${PYTHON}" "${CONFIG_HELPER}" bootstrap'),
         )
+
+    def test_dev_wrapper_starts_with_multi_radio_only_config(self) -> None:
+        with tempfile.TemporaryDirectory() as temp_dir:
+            root = Path(temp_dir)
+            package_root = make_runtime(root, """
+                import os
+                from pathlib import Path
+                Path(os.environ['OPENHOP_TEST_ROOT'], 'runtime.started').touch()
+                raise SystemExit(23)
+            """)
+            env = base_env(root, "openhop_repeater_dev", package_root)
+            config_path = root / "config/config.yaml"
+            config_path.parent.mkdir(parents=True)
+            config_path.write_text(yaml.safe_dump({
+                "repeater": {"node_name": "field-node", "security": {
+                    "admin_password": "keep", "guest_password": "keep", "jwt_secret": "keep",
+                }},
+                "radios": [
+                    {"id": "south", "radio_type": "modem_tcp"},
+                    {"id": "north", "radio_type": "modem_tcp"},
+                ],
+                "fabric": {"default_radio": "north", "tx_mode": "bridge"},
+            }), encoding="utf-8")
+            result = subprocess.run(
+                ["sh", str(ROOT / "openhop_repeater_dev/run.sh")], env=env,
+                capture_output=True, text=True, timeout=15, check=False,
+            )
+            self.assertTrue((root / "runtime.started").exists(), result.stderr)
+            self.assertIn("configuration bootstrap: unchanged", result.stdout)
+            self.assertNotIn("radio_type is required", result.stderr)
+            self.assertEqual(result.returncode, 1, result.stdout + result.stderr)
 
     def test_packaged_supervisor_is_selected_and_restarted(self) -> None:
         source = """

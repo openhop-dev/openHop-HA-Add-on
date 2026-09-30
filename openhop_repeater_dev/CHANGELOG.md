@@ -1,5 +1,10 @@
 # Changelog
 
+## 2.1.37
+
+- Accept existing multi-radio configurations without a legacy top-level `radio_type` on Dev add-on startup.
+- Preserve the radio list, fabric settings, and credentials without adding a template single-radio type.
+
 ## 2.1.36
 
 - Track upstream `DEV` commit `bc5d4da` from `openhop/openhop-repeater:dev`
