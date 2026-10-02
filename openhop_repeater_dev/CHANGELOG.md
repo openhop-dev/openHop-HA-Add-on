@@ -1,5 +1,20 @@
 # Changelog
 
+## 2.1.38
+
+- Track upstream `DEV` commit `05bea63` from `openhop/openhop-repeater:dev`
+- Previous tracked commit: `bc5d4da`
+- Upstream diff: https://github.com/openhop-dev/openhop_repeater/compare/bc5d4dac37997bef196afe08a03ca04f18c8aef9...05bea635fdc0dcf116c4ee7714cbd3370c6d1486
+- Included upstream commits:
+  - `5de9f03` fix: stop replaced RoomServer sync loops on identity re-registration
+  - `8c58266` feat(sensors): discover bounded modem diagnostic metrics
+  - `1be2696` fix(api): preserve null availability reason in schema
+  - `70d6531` fix(cli): require `neighbor.remove all` to clear every neighbor
+  - `488df47` fix(cli): clear only the listed neighbors with `neighbor.remove all`
+  - `4beae18` feat(config): warn when a USB/TCP modem is not on MeshCore's sync word
+  - `ca5e33d` fix(cli): report the installed repeater and core versions from `ver`
+  - `1f30d68` fix(cli): don't report OK when neighbor.remove all can't read neighbors
+
 ## 2.1.37
 
 - Accept existing multi-radio configurations without a legacy top-level `radio_type` on Dev add-on startup.
