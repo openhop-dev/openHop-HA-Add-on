@@ -1,5 +1,13 @@
 # Changelog
 
+## 2.1.39
+
+- Track upstream `DEV` commit `9c958e3` from `openhop/openhop-repeater:dev`
+- Previous tracked commit: `05bea63`
+- Upstream diff: https://github.com/openhop-dev/openhop_repeater/compare/05bea635fdc0dcf116c4ee7714cbd3370c6d1486...9c958e3111604aca5ab664c9feead8c8bc5e4240
+- Included upstream commits:
+  - `9c958e3` feat: update ui
+
 ## 2.1.38
 
 - Track upstream `DEV` commit `05bea63` from `openhop/openhop-repeater:dev`
