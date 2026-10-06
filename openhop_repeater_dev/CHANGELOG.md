@@ -1,5 +1,15 @@
 # Changelog
 
+## 2.1.40
+
+- Track upstream `DEV` commit `4519085` from `openhop/openhop-repeater:dev`
+- Previous tracked commit: `9c958e3`
+- Upstream diff: https://github.com/openhop-dev/openhop_repeater/compare/9c958e3111604aca5ab664c9feead8c8bc5e4240...4519085b86f9a5aa64e1fdbdc736ae983216f43e
+- Included upstream commits:
+  - `8c08bc9` fix(api): match ACL targets on the full multi-byte identity hash
+  - `5bbc01f` fix(api): keep one-byte numeric ACL hashes and filter acl_clients by prefix
+  - `4519085` Merge pull request #512 from agessaman/fix/acl-target-multibyte-hash
+
 ## 2.1.39
 
 - Track upstream `DEV` commit `9c958e3` from `openhop/openhop-repeater:dev`
