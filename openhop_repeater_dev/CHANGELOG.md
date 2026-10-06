@@ -1,5 +1,15 @@
 # Changelog
 
+## 2.1.41
+
+- Track upstream `DEV` commit `3c4bf3a` from `openhop/openhop-repeater:dev`
+- Previous tracked commit: `4519085`
+- Upstream diff: https://github.com/openhop-dev/openhop_repeater/compare/4519085b86f9a5aa64e1fdbdc736ae983216f43e...3c4bf3a9586d1e0b3871091649bc3fd09da3b662
+- Included upstream commits:
+  - `737fda2` feat(acl): admit a blank password as guest when the repeater has no guest password
+  - `2078873` fix(acl): authenticate by registered type and keep stored grants from blank logins
+  - `3c4bf3a` Merge pull request #513 from agessaman/feat/guest-login-empty-guest-password
+
 ## 2.1.40
 
 - Track upstream `DEV` commit `4519085` from `openhop/openhop-repeater:dev`
