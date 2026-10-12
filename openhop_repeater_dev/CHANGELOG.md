@@ -1,5 +1,14 @@
 # Changelog
 
+## 2.1.42
+
+- Track upstream `DEV` commit `a50e449` from `openhop/openhop-repeater:dev`
+- Previous tracked commit: `3c4bf3a`
+- Upstream diff: https://github.com/openhop-dev/openhop_repeater/compare/3c4bf3a9586d1e0b3871091649bc3fd09da3b662...a50e449bbd4136f8cd6e9721b2d2483ec1abf7fb
+- Included upstream commits:
+  - `d8cc460` fix(router): confirm companion sends from early direct and multipart ACKs
+  - `a50e449` Merge pull request #522 from agessaman/fix/companion-early-and-multipart-acks
+
 ## 2.1.41
 
 - Track upstream `DEV` commit `3c4bf3a` from `openhop/openhop-repeater:dev`
