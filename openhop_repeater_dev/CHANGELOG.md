@@ -1,5 +1,14 @@
 # Changelog
 
+## 2.1.44
+
+- Track upstream `DEV` commit `fa29225` from `openhop/openhop-repeater:dev`
+- Previous tracked commit: `ad83191`
+- Upstream diff: https://github.com/openhop-dev/openhop_repeater/compare/ad83191b54d60953d37856c700e167f524810b5c...fa2922511d2a39e753e8d71a0fd5514e796afe4c
+- Included upstream commits:
+  - `f2401f4` Clear the policy decrypt cache at the start of evaluate()
+  - `fa29225` Merge pull request #521 from flackrat/patch-1
+
 ## 2.1.43
 
 - Track upstream `DEV` commit `ad83191` from `openhop/openhop-repeater:dev`
