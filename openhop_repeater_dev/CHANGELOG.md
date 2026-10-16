@@ -1,5 +1,13 @@
 # Changelog
 
+## 2.1.45
+
+- Track upstream `DEV` commit `85fc14a` from `openhop/openhop-repeater:dev`
+- Previous tracked commit: `fa29225`
+- Upstream diff: https://github.com/openhop-dev/openhop_repeater/compare/fa2922511d2a39e753e8d71a0fd5514e796afe4c...85fc14a6b212f149e31a680453aa2ba707cd7d67
+- Included upstream commits:
+  - `85fc14a` feat(theme): implement theme management
+
 ## 2.1.44
 
 - Track upstream `DEV` commit `fa29225` from `openhop/openhop-repeater:dev`
