@@ -1,5 +1,20 @@
 # Changelog
 
+## 2.1.43
+
+- Track upstream `DEV` commit `ad83191` from `openhop/openhop-repeater:dev`
+- Previous tracked commit: `a50e449`
+- Upstream diff: https://github.com/openhop-dev/openhop_repeater/compare/a50e449bbd4136f8cd6e9721b2d2483ec1abf7fb...ad83191b54d60953d37856c700e167f524810b5c
+- Included upstream commits:
+  - `17aa44b` feat(sensors): add read-only Victron VE.Direct telemetry
+  - `88e55c0` feat(sensors): label Victron charge states using official protocol
+  - `98016dc` fix(sensors): render Victron statuses through metric descriptors
+  - `3c9b5ca` merge: sync Victron sensor branch with upstream dev
+  - `e94810c` fix(sensors): decode Victron values in the drop-in sensor
+  - `8449a63` fix(sensors): preserve V1 grouping with readable status labels
+  - `1f2fb86` feat(sensors): calculate Victron load power from voltage and current
+  - `127b0a4` fix(sensors): normalize Victron power precision and dependency setup
+
 ## 2.1.42
 
 - Track upstream `DEV` commit `a50e449` from `openhop/openhop-repeater:dev`
