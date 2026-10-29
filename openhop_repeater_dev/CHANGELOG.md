@@ -1,5 +1,20 @@
 # Changelog
 
+## 2.1.46
+
+- Track upstream `DEV` commit `72266e2` from `openhop/openhop-repeater:dev`
+- Previous tracked commit: `85fc14a`
+- Upstream diff: https://github.com/openhop-dev/openhop_repeater/compare/85fc14a6b212f149e31a680453aa2ba707cd7d67...72266e24f5f62caeae49cbe75d02183f8ec6176c
+- Included upstream commits:
+  - `e1ca34e` feat(api): add direct multi-hop TRACE endpoint
+  - `65288f7` feat(trace): enhance trace logging and validation for path hops
+  - `6023e5d` fix(tests): remove unnecessary blank line in test_trace_api.py
+  - `49c9cda` fix(api): keep MQTT broker passwords out of stats and the config export
+  - `67df87c` feat(api): enhance MQTT config handling for renamed brokers and password validation
+  - `a5cccc5` updated UI
+  - `71495b6` test(policy_engine): add regression test for cache leakage across evaluations
+  - `72266e2` fix(api): accept RRD query parameters during HTTP dispatch
+
 ## 2.1.45
 
 - Track upstream `DEV` commit `85fc14a` from `openhop/openhop-repeater:dev`
