@@ -1,5 +1,14 @@
 # Changelog
 
+## 2.1.48
+
+- Track upstream `DEV` commit `dc8a55e` from `openhop/openhop-repeater:dev`
+- Previous tracked commit: `570a467`
+- Upstream diff: https://github.com/openhop-dev/openhop_repeater/compare/570a467fff5bd50c9dc7c4771cfd702bd66f25ad...dc8a55e885f776aa34520a1fcc00fca00b607692
+- Included upstream commits:
+  - `c6d4c7c` fix(web): ship merged RepeaterUI in backend packages
+  - `dc8a55e` Merge pull request #550 from yellowcooln/fix/bundle-current-repeater-ui
+
 ## 2.1.47
 
 - Track upstream `DEV` commit `570a467` from `openhop/openhop-repeater:dev`
