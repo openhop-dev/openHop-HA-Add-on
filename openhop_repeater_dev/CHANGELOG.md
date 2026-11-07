@@ -1,5 +1,14 @@
 # Changelog
 
+## 2.1.55
+
+- Track upstream `DEV` commit `9fe27fb` from `openhop/openhop-repeater:dev`
+- Previous tracked commit: `a86a05c`
+- Upstream diff: https://github.com/openhop-dev/openhop_repeater/compare/a86a05c0c55852a5f25b4db61a1c73b4dea68980...9fe27fbd0eec46385e5afb6d331bd1b9f0dd2764
+- Included upstream commits:
+  - `e281571` feat(api): per-message flood scope and timestamp on send_channel_message
+  - `9fe27fb` Merge pull request #553 from Treehouse-00/feat/send-channel-scope-timestamp
+
 ## 2.1.54
 
 - Track upstream `DEV` commit `a86a05c` from `openhop/openhop-repeater:dev`
