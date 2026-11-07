@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.1.50
+
+- Track upstream `DEV` commit `0ba7f5a` from `openhop/openhop-repeater:dev`
+- Previous tracked commit: `04f2952`
+- Upstream diff: https://github.com/openhop-dev/openhop_repeater/compare/04f29527d35524033ce3a6051a84eda1ac9f233e...0ba7f5ad72713acaa2a192b95895487d44215de5
+
 ## 2.1.49
 
 - Track upstream `DEV` commit `04f2952` from `openhop/openhop-repeater:dev`
