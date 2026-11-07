@@ -1,5 +1,14 @@
 # Changelog
 
+## 2.1.54
+
+- Track upstream `DEV` commit `a86a05c` from `openhop/openhop-repeater:dev`
+- Previous tracked commit: `f1e7602`
+- Upstream diff: https://github.com/openhop-dev/openhop_repeater/compare/f1e76020cb7ba7fd496d027dfae9716d7bbc1102...a86a05c0c55852a5f25b4db61a1c73b4dea68980
+- Included upstream commits:
+  - `2d67e9d` feat(api): let companion send_text answer at transmit
+  - `a86a05c` Merge pull request #552 from Treehouse-00/feat/send-text-wait-for-ack
+
 ## 2.1.53
 
 - Track upstream `DEV` commit `f1e7602` from `openhop/openhop-repeater:dev`
