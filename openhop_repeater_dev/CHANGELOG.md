@@ -1,5 +1,14 @@
 # Changelog
 
+## 2.1.52
+
+- Track upstream `DEV` commit `ed5a7e8` from `openhop/openhop-repeater:dev`
+- Previous tracked commit: `22ae151`
+- Upstream diff: https://github.com/openhop-dev/openhop_repeater/compare/22ae151a10a091f639eeb59675db4caac4f35785...ed5a7e88b2ea73b0b4c48101442e15d16b622c18
+- Included upstream commits:
+  - `2080a19` test(companion): read the channel send's result as truthy
+  - `ed5a7e8` Merge pull request #558 from agessaman/fix/scoped-send-test-sentresult
+
 ## 2.1.51
 
 - Track upstream `DEV` commit `22ae151` from `openhop/openhop-repeater:dev`
