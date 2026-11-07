@@ -1,5 +1,15 @@
 # Changelog
 
+## 2.1.56
+
+- Track upstream `DEV` commit `3dfbdaf` from `openhop/openhop-repeater:dev`
+- Previous tracked commit: `9fe27fb`
+- Upstream diff: https://github.com/openhop-dev/openhop_repeater/compare/9fe27fbd0eec46385e5afb6d331bd1b9f0dd2764...3dfbdaf60a4c845a37780ec5a896c90faf58d438
+- Included upstream commits:
+  - `deb4481` feat(api): answer companion sends with the sent packet's hash
+  - `f0cea30` Merge dev into feat/send-packet-hash
+  - `3dfbdaf` Merge pull request #554 from Treehouse-00/feat/send-packet-hash
+
 ## 2.1.55
 
 - Track upstream `DEV` commit `9fe27fb` from `openhop/openhop-repeater:dev`
