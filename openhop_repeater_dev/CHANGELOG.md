@@ -1,5 +1,17 @@
 # Changelog
 
+## 2.1.57
+
+- Track upstream `DEV` commit `c59d7e0` from `openhop/openhop-repeater:dev`
+- Previous tracked commit: `3dfbdaf`
+- Upstream diff: https://github.com/openhop-dev/openhop_repeater/compare/3dfbdaf60a4c845a37780ec5a896c90faf58d438...c59d7e00cb87cf2a04a8ca06e5a904e0c3ef9468
+- Included upstream commits:
+  - `f27fafc` fix(text): route DM ACKs on the client's known out_path
+  - `0cae93f` fix(login): forget a client's route on a flood login
+  - `58b8bd2` Merge dev into fix/dm-ack-route
+  - `772a287` Merge pull request #544 from anieto/fix/dm-ack-route
+  - `c59d7e0` Merge pull request #559 from agessaman/fix/login-clears-out-path
+
 ## 2.1.56
 
 - Track upstream `DEV` commit `3dfbdaf` from `openhop/openhop-repeater:dev`
