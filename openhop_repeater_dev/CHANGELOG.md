@@ -1,5 +1,14 @@
 # Changelog
 
+## 2.1.53
+
+- Track upstream `DEV` commit `f1e7602` from `openhop/openhop-repeater:dev`
+- Previous tracked commit: `ed5a7e8`
+- Upstream diff: https://github.com/openhop-dev/openhop_repeater/compare/ed5a7e88b2ea73b0b4c48101442e15d16b622c18...f1e76020cb7ba7fd496d027dfae9716d7bbc1102
+- Included upstream commits:
+  - `5d4adf4` feat(api): pass attempt and timestamp through companion send_text
+  - `f1e7602` Merge pull request #551 from Treehouse-00/feat/send-text-attempt
+
 ## 2.1.52
 
 - Track upstream `DEV` commit `ed5a7e8` from `openhop/openhop-repeater:dev`
