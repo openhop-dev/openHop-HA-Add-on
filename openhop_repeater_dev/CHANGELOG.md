@@ -1,5 +1,20 @@
 # Changelog
 
+## 2.1.47
+
+- Track upstream `DEV` commit `570a467` from `openhop/openhop-repeater:dev`
+- Previous tracked commit: `72266e2`
+- Upstream diff: https://github.com/openhop-dev/openhop_repeater/compare/72266e24f5f62caeae49cbe75d02183f8ec6176c...570a467fff5bd50c9dc7c4771cfd702bd66f25ad
+- Included upstream commits:
+  - `4520a98` feat: add persistent network and MQTT usage buckets
+  - `7dcce57` feat: collect persistent interface and per-broker MQTT usage
+  - `25a5d74` feat: support rolling hour windows for network usage
+  - `36a97b6` feat(mqtt): report what each broker has been sent
+  - `a505d36` feat: recommend default network interface and document MQTT session counters
+  - `8d3cad6` test: catch futures timeout correctly on Python 3.10
+  - `5e3d1f9` fix(dependencies): install setuptools with the dev extras
+  - `570a467` Merge pull request #549 from yellowcooln/feat/network-mqtt-usage
+
 ## 2.1.46
 
 - Track upstream `DEV` commit `72266e2` from `openhop/openhop-repeater:dev`
