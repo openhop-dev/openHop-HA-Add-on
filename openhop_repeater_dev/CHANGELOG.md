@@ -1,5 +1,15 @@
 # Changelog
 
+## 2.1.51
+
+- Track upstream `DEV` commit `22ae151` from `openhop/openhop-repeater:dev`
+- Previous tracked commit: `0ba7f5a`
+- Upstream diff: https://github.com/openhop-dev/openhop_repeater/compare/0ba7f5ad72713acaa2a192b95895487d44215de5...22ae151a10a091f639eeb59675db4caac4f35785
+- Included upstream commits:
+  - `04f2952` fix(companion): tidy up after merging message history and companion delete
+  - `72bbeb9` fix(companion): answer send_channel_message's sent as a bool
+  - `22ae151` Merge pull request #556 from agessaman/fix/companion-channel-send-sent-bool
+
 ## 2.1.50
 
 - Track upstream `DEV` commit `0ba7f5a` from `openhop/openhop-repeater:dev`
