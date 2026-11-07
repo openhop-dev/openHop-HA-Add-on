@@ -1,5 +1,17 @@
 # Changelog
 
+## 2.1.49
+
+- Track upstream `DEV` commit `04f2952` from `openhop/openhop-repeater:dev`
+- Previous tracked commit: `dc8a55e`
+- Upstream diff: https://github.com/openhop-dev/openhop_repeater/compare/dc8a55e885f776aa34520a1fcc00fca00b607692...04f29527d35524033ce3a6051a84eda1ac9f233e
+- Included upstream commits:
+  - `bf72af2` feat(companion): opt-in history of sent and received messages
+  - `842c13c` fix: stop companion runtime when deleting its identity
+  - `8afe4eb` Merge pull request #479 from Treehouse-00/feat/companion-message-history-rebased
+  - `0ba7f5a` Merge pull request #477 from Treehouse-00/codex/fix-companion-delete
+  - `04f2952` fix(companion): tidy up after merging message history and companion delete
+
 ## 2.1.48
 
 - Track upstream `DEV` commit `dc8a55e` from `openhop/openhop-repeater:dev`
