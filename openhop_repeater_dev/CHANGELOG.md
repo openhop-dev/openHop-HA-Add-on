@@ -1,5 +1,20 @@
 # Changelog
 
+## 2.1.59
+
+- Track upstream `DEV` commit `9844406` from `openhop/openhop-repeater:dev`
+- Previous tracked commit: `772a287`
+- Upstream diff: https://github.com/openhop-dev/openhop_repeater/compare/772a28748e8b2d81ec7418ca47075691230900f9...98444069ee49d21aff1e2a4d67a53ae7c53fecaa
+- Included upstream commits:
+  - `1b74154` feat(kiss): hardware-backed AGC reset interval and FEM gain control
+  - `004a28a` fix(kiss): retry unconfirmed AGC/FEM settings and roll back failed CLI saves
+  - `8e35df3` feat(web): add /api/radio_frontend for KISS AGC and FEM control
+  - `4d00ed2` chore(web): rebuild bundled UI assets
+  - `eb96781` feat(kiss): control the modem's radio chip boosted RX gain
+  - `bca8123` chore(web): rebuild bundled UI assets
+  - `3a94515` chore(web): rebuild bundled UI assets
+  - `ea44b07` chore(web): rebuild bundled UI assets
+
 ## 2.1.58
 
 - Track upstream `DEV` commit `772a287` from `openhop/openhop-repeater:dev`
